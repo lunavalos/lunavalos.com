@@ -6,6 +6,7 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig = {
   transpilePackages: ['three', '@react-three/fiber', '@react-three/drei'],
   poweredByHeader: false,
+  output: 'standalone',
 };
 
 export default withNextIntl(nextConfig);
