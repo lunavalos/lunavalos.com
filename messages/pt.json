@@ -1,0 +1,192 @@
+{
+  "Index": {
+    "title": "LunAvalos — Evolução Digital de Alto Impacto",
+    "description": "Transformamos ideias em ecossistemas digitais escaláveis. Especialistas em Next.js, Laravel e Soluções de IA.",
+    "hero": {
+      "title": "Construímos o <span>futuro digital</span> da sua empresa.",
+      "subtitle": "Desenvolvimento de sistemas sob medida, e-commerce avançado e experiências digitais premium.",
+      "ctaStart": "Iniciar Projeto",
+      "ctaServices": "Explorar Serviços"
+    },
+    "services": {
+      "badge": "Nossos Serviços",
+      "titlePart1": "Tudo o que a sua empresa",
+      "titlePart2": "precisa para crescer.",
+      "description": "Oferecemos soluções tecnológicas completas, desde um site profissional até um sistema empresarial totalmente personalizado e otimizado para o seu negócio."
+    },
+    "process": {
+      "badge": "Nosso Processo",
+      "titlePart1": "SIMPLES, TRANSPARENTE",
+      "titlePart2": "E ORIENTADO A RESULTADOS",
+      "steps": [
+        {
+          "title": "Diagnóstico",
+          "desc": "Enviamos um questionário e agendamos uma chamada para entender o seu negócio, objetivos e necessidades reais."
+        },
+        {
+          "title": "Proposta",
+          "desc": "Entregamos uma proposta detalhada com escopo, tecnologia, prazos e custo. Sem surpresas nem letras miúdas."
+        },
+        {
+          "title": "Desenvolvimento",
+          "desc": "Construímos com revisões periódicas. Você acompanha o progresso em tempo real e dá feedback em cada etapa."
+        },
+        {
+          "title": "Lançamento",
+          "desc": "Entrega, capacitação da equipe e suporte pós-lançamento. Não desaparecemos quando o projeto termina."
+        }
+      ]
+    }
+  },
+  "Footer": {
+    "description": "Nossa missão é apoiar os negócios a criar impacto em sua comunidade.",
+    "services": "Serviços",
+    "contact": "Contato",
+    "address": "Endereço",
+    "privacy": "Política de Privacidade",
+    "rights": "© {year} LunAvalos Digital House. Todos os direitos reservados.",
+    "addressText": "Av. La Salle #437 Col. La Salle, Saltillo, Coahuila México CP 25286"
+  },
+  "CTA": {
+    "badge": "Pronto para começar?",
+    "title": "Conte-nos sobre o seu projeto.<br />Respondemos em até 24h.",
+    "description": "Seja você uma startup, PME ou empresa consolidada, temos a solução tecnológica que você precisa. Orçamento gratuito, sem compromisso.",
+    "ctaQuote": "Solicitar orçamento",
+    "ctaWhatsapp": "WhatsApp direto",
+    "location": "Saltillo, Coahuila, México",
+    "email": "hola@lunavalos.com",
+    "global": "Serviços globais"
+  },
+  "Navigation": {
+    "home": "Início",
+    "services": "Serviços",
+    "portfolio": "Portfólio",
+    "about": "Sobre nós",
+    "contact": "Contato"
+  },
+  "Services": {
+    "title": "Nossos Serviços",
+    "subtitle": "Soluções tecnológicas sob medida para transformar o seu negócio na era digital.",
+    "badge": "Evolution 2026",
+    "comingSoon": {
+      "title": "Em breve",
+      "description": "Estamos preparando o conteúdo detalhado desta seção para oferecer as melhores informações sobre nossas capacidades tecnológicas."
+    },
+    "items": {
+      "webApps": {
+        "title": "Web Apps empresariais sob medida.",
+        "description": "Desenvolvemos software de gestão totalmente personalizado para a sua empresa: ERP, CRM, portais internos, dashboards e fluxos de trabalho automatizados. Construído com arquitetura moderna, escalável e segura.",
+        "details": "Nossa metodologia de desenvolvimento para aplicações web é centrada na escalabilidade e na robustez técnica. Utilizamos arquiteturas modernas que separam a interface do usuário da lógica de negócios, permitindo atualizações rápidas e desempenho superior. Ideais para sistemas transacionais intensivos, gestão de estoque em tempo real e ferramentas de produtividade empresarial que precisam funcionar 24/7 sem erros.",
+        "tech": [
+          "Laravel",
+          "Next.js",
+          "React",
+          "Prisma",
+          "Spatie",
+          "API REST"
+        ]
+      },
+      "websites": {
+        "title": "Sites profissionais",
+        "description": "Design e desenvolvimento de sites corporativos, de serviços e landing pages. Otimizados para SEO desde o código, velocidade máxima e experiência de usuário excepcional em qualquer dispositivo.",
+        "details": "Desenvolvemos experiências web que não apenas atraem olhares, mas cumprem objetivos de negócio claros. Cada projeto inclui uma fase de otimização de conversão (CRO), integração com ferramentas de analytics avançado e uma abordagem absolutamente 'Mobile-First'. Garantimos que sua presença digital seja o principal motor de aquisição de clientes para a sua empresa.",
+        "tech": [
+          "SEO técnico",
+          "Design UI/UX",
+          "Core Web Vitals",
+          "CMS personalizado",
+          "Responsive Design"
+        ]
+      },
+      "ecommerce": {
+        "title": "E-commerce & Headless Commerce",
+        "description": "De lojas tradicionais a arquiteturas headless de alto desempenho. Separamos o frontend do backend para que você venda na web, em apps, quiosques e em qualquer canal a partir de um único motor de negócios.",
+        "details": "Ir além de uma simples loja online. Nossas soluções de e-commerce integram gateways de pagamento locais e internacionais, sistemas de faturamento automático e gestão de estoque sincronizada. Com foco Headless, o seu catálogo pode escalar para aplicativos móveis nativos ou pontos de venda físicos compartilhando um único núcleo inteligente.",
+        "tech": [
+          "Headless",
+          "Next.js + API",
+          "Laravel API",
+          "Gateways MX/US",
+          "CFDI"
+        ]
+      },
+      "ai": {
+        "title": "Inteligência artificial aplicada",
+        "description": "Integramos IA diretamente nos seus processos: chatbots de atendimento, análise automatizada de dados, geração de conteúdo, classificação de documentos e assistentes inteligentes para o seu setor.",
+        "details": "A IA não é ficção científica, é eficiência operacional. Implementamos soluções pragmáticas: desde processamento de linguagem natural para automatizar o suporte técnico, até modelos de Visão Computacional para controle de qualidade. Ajudamos a sua empresa a identificar onde a IA pode gerar retorno sobre investimento real e mensurável no curto prazo.",
+        "tech": [
+          "ChatGPT API",
+          "Claude API",
+          "Automação",
+          "NLP",
+          "ML Integrado"
+        ]
+      },
+      "marketing": {
+        "title": "Email marketing & automação",
+        "description": "Estratégias de email marketing que convertem. Criamos campanhas segmentadas, sequências de nurturing, fluxos automatizados e medimos cada resultado para otimizar continuamente o seu ROI.",
+        "details": "O email marketing moderno é segmentação e relevância. Criamos campanhas hiper-personalizadas com base na atividade do usuário no seu site ou aplicação. Automatizamos o ciclo de vida do cliente: boas-vindas, recuperação de carrinhos abandonados, retenção e reativação. Cada e-mail enviado é uma oportunidade de conexão analisada e otimizada.",
+        "tech": [
+          "Mailchimp",
+          "ActiveCampaign",
+          "Automação",
+          "Segmentação",
+          "Analytics"
+        ]
+      },
+      "digitalization": {
+        "title": "Digitalização de negócios",
+        "description": "Levamos o seu negócio ao mundo digital com cardápios digitais, catálogos de produtos, cartões de visita interativos, gestão de redes sociais e analytics web avançado com Google Analytics.",
+        "details": "Convertemos o analógico em digital para ganhar agilidade. Cardápios QR para o setor de hospitalidade, cartões com tecnologia NFC para networking corporativo, e digitalização de arquivos físicos por meio de digitalização inteligente. Ajudamos a eliminar gargalos burocráticos por meio da adoção de ferramentas digitais modernas.",
+        "tech": [
+          "Cardápio Digital",
+          "Catálogo digital",
+          "QR & NFC",
+          "Google Analytics",
+          "SEO local"
+        ]
+      }
+    },
+    "buttons": {
+      "back": "Voltar",
+      "quote": "Solicitar orçamento para este serviço"
+    },
+    "learnMore": "Saiba mais"
+  },
+  "Portfolio": {
+    "title": "Nosso Portfólio",
+    "subtitle": "Uma seleção dos nossos projetos de evolução digital mais destacados.",
+    "badge": "Projetos 2026"
+  },
+  "About": {
+    "title": "Sobre Nós",
+    "subtitle": "Uma equipe apaixonada por tecnologia e evolução digital.",
+    "badge": "Nosso DNA",
+    "intro": {
+      "titlePart1": "Mais de 10 anos de",
+      "titlePart2": "evolução",
+      "p1": "Na LunAvalos, há mais de 10 anos transformamos ideias em tecnologia que funciona. O que começou como uma aposta no desenvolvimento web de qualidade em Saltillo, Coahuila, se tornou uma agência de soluções digitais com alcance global: hoje colaboramos com clientes no México e nos Estados Unidos, e continuamos crescendo.",
+      "p2": "Ao longo desses anos, trabalhamos com uma diversidade de clientes que nos orgulha: advogados, médicos, consultores e profissionais autônomos que precisam de presença digital profissional; empresas dos setores industrial, manufatureiro e de serviços que requerem sistemas robustos sob medida; e startups que buscam uma equipe técnica de confiança para construir do zero. Essa versatilidade não é coincidência — é o resultado de ouvir cada cliente e entender que cada negócio tem necessidades únicas."
+    },
+    "team": {
+      "title": "Nossa equipe",
+      "p1": "Somos uma equipe multidisciplinar de desenvolvedores, designers, estrategistas digitais e especialistas em marketing que compartilham uma mesma filosofia: o trabalho bem feito não admite atalhos. Cada projeto passa por um processo rigoroso de controle de qualidade antes de chegar às suas mãos, pois sabemos que o que entregamos carrega o nome da sua empresa — e o nosso.",
+      "p2": "Além do código e do design, nos define algo que não pode ser automatizado: o atendimento personalizado. Desde o primeiro contato até o suporte pós-lançamento, você tem uma equipe real por trás de cada decisão, disposta a explicar, ajustar e acompanhar você em cada etapa."
+    },
+    "stats": {
+      "projects": "Projetos",
+      "titlePart1": "Números que",
+      "titlePart2": "nos respaldamos",
+      "description": "Com mais de 70 projetos concluídos e em andamento, acumulamos experiência em setores muito distintos e em mercados com exigências diferentes. Isso nos dá uma perspectiva que poucas agências podem oferecer: sabemos o que funciona no mercado local e o que é necessário para competir digitalmente em escala global."
+    },
+    "methodology": {
+      "title": "Nossa forma de trabalhar",
+      "description": "Trabalhamos exclusivamente com tecnologia web moderna e segura. Isso significa arquiteturas bem pensadas, código limpo, boas práticas de segurança desde o primeiro dia e sistemas que escalam com você à medida que a sua empresa cresce. Não construímos para hoje — construímos para que o que entregamos continue funcionando e evoluindo nos próximos anos."
+    }
+  },
+  "Contact": {
+    "title": "Fale Conosco",
+    "subtitle": "Estamos prontos para levar o seu projeto ao próximo nível.",
+    "badge": "Contato Direto"
+  }
+}

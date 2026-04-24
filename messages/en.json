@@ -1,0 +1,143 @@
+{
+  "Index": {
+    "title": "LunAvalos — High-Impact Digital Evolution",
+    "description": "We transform ideas into scalable digital ecosystems. Experts in Next.js, Laravel, and AI Solutions.",
+    "hero": {
+      "title": "We build the <span>digital future</span> of your business.",
+      "subtitle": "Custom systems, advanced e-commerce, and premium digital experiences.",
+      "ctaStart": "Start Project",
+      "ctaServices": "Explore Services"
+    },
+    "services": {
+      "badge": "Our Services",
+      "titlePart1": "Everything your business",
+      "titlePart2": "needs to grow.",
+      "description": "We offer complete technological solutions, from a professional website to a fully customized enterprise system optimized for your business."
+    },
+    "process": {
+      "badge": "Our Process",
+      "titlePart1": "SIMPLE, TRANSPARENT",
+      "titlePart2": "AND RESULTS-ORIENTED",
+      "steps": [
+        { "title": "Diagnosis", "desc": "We send a questionnaire and schedule a call to understand your business, goals, and real needs." },
+        { "title": "Proposal", "desc": "We deliver a detailed proposal with scope, technology, timeline, and cost. No surprises or small print." },
+        { "title": "Development", "desc": "We build with periodic reviews. You see the progress in real time and give feedback at every stage." },
+        { "title": "Launch", "desc": "Delivery, team training, and post-launch support. We don't vanish when the project ends." }
+      ]
+    }
+  },
+  "Footer": {
+    "description": "Our mission is to support businesses in creating an impact in their community.",
+    "services": "Services",
+    "contact": "Contact",
+    "address": "Address",
+    "privacy": "Privacy Policy",
+    "rights": "© {year} LunAvalos Digital House. All rights reserved.",
+    "addressText": "Av. La Salle #437 Col. La Salle, Saltillo, Coahuila Mexico CP 25286"
+  },
+  "CTA": {
+    "badge": "Ready to start?",
+    "title": "Tell us about your project.<br />We respond in 24h.",
+    "description": "Whether you are a startup, SME, or established company, we have the technological solution you need. Free quote, no commitments.",
+    "ctaQuote": "Quote my project",
+    "ctaWhatsapp": "Direct WhatsApp",
+    "location": "Saltillo, Coahuila, Mexico",
+    "email": "hola@lunavalos.com",
+    "global": "Global services"
+  },
+  "Navigation": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "Services": {
+    "title": "Our Services",
+    "subtitle": "Tailored technological solutions to transform your business in the digital age.",
+    "badge": "Evolution 2026",
+    "comingSoon": {
+      "title": "Coming Soon",
+      "description": "We are preparing detailed content for this section to provide you with the best information about our technological capabilities."
+    },
+    "items": {
+      "webApps": {
+        "title": "Tailormade Business Web Apps",
+        "description": "We design and build robust digital platforms that optimize the heart of your operation. From internal management systems (ERP/CRM) to real-time control dashboards, our Headless solutions ensure your business logic is solid, scalable, and ready to integrate with any future technology.",
+        "details": "Our web application development methodology focuses on scalability and technical robustness. We use modern architectures that separate the user interface from the business logic, allowing fast updates and superior performance. Ideal for heavy transactional systems, real-time inventory management, and business productivity tools that must run 24/7 without fail.",
+        "tech": ["Laravel", "Next.js", "React", "Prisma", "Spatie", "REST API"]
+      },
+      "websites": {
+        "title": "Professional Websites",
+        "description": "We don't just create pages; we build conversion tools. Each website is a piece of digital engineering optimized for search engines, with exceptional loading speed and a user experience that positions your brand as a leader in its sector from the first click.",
+        "details": "We design web experiences that not only attract attention but achieve clear business objectives. Each project includes a conversion rate optimization (CRO) phase, integration with advanced analytics tools, and an absolute 'Mobile-First' approach. We ensure that your digital presence is your company's main customer acquisition engine.",
+        "tech": ["Technical SEO", "UI/UX Design", "Core Web Vitals", "Custom CMS", "Responsive Design"]
+      },
+      "ecommerce": {
+        "title": "E-commerce & Headless Commerce",
+        "description": "We master next-generation digital commerce. We implement Headless Commerce architectures that allow decoupling the shopping experience from inventory management, offering total flexibility to scale your store across multiple channels without technological friction.",
+        "details": "Going beyond a simple online store. Our E-commerce solutions integrate local and international payment gateways, automatic billing systems, and synchronized inventory management. With a Headless approach, your catalog can scale to native mobile apps or physical points of sale sharing a single intelligent core.",
+        "tech": ["Headless", "Next.js + API", "Laravel API", "MX/US Gateways", "Invoicing"]
+      },
+      "ai": {
+        "title": "Applied Artificial Intelligence",
+        "description": "We integrate real cognitive capabilities into your workflow. From intelligent assistants that automate customer service to predictive analysis models that assist in strategic decision-making, we take AI innovation from theory to your business practice.",
+        "details": "AI is not science fiction; it's operational efficiency. We implement pragmatic solutions: from natural language processing to automate technical support, to Computer Vision models for quality control. We help your company identify where AI can generate a real and measurable return on investment in the short term.",
+        "tech": ["ChatGPT API", "Claude API", "Automation", "NLP", "Integrated ML"]
+      },
+      "marketing": {
+        "title": "Email Marketing & Automation",
+        "description": "We transform your databases into constant revenue channels. We design automation ecosystems that send the right message at the right time, nurturing your prospects and retaining your customers through intelligent flows based on real behavior.",
+        "details": "Modern email marketing is about segmentation and relevance. We create hyper-personalized campaigns based on user activity on your website or app. We automate the customer lifecycle: onboarding, cart recovery, retention, and reactivation. Every email sent is a connection opportunity analyzed and optimized.",
+        "tech": ["Mailchimp", "ActiveCampaign", "Automation", "Segmentation", "Analytics"]
+      },
+      "digitalization": {
+        "title": "Business Digitalization",
+        "description": "We accompany your total transition to the digital ecosystem. We digitize physical processes through interactive menus, smart cards, strategic online presence management, and advanced analytics so that every decision in your company is backed by precise data.",
+        "details": "We convert the analog into digital to gain agility. QR menus for the hospitality sector, NFC-enabled cards for corporate networking, and physical archive digitalization via intelligent scanning. We help you eliminate bureaucratic bottlenecks by adopting modern digital tools.",
+        "tech": ["Digital Menu", "Digital Catalog", "QR & NFC", "Google Analytics", "Local SEO"]
+      }
+    },
+    "buttons": {
+      "back": "Go Back",
+      "quote": "Quote this service"
+    },
+    "learnMore": "Learn more"
+  },
+  "Portfolio": {
+    "title": "Our Portfolio",
+    "subtitle": "A selection of our most outstanding digital evolution projects.",
+    "badge": "Projects 2026"
+  },
+  "About": {
+    "title": "About Us",
+    "subtitle": "A team passionate about technology and digital evolution.",
+    "badge": "Our DNA",
+    "intro": {
+      "titlePart1": "More than 10 years of",
+      "titlePart2": "evolution",
+      "p1": "At LunAvalos, we've been turning ideas into technology that works for over 10 years. What began as a bet on quality web development in Saltillo, Coahuila, has grown into a digital solutions agency with global reach: today we collaborate with clients in Mexico and the United States, and we keep growing.",
+      "p2": "Over the years, we've worked with a diverse range of clients we are proud of: lawyers, doctors, consultants, and independent professionals who need a professional digital presence; companies in the industrial, manufacturing, and services sectors that require robust custom systems; and startups looking for a trusted technical team to build from scratch. That versatility is no accident — it is the result of listening to every client and understanding that each business has unique needs."
+    },
+    "team": {
+      "title": "Our team",
+      "p1": "We are a multidisciplinary team of developers, designers, digital strategists, and marketing specialists who share the same philosophy: a job well done brooks no shortcuts. Every project goes through a rigorous quality control process before reaching your hands, because we know that what we deliver bears your company's name — and ours.",
+      "p2": "Beyond the code and the design, what defines us is something that cannot be automated: personalized attention. From the first contact to post-launch support, you have a real team behind every decision, ready to explain, adjust, and accompany you at every stage."
+    },
+    "stats": {
+      "projects": "Projects",
+      "titlePart1": "Numbers that",
+      "titlePart2": "back us up",
+      "description": "With over 70 finished and ongoing projects, we have accumulated experience in very different sectors and in markets with varying demands. That gives us a perspective few agencies can offer: we know what works in the market and also what is needed to compete globally on a digital level."
+    },
+    "methodology": {
+      "title": "Our way of working",
+      "description": "We work exclusively with modern, secure web technology. That means well-thought-out architectures, clean code, good security practices from day one, and systems that scale with you as your company grows. We don't build for today — we build so that what we deliver keeps working and evolving for years to come."
+    }
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "subtitle": "We are ready to take your project to the next level.",
+    "badge": "Direct Contact"
+  }
+}

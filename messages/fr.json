@@ -1,0 +1,192 @@
+{
+  "Index": {
+    "title": "LunAvalos — Évolution Numérique à Fort Impact",
+    "description": "Nous transformons les idées en écosystèmes numériques évolutifs. Experts en Next.js, Laravel et Solutions IA.",
+    "hero": {
+      "title": "Nous construisons l'<span>avenir numérique</span> de votre entreprise.",
+      "subtitle": "Développement de systèmes sur mesure, e-commerce avancé et expériences numériques premium.",
+      "ctaStart": "Démarrer un Projet",
+      "ctaServices": "Explorer les Services"
+    },
+    "services": {
+      "badge": "Nos Services",
+      "titlePart1": "Tout ce dont votre entreprise",
+      "titlePart2": "a besoin pour croître.",
+      "description": "Nous proposons des solutions technologiques complètes, d'un site web professionnel à un système d'entreprise entièrement personnalisé et optimisé pour votre activité."
+    },
+    "process": {
+      "badge": "Notre Processus",
+      "titlePart1": "SIMPLE, TRANSPARENT",
+      "titlePart2": "ET ORIENTÉ RÉSULTATS",
+      "steps": [
+        {
+          "title": "Diagnostic",
+          "desc": "Nous vous envoyons un questionnaire et planifions un appel pour comprendre votre activité, vos objectifs et vos besoins réels."
+        },
+        {
+          "title": "Proposition",
+          "desc": "Nous remettons une proposition détaillée avec la portée, la technologie, les délais et le coût. Sans surprises ni petits caractères."
+        },
+        {
+          "title": "Développement",
+          "desc": "Nous construisons avec des révisions périodiques. Vous suivez l'avancement en temps réel et donnez vos retours à chaque étape."
+        },
+        {
+          "title": "Lancement",
+          "desc": "Livraison, formation de l'équipe et support post-lancement. Nous ne disparaissons pas une fois le projet terminé."
+        }
+      ]
+    }
+  },
+  "Footer": {
+    "description": "Notre mission est d'aider les entreprises à créer un impact dans leur communauté.",
+    "services": "Services",
+    "contact": "Contact",
+    "address": "Adresse",
+    "privacy": "Politique de Confidentialité",
+    "rights": "© {year} LunAvalos Digital House. Tous droits réservés.",
+    "addressText": "Av. La Salle #437 Col. La Salle, Saltillo, Coahuila México CP 25286"
+  },
+  "CTA": {
+    "badge": "Prêt à commencer ?",
+    "title": "Parlez-nous de votre projet.<br />Nous vous répondons en 24h.",
+    "description": "Que vous soyez une startup, une PME ou une entreprise établie, nous avons la solution technologique qu'il vous faut. Devis gratuit, sans engagement.",
+    "ctaQuote": "Demander un devis",
+    "ctaWhatsapp": "WhatsApp direct",
+    "location": "Saltillo, Coahuila, Mexique",
+    "email": "hola@lunavalos.com",
+    "global": "Services mondiaux"
+  },
+  "Navigation": {
+    "home": "Accueil",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "Services": {
+    "title": "Nos Services",
+    "subtitle": "Des solutions technologiques sur mesure pour transformer votre entreprise à l'ère numérique.",
+    "badge": "Evolution 2026",
+    "comingSoon": {
+      "title": "Bientôt disponible",
+      "description": "Nous préparons le contenu détaillé de cette section pour vous offrir les meilleures informations sur nos capacités technologiques."
+    },
+    "items": {
+      "webApps": {
+        "title": "Applications Web d'entreprise sur mesure.",
+        "description": "Nous développons des logiciels de gestion entièrement personnalisés pour votre entreprise : ERP, CRM, portails internes, tableaux de bord et flux de travail automatisés. Conçus avec une architecture moderne, évolutive et sécurisée.",
+        "details": "Notre méthodologie de développement pour les applications web est centrée sur la scalabilité et la robustesse technique. Nous utilisons des architectures modernes qui séparent l'interface utilisateur de la logique métier, permettant des mises à jour rapides et des performances supérieures. Idéales pour les systèmes transactionnels intensifs, la gestion d'inventaire en temps réel et les outils de productivité d'entreprise qui doivent fonctionner 24h/24 sans erreurs.",
+        "tech": [
+          "Laravel",
+          "Next.js",
+          "React",
+          "Prisma",
+          "Spatie",
+          "API REST"
+        ]
+      },
+      "websites": {
+        "title": "Sites web professionnels",
+        "description": "Conception et développement de sites web corporate, de services et de landing pages. Optimisés pour le SEO dès le code, vitesse maximale et expérience utilisateur remarquable sur tous les appareils.",
+        "details": "Nous concevons des expériences web qui non seulement attirent l'attention, mais atteignent des objectifs commerciaux clairs. Chaque projet inclut une phase d'optimisation de la conversion (CRO), une intégration avec des outils d'analytique avancée et une approche strictement « Mobile-First ». Nous nous assurons que votre présence digitale soit le principal moteur d'acquisition de clients pour votre entreprise.",
+        "tech": [
+          "SEO technique",
+          "Design UI/UX",
+          "Core Web Vitals",
+          "CMS personnalisé",
+          "Responsive Design"
+        ]
+      },
+      "ecommerce": {
+        "title": "E-commerce & Commerce Headless",
+        "description": "Des boutiques traditionnelles aux architectures headless haute performance. Nous séparons le frontend du backend pour que vous vendiez sur le web, les apps, les kiosques et tous les canaux depuis un seul moteur métier.",
+        "details": "Aller au-delà d'une simple boutique en ligne. Nos solutions e-commerce intègrent des passerelles de paiement locales et internationales, des systèmes de facturation automatique et une gestion des stocks synchronisée. Avec une approche Headless, votre catalogue peut s'étendre aux applications mobiles natives ou aux points de vente physiques en partageant un seul noyau intelligent.",
+        "tech": [
+          "Headless",
+          "Next.js + API",
+          "Laravel API",
+          "Passerelles MX/US",
+          "CFDI"
+        ]
+      },
+      "ai": {
+        "title": "Intelligence artificielle appliquée",
+        "description": "Nous intégrons l'IA directement dans vos processus : chatbots de service client, analyse automatisée des données, génération de contenu, classification de documents et assistants intelligents pour votre secteur.",
+        "details": "L'IA n'est pas de la science-fiction, c'est de l'efficacité opérationnelle. Nous mettons en œuvre des solutions pragmatiques : du traitement du langage naturel pour automatiser le support technique aux modèles de vision par ordinateur pour le contrôle qualité. Nous aidons votre entreprise à identifier où l'IA peut générer un retour sur investissement réel et mesurable à court terme.",
+        "tech": [
+          "ChatGPT API",
+          "Claude API",
+          "Automatisation",
+          "NLP",
+          "ML Intégré"
+        ]
+      },
+      "marketing": {
+        "title": "Email marketing & automatisation",
+        "description": "Des stratégies d'email marketing qui convertissent. Nous concevons des campagnes segmentées, des séquences de nurturing, des flux automatisés et mesurons chaque résultat pour optimiser continuellement votre ROI.",
+        "details": "L'email marketing moderne repose sur la segmentation et la pertinence. Nous créons des campagnes hyper-personnalisées basées sur l'activité de l'utilisateur sur votre site ou application. Nous automatisons le cycle de vie client : bienvenue, récupération des paniers abandonnés, fidélisation et réactivation. Chaque e-mail envoyé est une opportunité de connexion analysée et optimisée.",
+        "tech": [
+          "Mailchimp",
+          "ActiveCampaign",
+          "Automatisation",
+          "Segmentation",
+          "Analytics"
+        ]
+      },
+      "digitalization": {
+        "title": "Digitalisation des entreprises",
+        "description": "Nous emmenons votre entreprise dans le monde numérique avec des menus digitaux, des catalogues de produits, des cartes de visite interactives, la gestion des réseaux sociaux et une analytique web avancée avec Google Analytics.",
+        "details": "Nous transformons l'analogique en numérique pour gagner en agilité. Menus QR pour le secteur de l'hôtellerie-restauration, cartes avec technologie NFC pour le networking d'entreprise, et numérisation de fichiers physiques par scan intelligent. Nous vous aidons à éliminer les goulots d'étranglement bureaucratiques grâce à l'adoption d'outils numériques modernes.",
+        "tech": [
+          "Menu Digital",
+          "Catalogue digital",
+          "QR & NFC",
+          "Google Analytics",
+          "SEO local"
+        ]
+      }
+    },
+    "buttons": {
+      "back": "Retour",
+      "quote": "Demander un devis pour ce service"
+    },
+    "learnMore": "En savoir plus"
+  },
+  "Portfolio": {
+    "title": "Notre Portfolio",
+    "subtitle": "Une sélection de nos projets d'évolution numérique les plus remarquables.",
+    "badge": "Projets 2026"
+  },
+  "About": {
+    "title": "À propos de nous",
+    "subtitle": "Une équipe passionnée par la technologie et l'évolution numérique.",
+    "badge": "Notre ADN",
+    "intro": {
+      "titlePart1": "Plus de 10 ans d'",
+      "titlePart2": "évolution",
+      "p1": "Chez LunAvalos, nous transformons depuis plus de 10 ans des idées en technologie qui fonctionne. Ce qui a commencé comme un pari sur le développement web de qualité à Saltillo, Coahuila, est devenu une agence de solutions numériques à portée mondiale : nous collaborons aujourd'hui avec des clients au Mexique et aux États-Unis, et nous continuons de croître.",
+      "p2": "Au fil des années, nous avons travaillé avec une diversité de clients dont nous sommes fiers : avocats, médecins, consultants et professionnels indépendants ayant besoin d'une présence digitale professionnelle ; entreprises des secteurs industriel, manufacturier et de services nécessitant des systèmes robustes sur mesure ; et startups à la recherche d'une équipe technique de confiance pour construire from scratch. Cette polyvalence n'est pas un hasard — elle est le résultat de l'écoute de chaque client et de la compréhension que chaque entreprise a des besoins uniques."
+    },
+    "team": {
+      "title": "Notre équipe",
+      "p1": "Nous sommes une équipe multidisciplinaire de développeurs, designers, stratèges digitaux et spécialistes en marketing qui partagent une même philosophie : le travail bien fait ne souffre aucun raccourci. Chaque projet passe par un processus de contrôle qualité rigoureux avant d'arriver entre vos mains, car nous savons que ce que nous livrons porte le nom de votre entreprise — et le nôtre.",
+      "p2": "Au-delà du code et du design, ce qui nous définit est quelque chose qui ne peut pas être automatisé : l'accompagnement personnalisé. Du premier contact au support post-lancement, une vraie équipe est derrière chaque décision, prête à expliquer, ajuster et vous accompagner à chaque étape."
+    },
+    "stats": {
+      "projects": "Projets",
+      "titlePart1": "Des chiffres qui",
+      "titlePart2": "parlent pour nous",
+      "description": "Avec plus de 70 projets terminés et en cours, nous avons accumulé de l'expérience dans des secteurs très différents et sur des marchés aux exigences variées. Cela nous donne une perspective que peu d'agences peuvent offrir : nous savons ce qui fonctionne sur le marché local et ce qu'il faut pour concurrencer digitalement à l'échelle mondiale."
+    },
+    "methodology": {
+      "title": "Notre façon de travailler",
+      "description": "Nous travaillons exclusivement avec des technologies web modernes et sécurisées. Cela signifie des architectures bien pensées, un code propre, de bonnes pratiques de sécurité dès le premier jour, et des systèmes qui évoluent avec vous au fur et à mesure que votre entreprise grandit. Nous ne construisons pas pour aujourd'hui — nous construisons pour que ce que nous livrons continue de fonctionner et d'évoluer dans les années à venir."
+    }
+  },
+  "Contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Nous sommes prêts à emmener votre projet au niveau supérieur.",
+    "badge": "Contact Direct"
+  }
+}
