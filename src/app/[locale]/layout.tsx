@@ -8,6 +8,7 @@ import SchemaOrg from "@/components/SchemaOrg";
 import Preloader from "@/components/Preloader";
 import Footer from "@/components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import "@/app/globals.css";
 
 const rubik = Rubik({
@@ -77,6 +78,7 @@ export default async function RootLayout({
           <Footer />
         </NextIntlClientProvider>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
