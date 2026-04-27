@@ -23,9 +23,17 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Index" });
 
   return {
-    title: t("title"),
+    title: {
+      template: "%s | LunAvalos Digital House",
+      default: "LunAvalos Digital House",
+    },
     description: t("description"),
     metadataBase: new URL("https://lunavalos.com"),
+    icons: {
+      icon: "/images/favicon.png",
+      shortcut: "/images/favicon.png",
+      apple: "/images/favicon.png",
+    },
     alternates: {
       canonical: "/",
       languages: {
