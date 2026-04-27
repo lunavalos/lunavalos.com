@@ -3,6 +3,7 @@
 import { Phone, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/navigation';
 
 export default function Footer() {
   const t = useTranslations('Footer');
@@ -29,10 +30,10 @@ export default function Footer() {
           <div>
             <h4 className="text-secondary font-bold uppercase tracking-widest text-xs mb-6">{t('services')}</h4>
             <ul className="flex flex-col gap-3 text-white/70 text-sm">
-              <li><a href="/servicios/?open=websites" className="hover:text-secondary transition-colors">{tServices('websites.title')}</a></li>
-              <li><a href="/servicios/?open=webApps" className="hover:text-secondary transition-colors">{tServices('webApps.title')}</a></li>
-              <li><a href="/servicios/?open=ecommerce" className="hover:text-secondary transition-colors">{tServices('ecommerce.title')}</a></li>
-              <li><a href="/servicios/?open=marketing" className="hover:text-secondary transition-colors">{tServices('marketing.title')}</a></li>
+              <li><Link href={{ pathname: '/servicios', query: { open: 'websites' } } as any} className="hover:text-secondary transition-colors">{tServices('websites.title')}</Link></li>
+              <li><Link href={{ pathname: '/servicios', query: { open: 'webApps' } } as any} className="hover:text-secondary transition-colors">{tServices('webApps.title')}</Link></li>
+              <li><Link href={{ pathname: '/servicios', query: { open: 'ecommerce' } } as any} className="hover:text-secondary transition-colors">{tServices('ecommerce.title')}</Link></li>
+              <li><Link href={{ pathname: '/servicios', query: { open: 'marketing' } } as any} className="hover:text-secondary transition-colors">{tServices('marketing.title')}</Link></li>
             </ul>
           </div>
 
@@ -62,9 +63,9 @@ export default function Footer() {
                 </span>
               </li>
               <li className="mt-4 pt-4 border-t border-white/10">
-                <a href="/mapa-del-sitio" className="text-white/50 hover:text-secondary transition-colors text-xs uppercase font-bold tracking-widest block">
+                <Link href="/mapa-del-sitio" className="text-white/50 hover:text-secondary transition-colors text-xs uppercase font-bold tracking-widest block">
                   {t('sitemap')}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -75,9 +76,9 @@ export default function Footer() {
             {t('rights', { year: new Date().getFullYear() })}
           </p>
           <div className="flex gap-6 text-white/50 text-[11px] uppercase font-bold tracking-widest">
-            <a href="/aviso-de-privacidad" className="hover:text-white transition-colors">
+            <Link href="/aviso-de-privacidad" className="hover:text-white transition-colors">
               {t('privacy')}
-            </a>
+            </Link>
           </div>
         </div>
       </footer>

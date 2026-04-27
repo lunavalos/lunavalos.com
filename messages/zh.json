@@ -63,7 +63,13 @@
     "services": "服务",
     "portfolio": "作品集",
     "about": "关于我们",
-    "contact": "联系我们"
+    "contact": "联系我们",
+    "privacy": "隐私政策"
+  },
+  "Sitemap": {
+    "title": "网站地图",
+    "subtitle": "轻松找到我们网站的所有部分。",
+    "badge": "目录"
   },
   "Services": {
     "title": "我们的服务",
@@ -188,6 +194,37 @@
   "Contact": {
     "title": "联系我们",
     "subtitle": "我们已准备好将您的项目带上新的台阶。",
-    "badge": "直接联系"
+    "badge": "直接联系",
+    "infoTitle": "联系信息",
+    "infoSubtitle": "发送您的消息，我们的团队成员将很乐意为您提供帮助。您也可以查阅我们的",
+    "privacyLink": "隐私政策",
+    "phone1Label": "电话 1",
+    "phone2Label": "电话 2",
+    "emailLabel": "电子邮件",
+    "officeLabel": "办公室（需预约）",
+    "followUs": "关注我们：",
+    "formTitle": "联系我们",
+    "formHeading": "与我们取得联系",
+    "fieldName": "全名",
+    "fieldNamePlaceholder": "请输入您的姓名",
+    "fieldCompany": "公司",
+    "fieldCompanyPlaceholder": "您的公司名称",
+    "fieldEmail": "电子邮件",
+    "fieldEmailPlaceholder": "email@example.com",
+    "fieldPhone": "电话",
+    "fieldPhonePlaceholder": "10位数字",
+    "fieldServices": "您对哪种类型的服务感兴趣？",
+    "fieldMessage": "留言",
+    "fieldMessagePlaceholder": "请简要介绍您的项目...",
+    "serviceOther": "其他",
+    "submitSending": "发送中...",
+    "submitButton": "发送消息",
+    "successMessage": "消息发送成功！我们将尽快与您联系。",
+    "errorMessage": "发送消息时出现错误，请重试或通过电话联系我们。",
+    "disclaimer": "注意：请勿包含重要的个人敏感信息。通过此表单或本网站任何表单提交数据，不以任何方式与LunAvalos建立合同关系，仅用于提供咨询服务。申请咨询时不会收取任何费用。通过网站提交的数据将被保密存储，绝不会以任何方式向第三方披露、共享或用于咨询评估以外的其他目的。"
+  },
+  "Clients": {
+    "badge": "我们的客户",
+    "title": "信赖我们的 <br /><span class=\"text-secondary\">企业</span>"
   }
 }

@@ -51,7 +51,13 @@
     "services": "Services",
     "portfolio": "Portfolio",
     "about": "About Us",
-    "contact": "Contact"
+    "contact": "Contact",
+    "privacy": "Privacy Policy"
+  },
+  "Sitemap": {
+    "title": "Sitemap",
+    "subtitle": "Easily find all sections of our website.",
+    "badge": "Directory"
   },
   "Services": {
     "title": "Our Services",
@@ -139,6 +145,37 @@
   "Contact": {
     "title": "Contact Us",
     "subtitle": "We are ready to take your project to the next level.",
-    "badge": "Direct Contact"
+    "badge": "Direct Contact",
+    "infoTitle": "Contact Information",
+    "infoSubtitle": "Send us your message and a member of our team will be happy to assist you. You can also check our",
+    "privacyLink": "privacy policy",
+    "phone1Label": "Phone 1",
+    "phone2Label": "Phone 2",
+    "emailLabel": "Email",
+    "officeLabel": "Office (By Appointment)",
+    "followUs": "Follow us:",
+    "formTitle": "Contact Us",
+    "formHeading": "Get in touch with us",
+    "fieldName": "Full name",
+    "fieldNamePlaceholder": "Your name here",
+    "fieldCompany": "Company",
+    "fieldCompanyPlaceholder": "Your company name",
+    "fieldEmail": "Email",
+    "fieldEmailPlaceholder": "email@example.com",
+    "fieldPhone": "Phone",
+    "fieldPhonePlaceholder": "10 digits",
+    "fieldServices": "What type of service are you interested in?",
+    "fieldMessage": "Message",
+    "fieldMessagePlaceholder": "Tell us a bit more about your project...",
+    "serviceOther": "Other",
+    "submitSending": "Sending...",
+    "submitButton": "Send message",
+    "successMessage": "Message sent successfully! We will get in touch with you soon.",
+    "errorMessage": "There was an error sending the message. Please try again or contact us by phone.",
+    "disclaimer": "Note: Do not include sensitive personal data. Submitting data through this form does not constitute a contract with LunAvalos in any way, and is only for advisory services. No charges will be applied when requesting a consultation. Data submitted through the website will be stored confidentially and will not be disclosed, shared, or used for any purpose other than an advisory evaluation."
+  },
+  "Clients": {
+    "badge": "Our Clients",
+    "title": "Companies that <br /><span class=\"text-secondary\">trust</span> us"
   }
 }

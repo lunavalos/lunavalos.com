@@ -63,7 +63,13 @@
     "services": "Serviços",
     "portfolio": "Portfólio",
     "about": "Sobre nós",
-    "contact": "Contato"
+    "contact": "Contato",
+    "privacy": "Política de Privacidade"
+  },
+  "Sitemap": {
+    "title": "Mapa do Site",
+    "subtitle": "Encontre facilmente todas as seções do nosso site.",
+    "badge": "Diretório"
   },
   "Services": {
     "title": "Nossos Serviços",
@@ -188,6 +194,37 @@
   "Contact": {
     "title": "Fale Conosco",
     "subtitle": "Estamos prontos para levar o seu projeto ao próximo nível.",
-    "badge": "Contato Direto"
+    "badge": "Contato Direto",
+    "infoTitle": "Informações de Contato",
+    "infoSubtitle": "Envie-nos sua mensagem e um membro da nossa equipe terá prazer em atendê-lo. Você também pode consultar nossa",
+    "privacyLink": "política de privacidade",
+    "phone1Label": "Telefone 1",
+    "phone2Label": "Telefone 2",
+    "emailLabel": "E-mail",
+    "officeLabel": "Escritório (Com Agendamento)",
+    "followUs": "Siga-nos:",
+    "formTitle": "Fale Conosco",
+    "formHeading": "Entre em contato conosco",
+    "fieldName": "Nome completo",
+    "fieldNamePlaceholder": "Seu nome aqui",
+    "fieldCompany": "Empresa",
+    "fieldCompanyPlaceholder": "Nome da sua empresa",
+    "fieldEmail": "E-mail",
+    "fieldEmailPlaceholder": "email@exemplo.com",
+    "fieldPhone": "Telefone",
+    "fieldPhonePlaceholder": "10 dígitos",
+    "fieldServices": "Em qual tipo de serviço você tem interesse?",
+    "fieldMessage": "Mensagem",
+    "fieldMessagePlaceholder": "Conte-nos um pouco mais sobre o seu projeto...",
+    "serviceOther": "Outro",
+    "submitSending": "Enviando...",
+    "submitButton": "Enviar mensagem",
+    "successMessage": "Mensagem enviada com sucesso! Entraremos em contato em breve.",
+    "errorMessage": "Ocorreu um erro ao enviar a mensagem. Tente novamente ou entre em contato por telefone.",
+    "disclaimer": "Nota: Não inclua dados pessoais sensíveis. O envio de dados por meio deste formulário não constitui, de forma alguma, um contrato com a LunAvalos, e é apenas para fornecer serviços de consultoria. Nenhuma cobrança será aplicada ao solicitar uma consulta. Os dados enviados pelo site serão armazenados de forma confidencial e jamais serão divulgados, compartilhados ou utilizados para fins alheios a uma avaliação de consultoria."
+  },
+  "Clients": {
+    "badge": "Nossos Clientes",
+    "title": "Empresas que <br /><span class=\"text-secondary\">confiam</span> em nós"
   }
 }

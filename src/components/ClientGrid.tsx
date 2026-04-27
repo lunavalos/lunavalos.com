@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 const clientLogos = [
   'absolutegroup.webp',
@@ -31,6 +32,7 @@ const clientLogos = [
 ];
 
 export default function ClientGrid() {
+  const t = useTranslations('Clients');
   return (
     <section className="w-full bg-white py-24 px-6 border-t border-brand/5">
       <div className="max-w-7xl mx-auto">
@@ -40,15 +42,14 @@ export default function ClientGrid() {
             whileInView={{ opacity: 1 }}
             className="text-secondary text-[10px] font-black uppercase tracking-[0.4em] mb-4 block"
           >
-            Nuestros Clientes
+            {t('badge')}
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-display font-bold text-brand uppercase tracking-tighter"
-          >
-            Empresas que <br /><span className="text-secondary">confían</span> en nosotros
-          </motion.h2>
+            dangerouslySetInnerHTML={{ __html: t('title') }}
+          />
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-white overflow-hidden">

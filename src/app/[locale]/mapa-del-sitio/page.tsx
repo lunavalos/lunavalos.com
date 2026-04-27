@@ -8,13 +8,14 @@ import CtaCompact from '@/components/CtaCompact';
 
 export default function SitemapPage() {
   const t = useTranslations('Navigation');
+  const tSitemap = useTranslations('Sitemap');
 
   const links = [
     { name: t('home'), href: '/' as any },
     { name: t('services'), href: '/servicios' as any },
     { name: t('about'), href: '/nosotros' as any },
     { name: t('contact'), href: '/contacto' as any },
-    { name: 'Aviso de Privacidad', href: '/aviso-de-privacidad' as any },
+    { name: t('privacy'), href: '/aviso-de-privacidad' as any },
   ];
 
   return (
@@ -22,9 +23,9 @@ export default function SitemapPage() {
       <Navbar />
 
       <PageHero
-        title="Mapa del Sitio"
-        subtitle="Encuentra fácilmente todas las secciones de nuestro sitio web."
-        badge="Directorio"
+        title={tSitemap('title')}
+        subtitle={tSitemap('subtitle')}
+        badge={tSitemap('badge')}
         dividerColor="bg-white"
       />
 

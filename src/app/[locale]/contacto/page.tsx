@@ -84,7 +84,7 @@ export default function ContactPage() {
     { id: 'ecommerce', label: ts('items.ecommerce.title') },
     { id: 'ai', label: ts('items.ai.title') },
     { id: 'digitalization', label: ts('items.digitalization.title') },
-    { id: 'other', label: 'Otro' },
+    { id: 'other', label: t('serviceOther') },
   ];
 
   return (
@@ -118,10 +118,9 @@ export default function ContactPage() {
                   priority
                 />
 
-                <h3 className="text-2xl font-display font-bold uppercase tracking-tight mb-4">Información de Contacto</h3>
+                <h3 className="text-2xl font-display font-bold uppercase tracking-tight mb-4">{t('infoTitle')}</h3>
                 <p className="text-white/60  mb-12 max-w-xs">
-                  Envíanos tu mensaje y con gusto alguien de nuestro equipo te atenderá.
-                  También puedes consultar nuestro <Link href="/aviso-de-privacidad" className="text-secondary font-bold underline cursor-pointer">aviso de privacidad</Link>.
+                  {t('infoSubtitle')} <Link href="/aviso-de-privacidad" className="text-secondary font-bold underline cursor-pointer">{t('privacyLink')}</Link>.
                 </p>
 
                 <div className="space-y-8 mb-16">
@@ -130,7 +129,7 @@ export default function ContactPage() {
                       <Phone className="w-5 h-5" />
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[10px] uppercase font-bold tracking-widest text-white/30">Teléfono 1</span>
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-white/30">{t('phone1Label')}</span>
                       <a href="tel:8442932253" className="text-lg font-bold">(844) 293-2253</a>
                     </div>
                   </div>
@@ -140,7 +139,7 @@ export default function ContactPage() {
                       <Phone className="w-5 h-5" />
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[10px] uppercase font-bold tracking-widest text-white/30">Teléfono 2</span>
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-white/30">{t('phone2Label')}</span>
                       <a href="tel:8442751165" className="text-lg font-bold">(844) 275-1165</a>
                     </div>
                   </div>
@@ -150,7 +149,7 @@ export default function ContactPage() {
                       <Mail className="w-5 h-5" />
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[10px] uppercase font-bold tracking-widest text-white/30">Email</span>
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-white/30">{t('emailLabel')}</span>
                       <a href="mailto:contacto@lunavalos.com" className="text-lg font-bold">contacto@lunavalos.com</a>
                     </div>
                   </div>
@@ -160,14 +159,14 @@ export default function ContactPage() {
                       <MapPin className="w-5 h-5" />
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[10px] uppercase font-bold tracking-widest text-white/30">Oficina (Previa Cita)</span>
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-white/30">{t('officeLabel')}</span>
                       <p className="text-base font-bold leading-snug">Av. La Salle #437 Col. La Salle,<br />Saltillo Coah. CP 25286</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="pt-12 border-t border-white/10">
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-white/30 block mb-6">Síguenos en:</span>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-white/30 block mb-6">{t('followUs')}</span>
                   <div className="flex gap-4">
                     {[Instagram, Facebook, Twitter, Youtube, Linkedin].map((Icon, idx) => (
                       <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
@@ -182,15 +181,15 @@ export default function ContactPage() {
             {/* LADO DERECHO - FORMULARIO */}
             <div className="w-full md:w-7/12 p-10 md:p-8 lg:p-12 flex flex-col gap-12">
               <div className="flex flex-col gap-4">
-                <span className="text-secondary text-[10px] font-bold uppercase tracking-[0.4em]">Contáctanos</span>
-                <h2 className="text-4xl md:text-5xl font-display font-bold text-brand uppercase tracking-tighter">Comunícate <br /> con <span className="text-secondary">nosotros</span></h2>
+                <span className="text-secondary text-[10px] font-bold uppercase tracking-[0.4em]">{t('formTitle')}</span>
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-brand uppercase tracking-tighter" dangerouslySetInnerHTML={{ __html: t('formHeading') }} />
               </div>
 
               <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Nombre */}
                 <div className="flex flex-col gap-3 group">
                   <label className="flex items-center gap-2 text-brand font-bold text-[10px] uppercase tracking-widest leading-none">
-                    <User className="w-3 h-3 text-secondary" /> Nombre completo:
+                    <User className="w-3 h-3 text-secondary" /> {t('fieldName')}:
                   </label>
                   <input
                     required
@@ -198,7 +197,7 @@ export default function ContactPage() {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Tu nombre aquí"
+                    placeholder={t('fieldNamePlaceholder')}
                     className="w-full bg-brand/5 border-b-2 border-brand/10 p-4 text-brand placeholder:text-brand/30 focus:outline-none focus:border-secondary transition-all "
                   />
                 </div>
@@ -206,14 +205,14 @@ export default function ContactPage() {
                 {/* Empresa */}
                 <div className="flex flex-col gap-3">
                   <label className="flex items-center gap-2 text-brand font-bold text-[10px] uppercase tracking-widest leading-none">
-                    <Building2 className="w-3 h-3 text-secondary" /> Empresa:
+                    <Building2 className="w-3 h-3 text-secondary" /> {t('fieldCompany')}:
                   </label>
                   <input
                     type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    placeholder="Nombre de tu empresa"
+                    placeholder={t('fieldCompanyPlaceholder')}
                     className="w-full bg-brand/5 border-b-2 border-brand/10 p-4 text-brand placeholder:text-brand/30 focus:outline-none focus:border-secondary transition-all "
                   />
                 </div>
@@ -221,7 +220,7 @@ export default function ContactPage() {
                 {/* Email */}
                 <div className="flex flex-col gap-3">
                   <label className="flex items-center gap-2 text-brand font-bold text-[10px] uppercase tracking-widest leading-none">
-                    <Mail className="w-3 h-3 text-secondary" /> Email:
+                    <Mail className="w-3 h-3 text-secondary" /> {t('fieldEmail')}:
                   </label>
                   <input
                     required
@@ -229,7 +228,7 @@ export default function ContactPage() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="email@ejemplo.com"
+                    placeholder={t('fieldEmailPlaceholder')}
                     className="w-full bg-brand/5 border-b-2 border-brand/10 p-4 text-brand placeholder:text-brand/30 focus:outline-none focus:border-secondary transition-all "
                   />
                 </div>
@@ -237,7 +236,7 @@ export default function ContactPage() {
                 {/* Teléfono */}
                 <div className="flex flex-col gap-3">
                   <label className="flex items-center gap-2 text-brand font-bold text-[10px] uppercase tracking-widest leading-none">
-                    <Smartphone className="w-3 h-3 text-secondary" /> Teléfono:
+                    <Smartphone className="w-3 h-3 text-secondary" /> {t('fieldPhone')}:
                   </label>
                   <input
                     required
@@ -245,7 +244,7 @@ export default function ContactPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="10 dígitos"
+                    placeholder={t('fieldPhonePlaceholder')}
                     className="w-full bg-brand/5 border-b-2 border-brand/10 p-4 text-brand placeholder:text-brand/30 focus:outline-none focus:border-secondary transition-all "
                   />
                 </div>
@@ -253,7 +252,7 @@ export default function ContactPage() {
                 {/* Servicios - Checkboxes */}
                 <div className="md:col-span-2 flex flex-col gap-6">
                   <label className="flex items-center gap-2 text-brand font-bold text-[10px] uppercase tracking-widest leading-none">
-                    <CheckSquare className="w-3 h-3 text-secondary" /> ¿En qué tipo de servicio estás interesado?
+                    <CheckSquare className="w-3 h-3 text-secondary" /> {t('fieldServices')}
                   </label>
 
                   <div className="flex flex-wrap gap-4">
@@ -277,7 +276,7 @@ export default function ContactPage() {
                 {/* Mensaje */}
                 <div className="md:col-span-2 flex flex-col gap-3">
                   <label className="flex items-center gap-2 text-brand font-bold text-[10px] uppercase tracking-widest leading-none">
-                    <Mail className="w-3 h-3 text-secondary" /> Mensaje:
+                    <Mail className="w-3 h-3 text-secondary" /> {t('fieldMessage')}:
                   </label>
                   <textarea
                     required
@@ -285,7 +284,7 @@ export default function ContactPage() {
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    placeholder="Cuéntanos un poco más sobre tu proyecto..."
+                    placeholder={t('fieldMessagePlaceholder')}
                     className="w-full bg-brand/5 border-b-2 border-brand/10 p-4 text-brand placeholder:text-brand/30 focus:outline-none focus:border-secondary transition-all  resize-none"
                   />
                 </div>
@@ -296,7 +295,7 @@ export default function ContactPage() {
                     disabled={loading}
                     className={`w-full md:w-auto bg-brand text-white px-10 py-5 rounded-[10px] font-bold text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all shadow-xl shadow-brand/20 group ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-secondary hover:text-black'}`}
                   >
-                    {loading ? 'Enviando...' : 'Enviar mensaje'} <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    {loading ? t('submitSending') : t('submitButton')} <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </button>
                 </div>
 
@@ -307,7 +306,7 @@ export default function ContactPage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="md:col-span-2 p-4 bg-green-500/10 border border-green-500/20 text-green-600 rounded-lg text-sm font-bold text-center"
                   >
-                    ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.
+                    {t('successMessage')}
                   </motion.div>
                 )}
                 {error && (
@@ -316,13 +315,13 @@ export default function ContactPage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="md:col-span-2 p-4 bg-red-500/10 border border-red-500/20 text-red-600 rounded-lg text-sm font-bold text-center"
                   >
-                    Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo o contáctanos por teléfono.
+                    {t('errorMessage')}
                   </motion.div>
                 )}
               </form>
 
               <p className="text-[10px] leading-relaxed text-gray-600  italic">
-                Nota: No incluyas datos personales importantes. El envío de datos a través de éste formulario, y cualquiera incluído en el presente sitio web, no establece en ninguna forma un contrato con LunAvalos, y es solo para brindar servicios de asesoría. No se aplicarán cargos al momento de solicitar una consulta. Los datos enviados a través de el sitio web, serán guardados de manera confidencial y por ningún motivo serán revelados, compartidos o usados con otros fines ajenos a una evaluación para una asesoría.
+                {t('disclaimer')}
               </p>
             </div>
           </div>
