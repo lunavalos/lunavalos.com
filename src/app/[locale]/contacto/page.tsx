@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import PageHero from '@/components/PageHero';
 import Navbar from '@/components/Navbar';
 import { Link } from '@/navigation';
-import { Phone, Mail, MapPin, Instagram, Facebook, Twitter, Youtube, Linkedin, Send, User, Building2, Smartphone, CheckSquare, Square } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram, Facebook, Youtube, Linkedin, Send, User, Building2, Smartphone, CheckSquare, Square } from 'lucide-react';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -168,11 +168,23 @@ export default function ContactPage() {
                 <div className="pt-12 border-t border-white/10">
                   <span className="text-[10px] uppercase font-bold tracking-widest text-white/30 block mb-6">{t('followUs')}</span>
                   <div className="flex gap-4">
-                    {[Instagram, Facebook, Twitter, Youtube, Linkedin].map((Icon, idx) => (
-                      <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
-                        <Icon className="w-4 h-4" />
-                      </a>
-                    ))}
+                    <a href="https://www.instagram.com/lunavalos" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                      <Instagram className="w-4 h-4" />
+                    </a>
+                    <a href="https://www.facebook.com/lunavalos22" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                      <Facebook className="w-4 h-4" />
+                    </a>
+                    <a href="https://x.com/lunavalosDH" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
+                      </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@lunavalos7544" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                      <Youtube className="w-4 h-4" />
+                    </a>
+                    <a href="https://www.linkedin.com/company/lunavalos/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                      <Linkedin className="w-4 h-4" />
+                    </a>
                   </div>
                 </div>
               </div>
