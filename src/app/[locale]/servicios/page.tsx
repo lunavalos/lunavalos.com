@@ -129,36 +129,38 @@ export default function ServicesPage() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-6xl bg-white rounded-[10px] shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-[60vh] max-h-[90vh]"
+              className="relative w-full max-w-6xl bg-white rounded-[10px] shadow-2xl overflow-hidden flex flex-col min-h-[50vh] max-h-[calc(100dvh-2rem)] md:max-h-[90vh]"
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedService(null)}
-                className="absolute top-6 right-6 z-50 p-2 bg-brand/5 hover:bg-brand/10 text-brand rounded-full transition-colors"
+                className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-2 bg-white md:bg-brand/5 shadow-md md:shadow-none text-brand rounded-full hover:bg-gray-100 md:hover:bg-brand/10 transition-colors"
                 aria-label="Cerrar"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5 md:w-6 md:h-6" />
               </button>
 
-              {/* Left Column - Brand Blue Background (Icon Only) */}
-              <div className="w-full md:w-1/4 bg-brand p-12 flex flex-col items-center justify-center text-center relative overflow-hidden flex-shrink-0">
-                {/* Decorative background elements */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-[100px] -mr-32 -mt-32" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-[100px] -ml-32 -mb-32" />
+              {/* Scrollable Content Wrapper */}
+              <div className="flex-1 w-full flex flex-col md:flex-row overflow-y-auto md:overflow-hidden">
+                {/* Left Column - Brand Blue Background (Icon Only) */}
+                <div className="w-full md:w-1/4 bg-brand p-8 pt-12 md:p-12 flex flex-col items-center justify-center text-center relative overflow-hidden flex-shrink-0">
+                  {/* Decorative background elements */}
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-[100px] -mr-32 -mt-32" />
+                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-[100px] -ml-32 -mb-32" />
 
-                <div className="relative z-10 w-full">
-                  <motion.div
-                    layoutId={`icon-${selectedService}`}
-                    className="w-32 h-32 rounded-[20px] bg-white/10 backdrop-blur-xl border border-white/10 flex items-center justify-center text-secondary mb-0 mx-auto shadow-2xl"
-                  >
-                    <activeService.icon className="w-16 h-16 stroke-[1.2]" />
-                  </motion.div>
+                  <div className="relative z-10 w-full">
+                    <motion.div
+                      layoutId={`icon-${selectedService}`}
+                      className="w-20 h-20 md:w-32 md:h-32 rounded-[16px] md:rounded-[20px] bg-white/10 backdrop-blur-xl border border-white/10 flex items-center justify-center text-secondary mb-0 mx-auto shadow-2xl"
+                    >
+                      <activeService.icon className="w-10 h-10 md:w-16 md:h-16 stroke-[1.2]" />
+                    </motion.div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Right Column - Content (Title + Details) */}
-              <div className="w-full md:w-3/4 p-10 md:p-16 flex flex-col justify-center overflow-y-auto">
-                <div className="h-full">
+                {/* Right Column - Content (Title + Details) */}
+                <div className="w-full md:w-3/4 p-6 sm:p-10 md:p-16 flex flex-col justify-center md:overflow-y-auto">
+                  <div className="h-full">
                   <span className="text-secondary text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">
                     Detalles del Servicio
                   </span>
@@ -192,6 +194,7 @@ export default function ServicesPage() {
                     </Link>
                   </div>
                 </div>
+              </div>
               </div>
             </motion.div>
           </div>

@@ -121,7 +121,9 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-[80px] left-6 right-6 p-6 glass rounded-2xl flex flex-col gap-6 md:hidden pointer-events-auto"
+            className={`absolute top-[80px] left-6 right-6 p-6 rounded-2xl flex flex-col gap-6 md:hidden pointer-events-auto shadow-2xl transition-all duration-500 ${
+              isScrolled ? 'bg-brand/95 backdrop-blur-xl border border-white/10' : 'glass'
+            }`}
           >
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
