@@ -176,6 +176,8 @@
   },
   "Clients": {
     "badge": "Our Clients",
-    "title": "Companies that <br /><span class=\"text-secondary\">trust</span> us"
+    "titlePart1": "Companies that",
+    "titleHighlight": "trust",
+    "titlePart2": "us"
   }
 }

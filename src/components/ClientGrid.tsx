@@ -48,8 +48,9 @@ export default function ClientGrid() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-display font-bold text-brand uppercase tracking-tighter"
-            dangerouslySetInnerHTML={{ __html: t('title') }}
-          />
+          >
+            {t('titlePart1')} <br /><span className="text-secondary">{t('titleHighlight')}</span> {t('titlePart2')}
+          </motion.h2>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-white overflow-hidden">

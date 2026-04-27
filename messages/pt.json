@@ -225,6 +225,8 @@
   },
   "Clients": {
     "badge": "Nossos Clientes",
-    "title": "Empresas que <br /><span class=\"text-secondary\">confiam</span> em nós"
+    "titlePart1": "Empresas que",
+    "titleHighlight": "confiam",
+    "titlePart2": "em nós"
   }
 }
