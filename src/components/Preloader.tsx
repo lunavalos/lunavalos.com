@@ -11,10 +11,10 @@ export default function Preloader() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Forzamos que el preloader dure al menos 2.5 segundos para que se pueda apreciar
+    // Reduced duration to minimize LCP render delay
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 2500);
+    }, 800);
 
     return () => clearTimeout(timer);
   }, []);
