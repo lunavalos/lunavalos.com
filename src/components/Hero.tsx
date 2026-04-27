@@ -28,42 +28,31 @@ export default function Hero() {
 
 
       <div className="relative z-10 max-w-5xl w-full text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/5 bg-white/[0.02] mb-10"
+        <div
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/5 bg-white/[0.02] mb-10 opacity-0 animate-fade-in-up"
         >
           <Sparkles className="w-3.5 h-3.5 text-secondary" />
-          <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-white/60">
+          <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-white/80">
             SmartShoring Evolution 2026
           </span>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[8vw] md:text-[60px] font-display font-bold uppercase tracking-tight leading-[0.85] mb-10"
+        <h1
+          className="text-[8vw] md:text-[60px] font-display font-bold uppercase tracking-tight leading-[0.85] mb-10 opacity-0 animate-fade-in-up"
         >
           {t.rich('title', {
             span: (chunks) => <span className="text-[#f99f1f] block bg-clip-text text-[10vw] md:text-[80px]">{chunks}</span>
           })}
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-2xl mx-auto text-lg md:text-xl text-white/40 mb-14 leading-relaxed font-normal"
+        <p
+          className="max-w-2xl mx-auto text-lg md:text-xl text-white/80 mb-14 leading-relaxed font-normal opacity-0 animate-fade-in-up-delay-1"
         >
           {t('subtitle')}
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+        <div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in-up-delay-2"
         >
           <Link href="/contacto" className="px-10 py-4 bg-secondary text-black font-bold text-xs uppercase tracking-widest rounded-full hover:bg-brand-light hover:text-white transition-all hover:scale-105 active:scale-95 text-center">
             {t('ctaStart')}
@@ -72,7 +61,7 @@ export default function Hero() {
           <Link href="/servicios" className="px-10 py-4 glass text-white font-bold text-xs uppercase tracking-widest rounded-full hover:bg-white/5 transition-all text-center">
             {t('ctaServices')}
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

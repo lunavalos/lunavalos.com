@@ -61,6 +61,11 @@ export default function Footer() {
                   {t('addressText')}
                 </span>
               </li>
+              <li className="mt-4 pt-4 border-t border-white/10">
+                <a href="/mapa-del-sitio" className="text-white/50 hover:text-secondary transition-colors text-xs uppercase font-bold tracking-widest block">
+                  {t('sitemap')}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -85,6 +90,7 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           className="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:-translate-y-1 transition-transform border-2 border-white/20"
+          aria-label="Contactar por WhatsApp"
         >
           {/* WhatsApp SVG Path */}
           <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
@@ -96,6 +102,7 @@ export default function Footer() {
         <a
           href="tel:8442751165"
           className="w-14 h-14 bg-brand-light text-white rounded-full flex items-center justify-center shadow-lg hover:-translate-y-1 transition-transform border-2 border-brand"
+          aria-label="Llamar por teléfono"
         >
           <Phone className="w-6 h-6 fill-current" />
         </a>

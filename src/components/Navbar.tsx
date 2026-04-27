@@ -49,7 +49,7 @@ export default function Navbar() {
           : 'glass'
           }`}
       >
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center" aria-label="Inicio">
           <Image
             src="/images/header-logo.svg"
             alt="LunAvalos Logo"
@@ -78,6 +78,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
               className="flex items-center gap-2 text-white/50 hover:text-white transition-colors"
+              aria-label="Cambiar idioma"
             >
               <Globe className="w-4 h-4" />
               <span className="text-[10px] uppercase font-black text-secondary">{locale}</span>
@@ -109,6 +110,7 @@ export default function Navbar() {
           <button
             className="md:hidden flex items-center text-white/80 hover:text-white"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Abrir menú"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -144,6 +146,7 @@ export default function Navbar() {
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
                 className="flex items-center gap-3 text-white/50 hover:text-white transition-colors w-fit"
+                aria-label="Cambiar idioma"
               >
                 <Globe className="w-4 h-4" />
                 <span className="text-xs uppercase font-black text-secondary">{locale}</span>

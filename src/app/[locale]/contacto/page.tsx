@@ -328,12 +328,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      <footer className="py-20 px-6 border-t border-brand/10 text-center bg-white">
-        <p className="text-brand/20 text-[10px] uppercase font-bold tracking-widest">
-          © 2026 LunAvalos Digital Evolution. All Rights Reserved.
-        </p>
-      </footer>
     </main>
   );
 }
