@@ -63,6 +63,7 @@
     "services": "Serviços",
     "portfolio": "Portfólio",
     "about": "Sobre nós",
+    "blog": "Blog",
     "contact": "Contato",
     "privacy": "Política de Privacidade"
   },
@@ -82,7 +83,7 @@
     "items": {
       "webApps": {
         "title": "Web Apps empresariais sob medida.",
-        "description": "Desenvolvemos software de gestão totalmente personalizado para a sua empresa: ERP, CRM, portais internos, dashboards e fluxos de trabalho automatizados. Construído com arquitetura moderna, escalável e segura.",
+        "description": "Desenvolvemos software de gestão totalmente personalizado para a sua empresa : ERP, CRM, portais internos, dashboards e fluxos de trabalho automatizados. Construído com arquitetura moderna, escalável e segura.",
         "details": "Nossa metodologia de desenvolvimento para aplicações web é centrada na escalabilidade e na robustez técnica. Utilizamos arquiteturas modernas que separam a interface do usuário da lógica de negócios, permitindo atualizações rápidas e desempenho superior. Ideais para sistemas transacionais intensivos, gestão de estoque em tempo real e ferramentas de produtividade empresarial que precisam funcionar 24/7 sem erros.",
         "tech": [
           "Laravel",
@@ -177,7 +178,7 @@
     },
     "team": {
       "title": "Nossa equipe",
-      "p1": "Somos uma equipe multidisciplinar de desenvolvedores, designers, estrategistas digitais e especialistas em marketing que compartilham uma mesma filosofia: o trabalho bem feito não admite atalhos. Cada projeto passa por um processo rigoroso de controle de qualidade antes de chegar às suas mãos, pois sabemos que o que entregamos carrega o nome da sua empresa — e o nosso.",
+      "p1": "Somos uma equipe multidisciplinaire de desenvolvedores, designers, estrategistas digitais e especialistas em marketing que compartilham uma mesma filosofia: o trabalho bem feito não admite atalhos. Cada projeto passa por um processo rigoroso de controle de qualidade antes de chegar às suas mãos, pois sabemos que o que entregamos carrega o nome da sua empresa — e o nosso.",
       "p2": "Além do código e do design, nos define algo que não pode ser automatizado: o atendimento personalizado. Desde o primeiro contato até o suporte pós-lançamento, você tem uma equipe real por trás de cada decisão, disposta a explicar, ajustar e acompanhar você em cada etapa."
     },
     "stats": {
@@ -228,5 +229,17 @@
     "titlePart1": "Empresas que",
     "titleHighlight": "confiam",
     "titlePart2": "em nós"
+  },
+  "Blog": {
+    "title": "Blog e Notícias",
+    "subtitle": "Explore artigos sobre tecnologia, evolução digital e as últimas novidades da LunAvalos.",
+    "badge": "Insights Digitais",
+    "readMore": "Ler artigo",
+    "publishedOn": "Publicado em",
+    "author": "Autor",
+    "categories": "Categorias",
+    "noPosts": "Nenhum post disponível no momento.",
+    "backToList": "Voltar ao blog",
+    "relatedPosts": "Artigos relacionados"
   }
 }

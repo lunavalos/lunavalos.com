@@ -29,6 +29,7 @@ export default function Navbar() {
     { name: t('home'), href: '/' as any },
     { name: t('services'), href: '/servicios' as any },
     { name: t('about'), href: '/nosotros' as any },
+    { name: t('blog'), href: '/blog' as any },
     { name: t('contact'), href: '/contacto' as any },
   ];
 

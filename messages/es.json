@@ -51,6 +51,7 @@
     "services": "Servicios",
     "portfolio": "Portafolio",
     "about": "Nosotros",
+    "blog": "Blog",
     "contact": "Contacto",
     "privacy": "Aviso de Privacidad"
   },
@@ -179,5 +180,17 @@
     "titlePart1": "Empresas que",
     "titleHighlight": "confían",
     "titlePart2": "en nosotros"
+  },
+  "Blog": {
+    "title": "Blog & Noticias",
+    "subtitle": "Explora artículos sobre tecnología, evolución digital y las últimas novedades de LunAvalos.",
+    "badge": "Digital Insights",
+    "readMore": "Leer artículo",
+    "publishedOn": "Publicado el",
+    "author": "Autor",
+    "categories": "Categorías",
+    "noPosts": "No hay publicaciones disponibles en este momento.",
+    "backToList": "Volver al blog",
+    "relatedPosts": "Artículos relacionados"
   }
 }

@@ -63,6 +63,7 @@
     "services": "Services",
     "portfolio": "Portfolio",
     "about": "À propos",
+    "blog": "Blog",
     "contact": "Contact",
     "privacy": "Politique de Confidentialité"
   },
@@ -173,7 +174,7 @@
       "titlePart1": "Plus de 10 ans d'",
       "titlePart2": "évolution",
       "p1": "Chez LunAvalos, nous transformons depuis plus de 10 ans des idées en technologie qui fonctionne. Ce qui a commencé comme un pari sur le développement web de qualité à Saltillo, Coahuila, est devenu une agence de solutions numériques à portée mondiale : nous collaborons aujourd'hui avec des clients au Mexique et aux États-Unis, et nous continuons de croître.",
-      "p2": "Au fil des années, nous avons travaillé avec une diversité de clients dont nous sommes fiers : avocats, médecins, consultants et professionnels indépendants ayant besoin d'une présence digitale professionnelle ; entreprises des secteurs industriel, manufacturier et de services nécessitant des systèmes robustes sur mesure ; et startups à la recherche d'une équipe technique de confiance pour construire from scratch. Cette polyvalence n'est pas un hasard — elle est le résultat de l'écoute de chaque client et de la compréhension que chaque entreprise a des besoins uniques."
+      "p2": "Au fil des années, nous avons travaillé with une diversité de clients dont nous sommes fiers : avocats, médecins, consultants et professionnels indépendants ayant besoin d'une présence digitale professionnelle ; entreprises des secteurs industriel, manufacturier et de services nécessitant des systèmes robustes sur mesure ; et startups à la recherche d'une équipe technique de confiance pour construire from scratch. Cette polyvalence n'est pas un hasard — elle est le résultat de l'écoute de chaque client et de la compréhension que chaque entreprise a des besoins uniques."
     },
     "team": {
       "title": "Notre équipe",
@@ -221,12 +222,24 @@
     "submitButton": "Envoyer le message",
     "successMessage": "Message envoyé avec succès ! Nous vous contacterons très prochainement.",
     "errorMessage": "Une erreur est survenue lors de l'envoi. Veuillez réessayer ou nous contacter par téléphone.",
-    "disclaimer": "Note : N'incluez pas de données personnelles sensibles. L'envoi de données via ce formulaire n'établit en aucun cas un contrat avec LunAvalos ; il s'agit uniquement de fournir des services de conseil. Aucun frais ne sera appliqué lors de la demande de consultation. Les données envoyées via le site web seront conservées de manière confidentielle et ne seront en aucun cas divulguées, partagées ou utilisées à des fins autres qu'une évaluation de conseil."
+    "disclaimer": "Note : N'incluez pas de données personnelles sensibles. L'envoi de données via ce formulaire n'établit en aucun cas un contrat avec LunAvalos ; il s'agit uniquement de fournir des services de conseil. Aucun frais ne sera appliqué lors de la demande de consultation. Les données envoyées via le site web seront conservées de manière confidentielle et ne seront en aucun cas divulguées, shared ou utilisées à des fins autres qu'une évaluation de conseil."
   },
   "Clients": {
     "badge": "Nos Clients",
     "titlePart1": "Entreprises qui nous",
     "titleHighlight": "font confiance",
     "titlePart2": ""
+  },
+  "Blog": {
+    "title": "Blog & Actualités",
+    "subtitle": "Explorez des articles sur la technologie, l'évolution numérique et les dernières nouvelles de LunAvalos.",
+    "badge": "Digital Insights",
+    "readMore": "Lire l'article",
+    "publishedOn": "Publié le",
+    "author": "Auteur",
+    "categories": "Catégories",
+    "noPosts": "Aucun article disponible pour le moment.",
+    "backToList": "Retour au blog",
+    "relatedPosts": "Articles connexes"
   }
 }
