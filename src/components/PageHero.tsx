@@ -28,7 +28,7 @@ export default function PageHero({ title, subtitle, badge, dividerColor = 'bg-br
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-[50vh] flex flex-col items-center justify-center overflow-hidden bg-brand"
+      className="relative min-h-[400px] flex flex-col pt-40 pb-44 md:pt-48 md:pb-52 overflow-hidden bg-brand"
     >
       <motion.div style={{ y: bgY }} className="absolute inset-0 bottom-[-30%] z-0">
         <Beams
@@ -45,7 +45,7 @@ export default function PageHero({ title, subtitle, badge, dividerColor = 'bg-br
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand" />
       </motion.div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full text-left pt-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full text-left">
         {badge && (
           <motion.span
             initial={{ opacity: 0, x: -20 }}
@@ -60,7 +60,7 @@ export default function PageHero({ title, subtitle, badge, dividerColor = 'bg-br
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl md:text-8xl font-display font-bold uppercase tracking-tight leading-[0.85] text-white"
+          className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tight leading-[0.85] text-white"
         >
           {title}
         </motion.h1>

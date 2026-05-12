@@ -45,7 +45,7 @@ export default function BlogPostHero({
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[400px] flex flex-col justify-center overflow-hidden bg-brand"
+      className="relative min-h-[400px] flex flex-col overflow-hidden bg-brand"
     >
       <motion.div style={{ y: bgY }} className="absolute inset-0 bottom-[-30%] z-0">
         <Beams
@@ -62,7 +62,7 @@ export default function BlogPostHero({
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand" />
       </motion.div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-32 pb-44 text-left">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-40 pb-44 md:pt-48 md:pb-52 text-left">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}

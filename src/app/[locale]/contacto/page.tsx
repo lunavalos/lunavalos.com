@@ -35,15 +35,22 @@ export default function ContactPage() {
   const recaptchaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    
     // Cargar script de reCAPTCHA manualmente si no existe
     let script = document.querySelector('script[src="https://www.google.com/recaptcha/api.js"]') as HTMLScriptElement;
-    if (!script) {
-      script = document.createElement('script');
-      script.src = "https://www.google.com/recaptcha/api.js";
-      script.async = true;
-      script.defer = true;
-      document.body.appendChild(script);
-    }
+    
+    const loadRecaptcha = () => {
+      if (!script) {
+        script = document.createElement('script');
+        script.src = "https://www.google.com/recaptcha/api.js";
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+      }
+    };
+
+    loadRecaptcha();
 
     // Añadir estilo para forzar posición a la izquierda
     const styleId = 'recaptcha-left-style';
@@ -54,6 +61,35 @@ export default function ContactPage() {
       document.head.appendChild(style);
     }
 
+    if (style) {
+      style.innerHTML = `
+        .grecaptcha-badge { 
+          left: 20px !important; 
+          right: auto !important;
+          bottom: 20px !important;
+        }
+      `;
+    }
+
+    // Si grecaptcha ya existe, resetearlo o asegurar que se renderice
+    const checkGrecaptcha = setInterval(() => {
+      if (window.grecaptcha && window.grecaptcha.render) {
+        const recaptchaContainer = document.querySelector('.g-recaptcha');
+        if (recaptchaContainer && !recaptchaContainer.innerHTML) {
+          try {
+            window.grecaptcha.render(recaptchaContainer, {
+              'sitekey': siteKey,
+              'badge': 'bottomleft',
+              'size': 'invisible'
+            });
+          } catch (e) {
+            // Ya estaba renderizado o error menor
+          }
+        }
+        clearInterval(checkGrecaptcha);
+      }
+    }, 500);
+
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const service = params.get('service');
@@ -63,8 +99,7 @@ export default function ContactPage() {
     }
 
     return () => {
-      // No eliminamos el script para evitar recargas innecesarias, 
-      // pero sí el estilo si salimos de la página de contacto
+      clearInterval(checkGrecaptcha);
       if (style && style.parentNode) {
         style.parentNode.removeChild(style);
       }
