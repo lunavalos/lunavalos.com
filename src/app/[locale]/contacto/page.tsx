@@ -61,18 +61,7 @@ export default function ContactPage() {
     if (style) {
       style.innerHTML = `
         .grecaptcha-badge { 
-          left: -170px !important; 
-          right: auto !important;
-          bottom: 100px !important;
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
-          border-radius: 0 8px 8px 0 !important;
-          overflow: hidden !important;
-          opacity: 0.6 !important;
-        }
-        .grecaptcha-badge:hover {
-          left: 0 !important;
-          opacity: 1 !important;
+          visibility: hidden !important;
         }
       `;
     }
@@ -261,6 +250,14 @@ export default function ContactPage() {
                     <a href="https://www.linkedin.com/company/lunavalos/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
                       <Linkedin className="w-4 h-4" />
                     </a>
+                  </div>
+
+                  {/* reCAPTCHA Attribution */}
+                  <div className="mt-12 text-[9px] text-white/30 leading-relaxed uppercase tracking-widest max-w-[200px]">
+                    This site is protected by reCAPTCHA and the Google 
+                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline mx-1">Privacy Policy</a> 
+                    and 
+                    <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline mx-1">Terms of Service</a> apply.
                   </div>
                 </div>
               </div>
