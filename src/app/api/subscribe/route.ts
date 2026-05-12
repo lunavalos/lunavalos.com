@@ -32,9 +32,10 @@ export async function POST(req: Request) {
     };
     console.log('>>> [API SUBSCRIBE] Resultado reCAPTCHA:', recaptchaData);
 
-    if (!recaptchaData.success || (recaptchaData.score !== undefined && recaptchaData.score < 0.5)) {
-      console.warn('>>> [API SUBSCRIBE] Validación de seguridad fallida');
-      return NextResponse.json({ error: 'Verificación de seguridad fallida (reCAPTCHA)' }, { status: 400 });
+    if (!recaptchaData.success || (recaptchaData.score !== undefined && recaptchaData.score < 0.1)) {
+      const errorCode = recaptchaData['error-codes'] ? recaptchaData['error-codes'][0] : 'score_bajo';
+      console.warn(`>>> [API SUBSCRIBE] Validación fallida. Motivo: ${errorCode}, Score: ${recaptchaData.score}`);
+      return NextResponse.json({ error: `Seguridad: ${errorCode} (Score: ${recaptchaData.score || 'N/A'})` }, { status: 400 });
     }
 
     // 2. Enviar a Resend
