@@ -29,6 +29,18 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
       script.defer = true;
       document.body.appendChild(script);
     }
+
+    // Estilo para ocultar el badge globalmente
+    const styleId = 'recaptcha-hide-style';
+    let style = document.getElementById(styleId);
+    if (!style) {
+      style = document.createElement('style');
+      style.id = styleId;
+      document.head.appendChild(style);
+    }
+    if (style) {
+      style.innerHTML = `.grecaptcha-badge { visibility: hidden !important; }`;
+    }
   }, []);
 
   const handleSubscribe = async (e: React.FormEvent) => {
