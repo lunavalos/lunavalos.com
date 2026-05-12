@@ -61,10 +61,18 @@ export default function ContactPage() {
     if (style) {
       style.innerHTML = `
         .grecaptcha-badge { 
-          left: 20px !important; 
+          left: -170px !important; 
           right: auto !important;
-          bottom: 20px !important;
-          visibility: visible !important;
+          bottom: 100px !important;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+          border-radius: 0 8px 8px 0 !important;
+          overflow: hidden !important;
+          opacity: 0.6 !important;
+        }
+        .grecaptcha-badge:hover {
+          left: 0 !important;
+          opacity: 1 !important;
         }
       `;
     }
