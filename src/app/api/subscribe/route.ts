@@ -17,7 +17,11 @@ export async function POST(req: Request) {
       body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
     });
 
-    const recaptchaData = await recaptchaRes.json();
+    const recaptchaData = await recaptchaRes.json() as { 
+      success: boolean; 
+      score?: number; 
+      'error-codes'?: string[];
+    };
     console.log('Resultado reCAPTCHA:', recaptchaData);
 
     if (!recaptchaData.success || (recaptchaData.score !== undefined && recaptchaData.score < 0.5)) {

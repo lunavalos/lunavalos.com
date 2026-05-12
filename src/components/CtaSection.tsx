@@ -70,7 +70,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
         body: JSON.stringify({ email, recaptchaToken: token })
       });
 
-      const data = await res.json();
+      const data = await res.json() as { success?: boolean; error?: string };
 
       if (res.ok) {
         setSuccess(true);
