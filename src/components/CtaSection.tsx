@@ -47,10 +47,10 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
     e.preventDefault();
     setLoading(true);
     setSuccess(false);
-    setError(false);
+    setError(null);
 
     if (!window.grecaptcha) {
-      setError(true);
+      setError(tn('errorMessage'));
       setLoading(false);
       return;
     }
