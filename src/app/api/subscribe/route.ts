@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
+  console.log('--- NUEVA PETICIÓN DE SUSCRIPCIÓN ---');
   try {
     const { email, recaptchaToken } = await req.json();
 

@@ -16,7 +16,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // Asegurar que el script de reCAPTCHA esté disponible
@@ -70,14 +70,16 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
         body: JSON.stringify({ email, recaptchaToken: token })
       });
 
+      const data = await res.json();
+
       if (res.ok) {
         setSuccess(true);
         setEmail('');
       } else {
-        setError(true);
+        setError(data.error || tn('errorMessage'));
       }
     } catch (err) {
-      setError(true);
+      setError(tn('errorMessage'));
     } finally {
       setLoading(false);
     }
@@ -146,7 +148,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
             )}
             {error && (
               <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400 text-[10px] font-bold uppercase flex items-center gap-2 mt-2">
-                <AlertCircle className="w-3 h-3" /> {tn('errorMessage')}
+                <AlertCircle className="w-3 h-3" /> {error}
               </motion.p>
             )}
 
