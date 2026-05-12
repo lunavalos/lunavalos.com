@@ -66,6 +66,13 @@ export default function ContactPage() {
       `;
     }
 
+    // Asegurar que el badge sea visible si regresamos a la página
+    const showBadge = () => {
+      const badge = document.querySelector('.grecaptcha-badge') as HTMLElement;
+      if (badge) badge.style.visibility = 'visible';
+    };
+    showBadge();
+
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const service = params.get('service');
@@ -75,6 +82,10 @@ export default function ContactPage() {
     }
 
     return () => {
+      // Esconder el badge al salir de la página
+      const badge = document.querySelector('.grecaptcha-badge') as HTMLElement;
+      if (badge) badge.style.visibility = 'hidden';
+
       if (style && style.parentNode) {
         style.parentNode.removeChild(style);
       }
