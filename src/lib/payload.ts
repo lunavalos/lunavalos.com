@@ -44,34 +44,46 @@ export interface PayloadResponse<T> {
 const PAYLOAD_URL = process.env.NEXT_PUBLIC_PAYLOAD_URL || 'http://localhost:3000';
 
 export async function getPosts(page = 1, limit = 10): Promise<PayloadResponse<Post>> {
-  const res = await fetch(
-    `${PAYLOAD_URL}/api/posts?where[_status][equals]=published&depth=2&page=${page}&limit=${limit}`,
-    {
-      next: { revalidate: 60 }, // Revalidate every minute
+  try {
+    const res = await fetch(
+      `${PAYLOAD_URL}/api/posts?where[_status][equals]=published&depth=2&page=${page}&limit=${limit}`,
+      {
+        next: { revalidate: 60 }, // Revalidate every minute
+      }
+    );
+
+    if (!res.ok) {
+      console.error('Payload fetch error:', res.statusText);
+      return { docs: [], totalDocs: 0, limit, totalPages: 0, page };
     }
-  );
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch posts');
+    return res.json();
+  } catch (error) {
+    console.error('getPosts error:', error);
+    return { docs: [], totalDocs: 0, limit, totalPages: 0, page };
   }
-
-  return res.json();
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
-  const res = await fetch(
-    `${PAYLOAD_URL}/api/posts?where[slug][equals]=${slug}&depth=2`,
-    {
-      next: { revalidate: 60 },
+  try {
+    const res = await fetch(
+      `${PAYLOAD_URL}/api/posts?where[slug][equals]=${slug}&depth=2`,
+      {
+        next: { revalidate: 60 },
+      }
+    );
+
+    if (!res.ok) {
+      console.error('Payload single post fetch error:', res.statusText);
+      return null;
     }
-  );
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch post');
+    const data: PayloadResponse<Post> = await res.json();
+    return data.docs[0] || null;
+  } catch (error) {
+    console.error('getPostBySlug error:', error);
+    return null;
   }
-
-  const data: PayloadResponse<Post> = await res.json();
-  return data.docs[0] || null;
 }
 
 export function getMediaUrl(media: Media | number | null | undefined): string {
