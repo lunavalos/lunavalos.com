@@ -39,20 +39,15 @@ export default function ContactPage() {
   useEffect(() => {
     const siteKey = SITE_KEY;
     
-    // Cargar script de reCAPTCHA manualmente si no existe
-    let script = document.querySelector('script[src="https://www.google.com/recaptcha/api.js"]') as HTMLScriptElement;
-    
-    const loadRecaptcha = () => {
-      if (!script) {
-        script = document.createElement('script');
-        script.src = "https://www.google.com/recaptcha/api.js";
-        script.async = true;
-        script.defer = true;
-        document.body.appendChild(script);
-      }
-    };
-
-    loadRecaptcha();
+    // Cargar script de reCAPTCHA v3
+    let script = document.querySelector(`script[src*="recaptcha/api.js?render="]`) as HTMLScriptElement;
+    if (!script) {
+      script = document.createElement('script');
+      script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    }
 
     // Añadir estilo para forzar posición a la izquierda
     const styleId = 'recaptcha-left-style';
@@ -69,28 +64,10 @@ export default function ContactPage() {
           left: 20px !important; 
           right: auto !important;
           bottom: 20px !important;
+          visibility: visible !important;
         }
       `;
     }
-
-    // Si grecaptcha ya existe, resetearlo o asegurar que se renderice
-    const checkGrecaptcha = setInterval(() => {
-      if (window.grecaptcha && window.grecaptcha.render) {
-        const recaptchaContainer = document.querySelector('.g-recaptcha');
-        if (recaptchaContainer && !recaptchaContainer.innerHTML) {
-          try {
-            window.grecaptcha.render(recaptchaContainer, {
-              'sitekey': siteKey,
-              'badge': 'bottomleft',
-              'size': 'invisible'
-            });
-          } catch (e) {
-            // Ya estaba renderizado o error menor
-          }
-        }
-        clearInterval(checkGrecaptcha);
-      }
-    }, 1000);
 
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
@@ -101,7 +78,6 @@ export default function ContactPage() {
     }
 
     return () => {
-      clearInterval(checkGrecaptcha);
       if (style && style.parentNode) {
         style.parentNode.removeChild(style);
       }
@@ -125,16 +101,26 @@ export default function ContactPage() {
     setSuccess(false);
     setError(false);
 
-    // Obtener token del widget global
-    const token = window.grecaptcha?.getResponse();
-
-    if (!token) {
+    if (!window.grecaptcha) {
       setError(true);
       setLoading(false);
       return;
     }
 
     try {
+      // Ejecutar reCAPTCHA v3 para obtener el token
+      const token = await new Promise<string>((resolve) => {
+        window.grecaptcha.ready(() => {
+          window.grecaptcha.execute(SITE_KEY, { action: 'contact_form' }).then((t: string) => {
+            resolve(t);
+          });
+        });
+      });
+
+      if (!token) {
+        throw new Error('No recaptcha token');
+      }
+
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -383,13 +369,8 @@ export default function ContactPage() {
                   />
                 </div>
 
-                {/* reCAPTCHA */}
-                <div className="md:col-span-2 min-h-[78px] flex justify-start">
-                  <div
-                    className="g-recaptcha"
-                    data-sitekey={SITE_KEY}
-                    data-badge="bottomleft"
-                  ></div>
+                {/* reCAPTCHA - v3 is automatic, we just leave space if needed or remove the container */}
+                <div className="md:col-span-2">
                 </div>
 
                 {/* Botón Enviar */}

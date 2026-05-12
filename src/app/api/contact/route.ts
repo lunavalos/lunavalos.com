@@ -19,8 +19,14 @@ export async function POST(req: Request) {
 
     const recaptchaData = await recaptchaRes.json();
 
-    if (!recaptchaData.success) {
-      return NextResponse.json({ error: 'Fallo la verificación de reCAPTCHA' }, { status: 400 });
+    // En v3, verificamos success y también el score (puntuación)
+    // Un score de 0.5 o superior suele indicar que es un humano.
+    if (!recaptchaData.success || (recaptchaData.score !== undefined && recaptchaData.score < 0.5)) {
+      console.error('reCAPTCHA failed:', recaptchaData);
+      return NextResponse.json({ 
+        error: 'Fallo la verificación de seguridad',
+        details: recaptchaData['error-codes']
+      }, { status: 400 });
     }
 
     // Configuración del transporte SMTP para Google Workspace
