@@ -34,8 +34,10 @@ export default function ContactPage() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const recaptchaRef = useRef<HTMLDivElement>(null);
 
+  const SITE_KEY = "6LeYt-UsAAAAAE3jQsbkOvqrvxrr-f8Cs-QF_Zf-";
+
   useEffect(() => {
-    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    const siteKey = SITE_KEY;
     
     // Cargar script de reCAPTCHA manualmente si no existe
     let script = document.querySelector('script[src="https://www.google.com/recaptcha/api.js"]') as HTMLScriptElement;
@@ -88,7 +90,7 @@ export default function ContactPage() {
         }
         clearInterval(checkGrecaptcha);
       }
-    }, 500);
+    }, 1000);
 
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
@@ -385,7 +387,7 @@ export default function ContactPage() {
                 <div className="md:col-span-2 min-h-[78px] flex justify-start">
                   <div
                     className="g-recaptcha"
-                    data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                    data-sitekey={SITE_KEY}
                     data-badge="bottomleft"
                   ></div>
                 </div>
