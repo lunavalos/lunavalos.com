@@ -6,8 +6,14 @@ import Navbar from '@/components/Navbar';
 import { Link } from '@/navigation';
 import { Phone, Mail, MapPin, Instagram, Facebook, Youtube, Linkedin, Send, User, Building2, Smartphone, CheckSquare, Square } from 'lucide-react';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+
+declare global {
+  interface Window {
+    grecaptcha: any;
+  }
+}
 
 export default function ContactPage() {
   const t = useTranslations('Contact');
@@ -26,8 +32,28 @@ export default function ContactPage() {
   });
 
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const recaptchaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Cargar script de reCAPTCHA manualmente si no existe
+    let script = document.querySelector('script[src="https://www.google.com/recaptcha/api.js"]') as HTMLScriptElement;
+    if (!script) {
+      script = document.createElement('script');
+      script.src = "https://www.google.com/recaptcha/api.js";
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    }
+
+    // Añadir estilo para forzar posición a la izquierda
+    const styleId = 'recaptcha-left-style';
+    let style = document.getElementById(styleId);
+    if (!style) {
+      style = document.createElement('style');
+      style.id = styleId;
+      document.head.appendChild(style);
+    }
+
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const service = params.get('service');
@@ -35,6 +61,14 @@ export default function ContactPage() {
         setSelectedServices([service]);
       }
     }
+
+    return () => {
+      // No eliminamos el script para evitar recargas innecesarias, 
+      // pero sí el estilo si salimos de la página de contacto
+      if (style && style.parentNode) {
+        style.parentNode.removeChild(style);
+      }
+    };
   }, []);
 
   const toggleService = (id: string) => {
@@ -54,13 +88,23 @@ export default function ContactPage() {
     setSuccess(false);
     setError(false);
 
+    // Obtener token del widget global
+    const token = window.grecaptcha?.getResponse();
+
+    if (!token) {
+      setError(true);
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          services: selectedServices
+          services: selectedServices,
+          recaptchaToken: token
         })
       });
 
@@ -68,6 +112,7 @@ export default function ContactPage() {
         setSuccess(true);
         setFormData({ name: '', company: '', email: '', phone: '', message: '' });
         setSelectedServices([]);
+        window.grecaptcha?.reset();
       } else {
         setError(true);
       }
@@ -299,6 +344,15 @@ export default function ContactPage() {
                     placeholder={t('fieldMessagePlaceholder')}
                     className="w-full bg-brand/5 border-b-2 border-brand/10 p-4 text-brand placeholder:text-brand/30 focus:outline-none focus:border-secondary transition-all  resize-none"
                   />
+                </div>
+
+                {/* reCAPTCHA */}
+                <div className="md:col-span-2 min-h-[78px] flex justify-start">
+                  <div
+                    className="g-recaptcha"
+                    data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                    data-badge="bottomleft"
+                  ></div>
                 </div>
 
                 {/* Botón Enviar */}

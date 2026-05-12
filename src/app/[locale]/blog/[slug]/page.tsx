@@ -1,121 +1,94 @@
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { getPostBySlug, getMediaUrl } from '@/lib/payload';
+import Navbar from '@/components/Navbar';
+import CtaCompact from '@/components/CtaCompact';
+import RichText from '@/components/RichText';
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
-import { Calendar, User, ArrowLeft, Tag } from 'lucide-react';
 import { Link } from '@/navigation';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import CtaSection from '@/components/CtaSection';
-import RichText from '@/components/Blog/RichText';
-import { getPostBySlug, getMediaUrl } from '@/lib/payload';
+import { ArrowLeft, Calendar, User, Tag } from 'lucide-react';
+import { notFound } from 'next/navigation';
 
-export const revalidate = 60;
+import BlogPostHero from '@/components/BlogPostHero';
 
-interface Props {
-  params: {
-    locale: string;
-    slug: string;
-  };
-}
+export default async function BlogPostPage({
+    params: { locale, slug }
+}: {
+    params: { locale: string; slug: string }
+}) {
+    const t = await getTranslations('Blog');
+    const post = await getPostBySlug(slug);
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug, params.locale);
-  
-  if (!post) {
-    return {
-      title: 'Post Not Found',
-    };
-  }
+    if (!post) {
+        notFound();
+    }
 
-  return {
-    title: post.metaTitle || post.title,
-    description: post.metaDescription || post.excerpt,
-    openGraph: {
-      title: post.metaTitle || post.title,
-      description: post.metaDescription || post.excerpt,
-      images: post.featuredImage ? [{ url: getMediaUrl(post.featuredImage) }] : [],
-    },
-  };
-}
+    return (
+        <main className="relative min-h-screen bg-white">
+            <Navbar />
 
-export default async function BlogPostPage({ params }: Props) {
-  const post = await getPostBySlug(params.slug, params.locale);
-  const t = await getTranslations({ locale: params.locale, namespace: 'Blog' });
-
-  if (!post) {
-    notFound();
-  }
-
-  const imageUrl = getMediaUrl(post.featuredImage);
-  const formattedDate = post.publishedDate 
-    ? new Date(post.publishedDate).toLocaleDateString(params.locale, {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      })
-    : '';
-
-  return (
-    <main className="relative min-h-screen bg-white">
-      <Navbar />
-
-      {/* Post Hero */}
-      <section className="relative pt-48 pb-32 overflow-hidden min-h-[50vh] flex items-center">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-brand/70 z-10" />
-          {imageUrl && (
-            <Image 
-              src={imageUrl} 
-              alt={post.title} 
-              fill 
-              className="object-cover"
-              priority
+            <BlogPostHero
+                title={post.title}
+                categories={post.categories || []}
+                publishedDate={post.publishedDate || undefined}
+                createdAt={post.createdAt}
+                authorName={typeof post.author !== 'number' ? post.author?.username : undefined}
+                backToListLabel={t('backToList')}
+                locale={locale}
             />
-          )}
-        </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-display font-bold text-white mb-8 leading-tight tracking-tight uppercase">
-            {post.title}
-          </h1>
+            {/* Article Content */}
+            <article className="py-24 px-6">
+                <div className="max-w-7xl px-4 mx-auto">
+                    {post.excerpt && (
+                        <p className="text-2xl font-display font-medium text-brand/90 leading-relaxed mb-12 italic border-l-4 border-secondary/30 pl-8">
+                            {post.excerpt}
+                        </p>
+                    )}
 
-          <div className="flex flex-wrap justify-center items-center gap-8 text-white font-bold uppercase tracking-[0.2em] text-xs">
-            <span className="flex items-center gap-3">
-              <Calendar size={18} className="text-secondary" />
-              {formattedDate}
-            </span>
-            {post.author && (
-              <span className="flex items-center gap-3">
-                <User size={18} className="text-secondary" />
-                {typeof post.author === 'object' 
-                  ? (post.author.username || post.author.name || 'Admin') 
-                  : post.author}
-              </span>
-            )}
-            {post.categories && post.categories.length > 0 && (
-              <span className="flex items-center gap-3">
-                <Tag size={18} className="text-secondary" />
-                {typeof post.categories[0] === 'object' ? post.categories[0].title : post.categories[0]}
-              </span>
-            )}
-          </div>
-        </div>
-      </section>
+                    <RichText content={post.content} />
 
-      {/* Post Content */}
-      <section className="bg-white py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Article */}
-          <article className="prose-container">
-            <RichText 
-              content={post.content} 
-              isBlogDetail={true}
-              className="prose-slate max-w-none"
-            />
-          </article>
-        </div>
-      </section>
-    </main>
-  );
+                    {/* Featured Image - Moved here */}
+                    <div className="mt-16 rounded-3xl overflow-hidden shadow-2xl">
+                        {post.featuredImage && typeof post.featuredImage !== 'number' ? (
+                            <div className="relative aspect-video">
+                                <Image
+                                    src={getMediaUrl(post.featuredImage)}
+                                    alt={post.featuredImage.alt || post.title}
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                        ) : (
+                            <div className="aspect-video bg-brand/5 flex items-center justify-center">
+                                <span className="text-brand/10 font-display font-bold text-9xl">L/A</span>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Share / Tags section */}
+                    <div className="mt-20 pt-10 border-t border-brand/5 flex flex-wrap gap-4 items-center justify-between">
+                        <div className="flex items-center gap-4">
+                            <span className="text-brand/40 text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+                                <Tag className="w-3 h-3" /> Categorías:
+                            </span>
+                            {post.categories?.map((cat: any) => (
+                                <span key={cat.id} className="text-brand/80 text-xs font-bold hover:text-secondary transition-colors cursor-default">
+                                    #{cat.title}
+                                </span>
+                            ))}
+                        </div>
+
+                        <Link
+                            href="/blog"
+                            className="px-8 py-3 bg-brand/5 text-brand font-bold text-[10px] uppercase tracking-widest rounded-xl hover:bg-brand/10 transition-all"
+                        >
+                            {t('backToList')}
+                        </Link>
+                    </div>
+                </div>
+            </article>
+
+            <CtaCompact />
+        </main>
+    );
 }

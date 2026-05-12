@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/navigation';
+import { useParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { locales } from '@/i18n/request';
 import { Globe, Menu, X } from 'lucide-react';
@@ -12,6 +13,7 @@ export default function Navbar() {
   const t = useTranslations('Navigation');
   const locale = useLocale();
   const pathname = usePathname();
+  const params = useParams();
 
   const [isOpen, setIsOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
@@ -37,7 +39,8 @@ export default function Navbar() {
 
   const onLanguageChange = (targetLocale: string) => {
     setIsLangOpen(false);
-    router.replace(pathname, { locale: targetLocale as any });
+    // @ts-ignore
+    router.replace({ pathname, params }, { locale: targetLocale as any });
   };
 
   return (

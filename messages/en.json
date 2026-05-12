@@ -53,7 +53,17 @@
     "about": "About Us",
     "blog": "Blog",
     "contact": "Contact",
+    "blog": "Blog",
     "privacy": "Privacy Policy"
+  },
+  "Blog": {
+    "title": "Blog",
+    "subtitle": "Insights, news, and guides on digital evolution.",
+    "badge": "Digital Thinking",
+    "readMore": "Read more",
+    "noPosts": "No posts available at this time.",
+    "backToList": "Back to blog",
+    "publishedOn": "Published on"
   },
   "Sitemap": {
     "title": "Sitemap",

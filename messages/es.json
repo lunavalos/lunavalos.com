@@ -53,7 +53,17 @@
     "about": "Nosotros",
     "blog": "Blog",
     "contact": "Contacto",
+    "blog": "Blog",
     "privacy": "Aviso de Privacidad"
+  },
+  "Blog": {
+    "title": "Blog",
+    "subtitle": "Insights, noticias y guías sobre evolución digital.",
+    "badge": "Pensamiento Digital",
+    "readMore": "Leer más",
+    "noPosts": "No hay publicaciones disponibles en este momento.",
+    "backToList": "Volver al blog",
+    "publishedOn": "Publicado el"
   },
   "Sitemap": {
     "title": "Mapa del Sitio",

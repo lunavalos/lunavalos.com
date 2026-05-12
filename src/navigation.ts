@@ -44,6 +44,13 @@ export const pathnames = {
     pt: '/blog',
     fr: '/blog',
     zh: '/blog'
+  },
+  '/blog/[slug]': {
+    es: '/blog/[slug]',
+    en: '/blog/[slug]',
+    pt: '/blog/[slug]',
+    fr: '/blog/[slug]',
+    zh: '/blog/[slug]'
   }
 } as const;
 

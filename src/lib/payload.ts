@@ -1,72 +1,86 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-
 export interface Media {
-  url: string;
+  id: number;
   alt: string;
-  width?: number;
-  height?: number;
+  url?: string | null;
+  width?: number | null;
+  height?: number | null;
+}
+
+export interface Category {
+  id: number;
+  title: string;
+  slug?: string | null;
+}
+
+export interface User {
+  id: number;
+  username: string;
+  email: string;
 }
 
 export interface Post {
-  id: string;
+  id: number;
   title: string;
-  slug: string;
-  excerpt?: string;
-  content: any; // Lexical JSON
-  featuredImage?: Media | string;
-  publishedDate?: string;
-  author?: {
-    username?: string;
-  } | string;
-  categories?: any[];
-  metaTitle?: string;
-  metaDescription?: string;
+  excerpt?: string | null;
+  content: any; // Lexical content
+  author: number | User;
+  categories?: (number | Category)[] | null;
+  featuredImage?: (number | null) | Media;
+  slug?: string | null;
+  publishedDate?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  _status?: 'draft' | 'published' | null;
 }
 
-export async function getPosts(locale: string = 'es'): Promise<Post[]> {
-  try {
-    const res = await fetch(`${API_URL}/api/posts?locale=${locale}&depth=1&where[_status][equals]=published`, {
+export interface PayloadResponse<T> {
+  docs: T[];
+  totalDocs: number;
+  limit: number;
+  totalPages: number;
+  page: number;
+}
+
+const PAYLOAD_URL = process.env.NEXT_PUBLIC_PAYLOAD_URL || 'http://localhost:3000';
+
+export async function getPosts(page = 1, limit = 10): Promise<PayloadResponse<Post>> {
+  const res = await fetch(
+    `${PAYLOAD_URL}/api/posts?where[_status][equals]=published&depth=2&page=${page}&limit=${limit}`,
+    {
+      next: { revalidate: 60 }, // Revalidate every minute
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch posts');
+  }
+
+  return res.json();
+}
+
+export async function getPostBySlug(slug: string): Promise<Post | null> {
+  const res = await fetch(
+    `${PAYLOAD_URL}/api/posts?where[slug][equals]=${slug}&depth=2`,
+    {
       next: { revalidate: 60 },
-    });
-
-    if (!res.ok) {
-      console.error('Failed to fetch posts:', res.statusText);
-      return [];
     }
+  );
 
-    const data = await res.json();
-    return data.docs || [];
-  } catch (error) {
-    console.error('Error fetching posts:', error);
-    return [];
+  if (!res.ok) {
+    throw new Error('Failed to fetch post');
   }
+
+  const data: PayloadResponse<Post> = await res.json();
+  return data.docs[0] || null;
 }
 
-export async function getPostBySlug(slug: string, locale: string = 'es'): Promise<Post | null> {
-  try {
-    const res = await fetch(
-      `${API_URL}/api/posts?locale=${locale}&depth=2&where[slug][equals]=${slug}&where[_status][equals]=published`,
-      {
-        next: { revalidate: 60 },
-      }
-    );
-
-    if (!res.ok) {
-      console.error(`Failed to fetch post with slug ${slug}:`, res.statusText);
-      return null;
-    }
-
-    const data = await res.json();
-    return data.docs?.[0] || null;
-  } catch (error) {
-    console.error(`Error fetching post with slug ${slug}:`, error);
-    return null;
+export function getMediaUrl(media: Media | number | null | undefined): string {
+  if (!media || typeof media === 'number') return '';
+  
+  const url = media.url || '';
+  if (url.startsWith('http')) {
+    return url;
   }
-}
-
-export function getMediaUrl(media: Media | string | undefined): string {
-  if (!media) return '';
-  if (typeof media === 'string') return media;
-  if (media.url.startsWith('http')) return media.url;
-  return `${API_URL}${media.url}`;
+  
+  return `${PAYLOAD_URL}${url}`;
 }

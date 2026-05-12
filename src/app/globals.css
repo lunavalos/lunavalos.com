@@ -86,3 +86,9 @@ body {
       linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   }
 }
+
+/* Force reCAPTCHA badge to the left */
+.grecaptcha-badge {
+  left: 0 !important;
+  right: auto !important;
+}

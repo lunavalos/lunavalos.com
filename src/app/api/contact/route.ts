@@ -4,7 +4,24 @@ import nodemailer from 'nodemailer';
 export async function POST(req: Request) {
   try {
     const data = await req.json();
-    const { name, company, email, phone, services, message } = data;
+    const { name, company, email, phone, services, message, recaptchaToken } = data;
+
+    // Verificar reCAPTCHA
+    if (!recaptchaToken) {
+      return NextResponse.json({ error: 'Falta el token de reCAPTCHA' }, { status: 400 });
+    }
+
+    const recaptchaRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
+    });
+
+    const recaptchaData = await recaptchaRes.json();
+
+    if (!recaptchaData.success) {
+      return NextResponse.json({ error: 'Fallo la verificación de reCAPTCHA' }, { status: 400 });
+    }
 
     // Configuración del transporte SMTP para Google Workspace
     const transporter = nodemailer.createTransport({
