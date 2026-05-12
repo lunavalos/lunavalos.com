@@ -16,8 +16,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Deshabilitar telemetría
+# Deshabilitar telemetría y aumentar memoria para el build
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 RUN npm run build
 
