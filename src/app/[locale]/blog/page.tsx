@@ -11,7 +11,7 @@ import BlogCard from '@/components/BlogCard';
 
 export default async function BlogPage({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations('Blog');
-  const { docs: posts } = await getPosts();
+  const { docs: posts } = await getPosts(1, 10, locale);
 
   return (
     <main className="relative min-h-screen bg-white">

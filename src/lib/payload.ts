@@ -43,10 +43,10 @@ export interface PayloadResponse<T> {
 
 const PAYLOAD_URL = process.env.NEXT_PUBLIC_PAYLOAD_URL || 'http://localhost:3000';
 
-export async function getPosts(page = 1, limit = 10): Promise<PayloadResponse<Post>> {
+export async function getPosts(page = 1, limit = 10, locale = 'es'): Promise<PayloadResponse<Post>> {
   try {
     const res = await fetch(
-      `${PAYLOAD_URL}/api/posts?where[_status][equals]=published&depth=2&page=${page}&limit=${limit}`,
+      `${PAYLOAD_URL}/api/posts?where[_status][equals]=published&depth=2&page=${page}&limit=${limit}&locale=${locale}`,
       {
         next: { revalidate: 60 }, // Revalidate every minute
       }
@@ -64,10 +64,10 @@ export async function getPosts(page = 1, limit = 10): Promise<PayloadResponse<Po
   }
 }
 
-export async function getPostBySlug(slug: string): Promise<Post | null> {
+export async function getPostBySlug(slug: string, locale = 'es'): Promise<Post | null> {
   try {
     const res = await fetch(
-      `${PAYLOAD_URL}/api/posts?where[slug][equals]=${slug}&depth=2`,
+      `${PAYLOAD_URL}/api/posts?where[slug][equals]=${slug}&depth=2&locale=${locale}`,
       {
         next: { revalidate: 60 },
       }

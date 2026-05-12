@@ -16,7 +16,7 @@ export default async function BlogPostPage({
     params: { locale: string; slug: string }
 }) {
     const t = await getTranslations('Blog');
-    const post = await getPostBySlug(slug);
+    const post = await getPostBySlug(slug, locale);
 
     if (!post) {
         notFound();
