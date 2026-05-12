@@ -41,7 +41,7 @@ export interface PayloadResponse<T> {
   page: number;
 }
 
-const PAYLOAD_URL = process.env.NEXT_PUBLIC_PAYLOAD_URL || 'http://localhost:3000';
+const PAYLOAD_URL = 'https://blogmanager.lunavalos.com';
 
 export async function getPosts(page = 1, limit = 10, locale = 'es'): Promise<PayloadResponse<Post>> {
   const fetchUrl = `${PAYLOAD_URL}/api/posts?where[_status][equals]=published&depth=2&page=${page}&limit=${limit}&locale=${locale}`;
