@@ -38,10 +38,9 @@ export async function POST(req: Request) {
     };
     console.log('>>> [API SUBSCRIBE] Resultado reCAPTCHA:', recaptchaData);
 
-    if (!recaptchaData.success || (recaptchaData.score !== undefined && recaptchaData.score < 0.1)) {
-      const errorCode = recaptchaData['error-codes'] ? recaptchaData['error-codes'][0] : 'score_bajo';
-      console.warn(`>>> [API SUBSCRIBE] Validación fallida. Motivo: ${errorCode}, Score: ${recaptchaData.score}`);
-      return NextResponse.json({ error: `Seguridad: ${errorCode} (Score: ${recaptchaData.score || 'N/A'})` }, { status: 400 });
+    if (!recaptchaData.success || (recaptchaData.score !== undefined && recaptchaData.score < 0.5)) {
+      console.warn('>>> [API SUBSCRIBE] Validación de seguridad fallida');
+      return NextResponse.json({ error: 'Fallo la verificación de seguridad' }, { status: 400 });
     }
 
     // 2. Enviar a Resend
@@ -50,7 +49,7 @@ export async function POST(req: Request) {
 
     if (!resendApiKey || !resendAudienceId) {
         console.error('>>> [API SUBSCRIBE] Error: Faltan variables de entorno RESEND_API_KEY o RESEND_AUDIENCE_ID');
-        return NextResponse.json({ error: 'Configuración de servidor incompleta' }, { status: 500 });
+        return NextResponse.json({ error: 'Error de configuración interna' }, { status: 500 });
     }
 
     console.log(`>>> [API SUBSCRIBE] Registrando en Resend Audience: ${resendAudienceId}`);
@@ -74,7 +73,7 @@ export async function POST(req: Request) {
       if (resendData.message && resendData.message.includes('already exists')) {
         return NextResponse.json({ success: true, message: 'Ya estabas suscrito' }, { status: 200 });
       }
-      return NextResponse.json({ error: `Error Resend: ${resendData.message || 'Desconocido'}` }, { status: resendRes.status });
+      return NextResponse.json({ error: 'No se pudo procesar la suscripción' }, { status: resendRes.status });
     }
 
     console.log('>>> [API SUBSCRIBE] ¡Suscripción completada con éxito!');
