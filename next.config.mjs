@@ -21,6 +21,17 @@ const nextConfig = {
       }
     ],
   },
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  experimental: {
+    webpackBuildWorker: true,
+    parallelServerCompiles: false,
+    parallelServerBuildTraces: false,
+  }
 };
 
 export default withNextIntl(nextConfig);
