@@ -18,11 +18,17 @@ export async function POST(req: Request) {
     }
 
     // 1. Verificar reCAPTCHA v3
-    console.log('>>> [API SUBSCRIBE] Verificando reCAPTCHA con Google...');
+    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+    console.log(`>>> [API SUBSCRIBE] Verificando reCAPTCHA. SecretKey presente: ${!!secretKey} (empieza con: ${secretKey?.substring(0, 4)}...)`);
+    
+    const params = new URLSearchParams();
+    params.append('secret', secretKey || '');
+    params.append('response', recaptchaToken);
+
     const recaptchaRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
+      body: params.toString(),
     });
 
     const recaptchaData = await recaptchaRes.json() as { 
