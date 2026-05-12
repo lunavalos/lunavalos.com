@@ -1,16 +1,24 @@
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
-  console.log('--- NUEVA PETICIÓN DE SUSCRIPCIÓN ---');
+  console.log('>>> [API SUBSCRIBE] Iniciando procesamiento de petición');
+  
   try {
-    const { email, recaptchaToken } = await req.json();
+    const body = await req.json().catch(() => null);
+    if (!body) {
+      console.error('>>> [API SUBSCRIBE] Cuerpo de petición inválido o vacío');
+      return NextResponse.json({ error: 'Cuerpo de petición inválido' }, { status: 400 });
+    }
+
+    const { email, recaptchaToken } = body;
+    console.log(`>>> [API SUBSCRIBE] Datos recibidos: email=${email}, hasToken=${!!recaptchaToken}`);
 
     if (!email || !recaptchaToken) {
-      return NextResponse.json({ error: 'Faltan datos obligatorios' }, { status: 400 });
+      return NextResponse.json({ error: 'Faltan datos obligatorios (email o token)' }, { status: 400 });
     }
 
     // 1. Verificar reCAPTCHA v3
-    console.log('Verificando reCAPTCHA token...');
+    console.log('>>> [API SUBSCRIBE] Verificando reCAPTCHA con Google...');
     const recaptchaRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -22,10 +30,11 @@ export async function POST(req: Request) {
       score?: number; 
       'error-codes'?: string[];
     };
-    console.log('Resultado reCAPTCHA:', recaptchaData);
+    console.log('>>> [API SUBSCRIBE] Resultado reCAPTCHA:', recaptchaData);
 
     if (!recaptchaData.success || (recaptchaData.score !== undefined && recaptchaData.score < 0.5)) {
-      return NextResponse.json({ error: 'Fallo la verificación de seguridad' }, { status: 400 });
+      console.warn('>>> [API SUBSCRIBE] Validación de seguridad fallida');
+      return NextResponse.json({ error: 'Verificación de seguridad fallida (reCAPTCHA)' }, { status: 400 });
     }
 
     // 2. Enviar a Resend
@@ -33,11 +42,11 @@ export async function POST(req: Request) {
     const resendAudienceId = process.env.RESEND_AUDIENCE_ID;
 
     if (!resendApiKey || !resendAudienceId) {
-        console.error('Configuración de Resend faltante en env vars');
-        return NextResponse.json({ error: 'Error de configuración del servidor' }, { status: 500 });
+        console.error('>>> [API SUBSCRIBE] Error: Faltan variables de entorno RESEND_API_KEY o RESEND_AUDIENCE_ID');
+        return NextResponse.json({ error: 'Configuración de servidor incompleta' }, { status: 500 });
     }
 
-    console.log(`Enviando ${email} a Resend Audience: ${resendAudienceId}`);
+    console.log(`>>> [API SUBSCRIBE] Registrando en Resend Audience: ${resendAudienceId}`);
 
     const resendRes = await fetch(`https://api.resend.com/audiences/${resendAudienceId}/contacts`, {
       method: 'POST',
@@ -52,19 +61,20 @@ export async function POST(req: Request) {
     });
 
     const resendData = await resendRes.json();
-    console.log('Respuesta de Resend:', resendData);
+    console.log('>>> [API SUBSCRIBE] Respuesta de Resend:', resendData);
 
     if (!resendRes.ok) {
-      // Si el error es que ya existe, lo tratamos como éxito para el usuario
       if (resendData.message && resendData.message.includes('already exists')) {
         return NextResponse.json({ success: true, message: 'Ya estabas suscrito' }, { status: 200 });
       }
-      return NextResponse.json({ error: 'Error en la API de Resend' }, { status: resendRes.status });
+      return NextResponse.json({ error: `Error Resend: ${resendData.message || 'Desconocido'}` }, { status: resendRes.status });
     }
 
+    console.log('>>> [API SUBSCRIBE] ¡Suscripción completada con éxito!');
     return NextResponse.json({ success: true, message: 'Suscripción exitosa' }, { status: 200 });
-  } catch (error) {
-    console.error('Newsletter subscription error:', error);
-    return NextResponse.json({ error: 'Error interno del servidor' }, { status: 500 });
+
+  } catch (error: any) {
+    console.error('>>> [API SUBSCRIBE] ERROR CRÍTICO:', error);
+    return NextResponse.json({ error: `Error Interno: ${error.message}` }, { status: 500 });
   }
 }
