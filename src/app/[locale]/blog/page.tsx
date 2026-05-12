@@ -10,8 +10,14 @@ import { ArrowRight, Calendar, User } from 'lucide-react';
 import BlogCard from '@/components/BlogCard';
 
 export default async function BlogPage({ params: { locale } }: { params: { locale: string } }) {
+  console.log('--- BLOG PAGE LOAD ---');
+  console.log('Locale:', locale);
+  console.log('Payload URL from env:', process.env.NEXT_PUBLIC_PAYLOAD_URL);
+
   const t = await getTranslations('Blog');
   const { docs: posts } = await getPosts(1, 10, locale);
+  
+  console.log('Posts count in component:', posts?.length);
 
   return (
     <main className="relative min-h-screen bg-white">
