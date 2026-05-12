@@ -202,5 +202,16 @@
     "noPosts": "No posts available at this time.",
     "backToList": "Back to blog",
     "relatedPosts": "Related articles"
+  },
+  "Newsletter": {
+    "badge": "Stay Updated",
+    "titlePart1": "SUBSCRIBE TO OUR",
+    "titlePart2": "NEWSLETTER",
+    "description": "Receive the best guides, news, and trends on technology and digital evolution directly in your inbox every month.",
+    "inputPlaceholder": "Your email address",
+    "buttonLabel": "Subscribe",
+    "buttonLoading": "Processing...",
+    "successMessage": "Thanks for subscribing! You'll hear from us soon.",
+    "errorMessage": "There was an error processing your subscription. Please try again."
   }
 }

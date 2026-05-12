@@ -241,5 +241,16 @@
     "noPosts": "Aucun article disponible pour le moment.",
     "backToList": "Retour au blog",
     "relatedPosts": "Articles connexes"
+  },
+  "Newsletter": {
+    "badge": "Restez informé",
+    "titlePart1": "ABONNEZ-VOUS À NOTRE",
+    "titlePart2": "NEWSLETTER",
+    "description": "Recevez chaque mois les meilleurs guides, actualités et tendances sur la technologie et l'évolution numérique directement dans votre boîte de réception.",
+    "inputPlaceholder": "Votre adresse e-mail",
+    "buttonLabel": "S'abonner",
+    "buttonLoading": "Traitement...",
+    "successMessage": "Merci de vous être abonné ! Vous recevrez bientôt de nos nouvelles.",
+    "errorMessage": "Une erreur est survenue lors du traitement de votre abonnement. Veuillez réessayer."
   }
 }

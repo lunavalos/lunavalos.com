@@ -8,6 +8,7 @@ import { Phone, Mail, MapPin, Instagram, Facebook, Youtube, Linkedin, Send, User
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { RECAPTCHA_SITE_KEY } from '@/lib/constants';
 
 declare global {
   interface Window {
@@ -34,7 +35,7 @@ export default function ContactPage() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const recaptchaRef = useRef<HTMLDivElement>(null);
 
-  const SITE_KEY = "6LeYt-UsAAAAAE3jQsbkOvqrvxrr-f8Cs-QF_Zf-";
+  const SITE_KEY = RECAPTCHA_SITE_KEY;
 
   useEffect(() => {
     const siteKey = SITE_KEY;

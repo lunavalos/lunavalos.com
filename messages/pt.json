@@ -241,5 +241,16 @@
     "noPosts": "Nenhum post disponível no momento.",
     "backToList": "Voltar ao blog",
     "relatedPosts": "Artigos relacionados"
+  },
+  "Newsletter": {
+    "badge": "Mantenha-se atualizado",
+    "titlePart1": "INSCREVA-SE NA NOSSA",
+    "titlePart2": "NEWSLETTER",
+    "description": "Receba mensalmente as melhores guias, notícias e tendências sobre tecnologia e evolução digital diretamente na sua caixa de entrada.",
+    "inputPlaceholder": "Seu e-mail",
+    "buttonLabel": "Inscrever-me",
+    "buttonLoading": "Processando...",
+    "successMessage": "Obrigado por se inscrever! Em breve você receberá notícias nossas.",
+    "errorMessage": "Ocorreu um erro ao processar sua inscrição. Tente novamente."
   }
 }

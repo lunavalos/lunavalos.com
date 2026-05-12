@@ -241,5 +241,16 @@
     "noPosts": "目前没有文章可供阅读。",
     "backToList": "返回博客列表",
     "relatedPosts": "相关文章"
+  },
+  "Newsletter": {
+    "badge": "保持更新",
+    "titlePart1": "订阅我们的",
+    "titlePart2": "时事通讯",
+    "description": "每月直接在您的收件箱中接收有关技术和数字演变的最佳指南、新闻和趋势。",
+    "inputPlaceholder": "您的电子邮件地址",
+    "buttonLabel": "订阅",
+    "buttonLoading": "处理中...",
+    "successMessage": "感谢您的订阅！您很快就会收到我们的消息。",
+    "errorMessage": "处理您的订阅时出错。请再试一次。"
   }
 }

@@ -202,5 +202,16 @@
     "noPosts": "No hay publicaciones disponibles en este momento.",
     "backToList": "Volver al blog",
     "relatedPosts": "Artículos relacionados"
+  },
+  "Newsletter": {
+    "badge": "Mantente al día",
+    "titlePart1": "SUSCRÍBETE A NUESTRO",
+    "titlePart2": "NEWSLETTER",
+    "description": "Recibe mensualmente las mejores guías, noticias y tendencias sobre tecnología y evolución digital directamente en tu bandeja de entrada.",
+    "inputPlaceholder": "Tu correo electrónico",
+    "buttonLabel": "Suscribirme",
+    "buttonLoading": "Procesando...",
+    "successMessage": "¡Gracias por suscribirte! Pronto recibirás noticias nuestras.",
+    "errorMessage": "Hubo un error al procesar tu suscripción. Inténtalo de nuevo."
   }
 }
