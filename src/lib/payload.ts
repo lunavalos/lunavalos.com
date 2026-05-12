@@ -44,22 +44,25 @@ export interface PayloadResponse<T> {
 const PAYLOAD_URL = process.env.NEXT_PUBLIC_PAYLOAD_URL || 'http://localhost:3000';
 
 export async function getPosts(page = 1, limit = 10, locale = 'es'): Promise<PayloadResponse<Post>> {
+  const fetchUrl = `${PAYLOAD_URL}/api/posts?where[_status][equals]=published&depth=2&page=${page}&limit=${limit}&locale=${locale}`;
+  console.log('Fetching posts from:', fetchUrl);
+  
   try {
-    const res = await fetch(
-      `${PAYLOAD_URL}/api/posts?where[_status][equals]=published&depth=2&page=${page}&limit=${limit}&locale=${locale}`,
-      {
-        next: { revalidate: 60 }, // Revalidate every minute
-      }
-    );
+    const res = await fetch(fetchUrl, {
+      cache: 'no-store', // Disable cache for debugging
+    });
 
     if (!res.ok) {
-      console.error('Payload fetch error:', res.statusText);
+      const errorText = await res.text();
+      console.error(`Payload fetch error (${res.status}):`, errorText);
       return { docs: [], totalDocs: 0, limit, totalPages: 0, page };
     }
 
-    return res.json();
+    const data = await res.json();
+    console.log(`Successfully fetched ${data.docs?.length} posts`);
+    return data;
   } catch (error) {
-    console.error('getPosts error:', error);
+    console.error('getPosts network error:', error);
     return { docs: [], totalDocs: 0, limit, totalPages: 0, page };
   }
 }
