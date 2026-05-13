@@ -43,9 +43,8 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
         if (window.turnstile && turnstileRef.current) {
           window.turnstile.render(turnstileRef.current, {
             sitekey: TURNSTILE_SITE_KEY,
-            size: 'normal',
+            size: 'invisible',
             callback: (token: string) => {
-              console.log('>>> [CLIENT] Token recibido por callback');
               setToken(token);
             }
           });
@@ -55,9 +54,8 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
     } else if (window.turnstile && turnstileRef.current) {
       window.turnstile.render(turnstileRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
-        size: 'normal',
+        size: 'invisible',
         callback: (token: string) => {
-          console.log('>>> [CLIENT] Token recibido por callback');
           setToken(token);
         }
       });
@@ -73,16 +71,12 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
     try {
       let turnstileToken = token;
 
-      // Si no tenemos el token del callback, intentamos obtenerlo manualmente
       if (!turnstileToken && window.turnstile && turnstileRef.current) {
-        console.log('>>> [CLIENT] Ejecutando Turnstile manualmente...');
         turnstileToken = await window.turnstile.execute(turnstileRef.current);
       }
 
-      console.log('>>> [CLIENT] Enviando token:', turnstileToken ? 'SÍ' : 'NO');
-
       if (!turnstileToken) {
-        setError("Por favor, completa la verificación de seguridad (check verde).");
+        setError(tn('errorMessage'));
         setLoading(false);
         return;
       }

@@ -50,7 +50,7 @@ export default function ContactPage() {
         if (window.turnstile && turnstileRef.current) {
           window.turnstile.render(turnstileRef.current, {
             sitekey: TURNSTILE_SITE_KEY,
-            size: 'normal',
+            size: 'invisible',
             callback: (token: string) => {
               setToken(token);
             }
@@ -61,7 +61,7 @@ export default function ContactPage() {
     } else if (window.turnstile && turnstileRef.current) {
       window.turnstile.render(turnstileRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
-        size: 'normal',
+        size: 'invisible',
         callback: (token: string) => {
           setToken(token);
         }

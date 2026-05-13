@@ -25,10 +25,9 @@ export async function POST(req: Request) {
     const turnstileData = await turnstileRes.json();
 
     if (!turnstileData.success) {
-      console.error('>>> [API CONTACT] Turnstile failed:', turnstileData);
       return NextResponse.json({ 
         error: 'Fallo la verificación de seguridad (Turnstile)',
-        details: turnstileData['error-codes'] || turnstileData
+        details: turnstileData['error-codes']
       }, { status: 400 });
     }
 

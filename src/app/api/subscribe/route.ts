@@ -6,19 +6,13 @@ export async function POST(req: Request) {
   try {
     const body = await req.json().catch(() => null);
     if (!body) {
-      console.error('>>> [API SUBSCRIBE] Cuerpo de petición inválido o vacío');
       return NextResponse.json({ error: 'Cuerpo de petición inválido' }, { status: 400 });
     }
 
     const { email, turnstileToken } = body;
-    
-    console.log(`>>> [API SUBSCRIBE] email: ${email}, hasToken: ${!!turnstileToken}`);
 
     if (!email || !turnstileToken) {
-      return NextResponse.json({ 
-        error: 'Faltan datos obligatorios',
-        debug: { hasEmail: !!email, hasToken: !!turnstileToken }
-      }, { status: 400 });
+      return NextResponse.json({ error: 'Faltan datos obligatorios' }, { status: 400 });
     }
 
     // 1. Verificar Turnstile (Cloudflare)
@@ -34,12 +28,11 @@ export async function POST(req: Request) {
     });
 
     const turnstileData = await turnstileRes.json();
-    console.log('>>> [API SUBSCRIBE] Turnstile Response:', turnstileData);
 
     if (!turnstileData.success) {
       return NextResponse.json({ 
         error: 'Error de validación de seguridad (Turnstile)',
-        details: turnstileData.error_codes || turnstileData
+        details: turnstileData['error-codes']
       }, { status: 400 });
     }
 
