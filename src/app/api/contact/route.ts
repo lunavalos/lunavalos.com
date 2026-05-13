@@ -4,28 +4,31 @@ import nodemailer from 'nodemailer';
 export async function POST(req: Request) {
   try {
     const data = await req.json();
-    const { name, company, email, phone, services, message, recaptchaToken } = data;
+    const { name, company, email, phone, services, message, turnstileToken } = data;
 
-    // Verificar reCAPTCHA
-    if (!recaptchaToken) {
-      return NextResponse.json({ error: 'Falta el token de reCAPTCHA' }, { status: 400 });
+    // 1. Verificar Turnstile (Cloudflare)
+    const secretKey = process.env.TURNSTILE_SECRET_KEY || '0x4AAAAAADOJRIH-JU0BOqpREGRen2WtevU';
+    
+    if (!turnstileToken) {
+      return NextResponse.json({ error: 'Falta el token de seguridad' }, { status: 400 });
     }
 
-    const recaptchaRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    const params = new URLSearchParams();
+    params.append('secret', secretKey);
+    params.append('response', turnstileToken);
+
+    const turnstileRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
+      body: params,
     });
 
-    const recaptchaData = await recaptchaRes.json();
+    const turnstileData = await turnstileRes.json();
 
-    // En v3, verificamos success y también el score (puntuación)
-    // Un score de 0.5 o superior suele indicar que es un humano.
-    if (!recaptchaData.success || (recaptchaData.score !== undefined && recaptchaData.score < 0.5)) {
-      console.error('reCAPTCHA failed:', recaptchaData);
+    if (!turnstileData.success) {
+      console.error('Turnstile failed:', turnstileData);
       return NextResponse.json({ 
         error: 'Fallo la verificación de seguridad',
-        details: recaptchaData['error-codes']
+        details: turnstileData
       }, { status: 400 });
     }
 

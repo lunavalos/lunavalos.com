@@ -8,11 +8,11 @@ import { Phone, Mail, MapPin, Instagram, Facebook, Youtube, Linkedin, Send, User
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { RECAPTCHA_SITE_KEY } from '@/lib/constants';
+import { TURNSTILE_SITE_KEY } from '@/lib/constants';
 
 declare global {
   interface Window {
-    grecaptcha: any;
+    turnstile: any;
   }
 }
 
@@ -33,46 +33,18 @@ export default function ContactPage() {
   });
 
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const recaptchaRef = useRef<HTMLDivElement>(null);
-
-  const SITE_KEY = RECAPTCHA_SITE_KEY;
 
   useEffect(() => {
-    const siteKey = SITE_KEY;
-    
-    // Cargar script de reCAPTCHA v3
-    let script = document.querySelector(`script[src*="recaptcha/api.js?render="]`) as HTMLScriptElement;
-    if (!script) {
-      script = document.createElement('script');
-      script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+    // Cargar script de Turnstile
+    const scriptId = 'turnstile-script';
+    if (!document.getElementById(scriptId)) {
+      const script = document.createElement('script');
+      script.id = scriptId;
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
       script.async = true;
       script.defer = true;
       document.body.appendChild(script);
     }
-
-    // Añadir estilo para forzar posición a la izquierda
-    const styleId = 'recaptcha-left-style';
-    let style = document.getElementById(styleId);
-    if (!style) {
-      style = document.createElement('style');
-      style.id = styleId;
-      document.head.appendChild(style);
-    }
-
-    if (style) {
-      style.innerHTML = `
-        .grecaptcha-badge { 
-          visibility: hidden !important;
-        }
-      `;
-    }
-
-    // Asegurar que el badge sea visible si regresamos a la página
-    const showBadge = () => {
-      const badge = document.querySelector('.grecaptcha-badge') as HTMLElement;
-      if (badge) badge.style.visibility = 'visible';
-    };
-    showBadge();
 
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
@@ -81,16 +53,6 @@ export default function ContactPage() {
         setSelectedServices([service]);
       }
     }
-
-    return () => {
-      // Esconder el badge al salir de la página
-      const badge = document.querySelector('.grecaptcha-badge') as HTMLElement;
-      if (badge) badge.style.visibility = 'hidden';
-
-      if (style && style.parentNode) {
-        style.parentNode.removeChild(style);
-      }
-    };
   }, []);
 
   const toggleService = (id: string) => {
@@ -110,24 +72,21 @@ export default function ContactPage() {
     setSuccess(false);
     setError(false);
 
-    if (!window.grecaptcha) {
+    if (!window.turnstile) {
       setError(true);
       setLoading(false);
       return;
     }
 
     try {
-      // Ejecutar reCAPTCHA v3 para obtener el token
-      const token = await new Promise<string>((resolve) => {
-        window.grecaptcha.ready(() => {
-          window.grecaptcha.execute(SITE_KEY, { action: 'contact_form' }).then((t: string) => {
-            resolve(t);
-          });
-        });
+      // Turnstile execution
+      const token = await window.turnstile.execute(null, {
+        sitekey: TURNSTILE_SITE_KEY,
+        action: 'contact_form',
       });
 
       if (!token) {
-        throw new Error('No recaptcha token');
+        throw new Error('No turnstile token');
       }
 
       const res = await fetch('/api/contact', {
@@ -136,7 +95,7 @@ export default function ContactPage() {
         body: JSON.stringify({
           ...formData,
           services: selectedServices,
-          recaptchaToken: token
+          turnstileToken: token
         })
       });
 
@@ -144,7 +103,6 @@ export default function ContactPage() {
         setSuccess(true);
         setFormData({ name: '', company: '', email: '', phone: '', message: '' });
         setSelectedServices([]);
-        window.grecaptcha?.reset();
       } else {
         setError(true);
       }
