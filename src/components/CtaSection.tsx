@@ -139,13 +139,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
               {tn('description')}
             </p>
           </div>
-
           <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
-            {/* Contenedor para Turnstile (Renderizado Explícito) */}
-            <div 
-              ref={turnstileRef} 
-            ></div>
-            
             <div className="relative">
               <input
                 required
@@ -178,6 +172,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
             <p className="text-[8px] text-white/40 uppercase tracking-widest mt-2 leading-relaxed">
               Protected by Cloudflare Turnstile. <a href="https://www.cloudflare.com/privacypolicy/" className="hover:text-white underline">Privacy</a> & <a href="https://www.cloudflare.com/website-terms/" className="hover:text-white underline">Terms</a>.
             </p>
+            <div ref={turnstileRef} className="hidden"></div>
           </form>
         </div>
       </div>

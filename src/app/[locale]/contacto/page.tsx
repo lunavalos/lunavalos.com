@@ -261,11 +261,6 @@ export default function ContactPage() {
               </div>
 
               <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Contenedor para Turnstile (Renderizado Explícito) */}
-                <div 
-                  ref={turnstileRef} 
-                ></div>
-
                 {/* Nombre */}
                 <div className="flex flex-col gap-3 group">
                   <label className="flex items-center gap-2 text-brand font-bold text-[10px] uppercase tracking-widest leading-none">
@@ -398,6 +393,8 @@ export default function ContactPage() {
                     {t('errorMessage')}
                   </motion.div>
                 )}
+
+                <div ref={turnstileRef} style={{ display: 'none', position: 'absolute', width: 0, height: 0 }}></div>
               </form>
 
               <p className="text-[10px] leading-relaxed text-gray-600  italic">
