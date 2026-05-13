@@ -54,12 +54,13 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
     }
 
     try {
-      // Resetear por si acaso hay un intento previo bloqueado
-      window.turnstile.reset(turnstileRef.current);
+      // Intentar resetear (ahora sí habrá algo que resetear)
+      if (window.turnstile) {
+        try { window.turnstile.reset(turnstileRef.current); } catch (e) { /* ignore */ }
+      }
 
-      // Turnstile execution con Referencia Directa
+      // Turnstile execution
       const token = await window.turnstile.execute(turnstileRef.current, {
-        sitekey: TURNSTILE_SITE_KEY,
         action: 'newsletter_subscribe',
       });
 
@@ -129,8 +130,13 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
           </div>
 
           <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
-            {/* Contenedor invisible para Turnstile */}
-            <div ref={turnstileRef} style={{ display: 'none' }}></div>
+            {/* Contenedor con Renderizado Automático */}
+            <div 
+              ref={turnstileRef} 
+              className="cf-turnstile"
+              data-sitekey={TURNSTILE_SITE_KEY}
+              data-size="invisible"
+            ></div>
             
             <div className="relative">
               <input
