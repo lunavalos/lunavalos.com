@@ -64,10 +64,12 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
       return;
     }
 
+    console.log('>>> [CLIENT] Iniciando ejecución de reCAPTCHA con Site Key:', RECAPTCHA_SITE_KEY);
     try {
       const token = await new Promise<string>((resolve) => {
         window.grecaptcha.ready(() => {
           window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'newsletter_subscribe' }).then((t: string) => {
+            console.log('>>> [CLIENT] Token generado con éxito');
             resolve(t);
           });
         });
