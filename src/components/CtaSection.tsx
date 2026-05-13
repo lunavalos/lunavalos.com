@@ -60,12 +60,14 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
       }
 
       // Turnstile execution
+      console.log('>>> [CLIENT] Ejecutando Turnstile...');
       const token = await window.turnstile.execute(turnstileRef.current, {
         action: 'newsletter_subscribe',
       });
+      console.log('>>> [CLIENT] Token obtenido:', token ? 'SÍ (longitud: ' + token.length + ')' : 'NO (vacío)');
 
       if (!token) {
-        setError(tn('errorMessage'));
+        setError("Error de seguridad: No se pudo generar el token. Revisa tu conexión o bloqueadores.");
         setLoading(false);
         return;
       }
