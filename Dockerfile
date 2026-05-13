@@ -18,7 +18,8 @@ COPY . .
 
 # Deshabilitar telemetría y aumentar memoria para el build
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_OPTIONS="--max-old-space-size=4096"
+ENV NODE_OPTIONS="--max-old-space-size=6144"
+ENV CI=true
 
 RUN npm run build
 
