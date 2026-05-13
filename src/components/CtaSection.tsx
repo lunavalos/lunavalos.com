@@ -41,8 +41,8 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
         if (window.turnstile && turnstileRef.current) {
           window.turnstile.render(turnstileRef.current, {
             sitekey: TURNSTILE_SITE_KEY,
-            size: 'invisible',
-            execution: 'execute', // <--- ESTO EVITA QUE SE EJECUTE SOLO
+            size: 'normal',
+            execution: 'execute', 
           });
         }
       };
@@ -51,7 +51,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
       // Si el script ya existe, renderizar directamente
       window.turnstile.render(turnstileRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
-        size: 'invisible',
+        size: 'normal',
         execution: 'execute',
       });
     }

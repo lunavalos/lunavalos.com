@@ -48,7 +48,7 @@ export default function ContactPage() {
         if (window.turnstile && turnstileRef.current) {
           window.turnstile.render(turnstileRef.current, {
             sitekey: TURNSTILE_SITE_KEY,
-            size: 'invisible',
+            size: 'normal',
             execution: 'execute',
           });
         }
@@ -57,7 +57,7 @@ export default function ContactPage() {
     } else if (window.turnstile && turnstileRef.current) {
       window.turnstile.render(turnstileRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
-        size: 'invisible',
+        size: 'normal',
         execution: 'execute',
       });
     }
