@@ -44,7 +44,20 @@ export default function ContactPage() {
       script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
       script.async = true;
       script.defer = true;
+      script.onload = () => {
+        if (window.turnstile && turnstileRef.current) {
+          window.turnstile.render(turnstileRef.current, {
+            sitekey: TURNSTILE_SITE_KEY,
+            size: 'invisible',
+          });
+        }
+      };
       document.body.appendChild(script);
+    } else if (window.turnstile && turnstileRef.current) {
+      window.turnstile.render(turnstileRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        size: 'invisible',
+      });
     }
 
     if (typeof window !== 'undefined') {
@@ -246,12 +259,9 @@ export default function ContactPage() {
               </div>
 
               <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Contenedor con Renderizado Automático */}
+                {/* Contenedor para Turnstile (Renderizado Explícito) */}
                 <div 
                   ref={turnstileRef} 
-                  className="cf-turnstile"
-                  data-sitekey={TURNSTILE_SITE_KEY}
-                  data-size="invisible"
                 ></div>
 
                 {/* Nombre */}

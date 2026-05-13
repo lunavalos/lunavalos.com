@@ -37,7 +37,21 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
       script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
       script.async = true;
       script.defer = true;
+      script.onload = () => {
+        if (window.turnstile && turnstileRef.current) {
+          window.turnstile.render(turnstileRef.current, {
+            sitekey: TURNSTILE_SITE_KEY,
+            size: 'invisible',
+          });
+        }
+      };
       document.body.appendChild(script);
+    } else if (window.turnstile && turnstileRef.current) {
+      // Si el script ya existe, renderizar directamente
+      window.turnstile.render(turnstileRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        size: 'invisible',
+      });
     }
   }, []);
 
@@ -132,12 +146,9 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
           </div>
 
           <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
-            {/* Contenedor con Renderizado Automático */}
+            {/* Contenedor para Turnstile (Renderizado Explícito) */}
             <div 
               ref={turnstileRef} 
-              className="cf-turnstile"
-              data-sitekey={TURNSTILE_SITE_KEY}
-              data-size="invisible"
             ></div>
             
             <div className="relative">
