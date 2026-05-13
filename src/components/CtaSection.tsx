@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { MapPin, Mail, Globe, Send, CheckCircle2, AlertCircle } from "lucide-react";
 import BorderGlow from "./BorderGlow";
 import { Link } from "@/navigation";
-import { RECAPTCHA_SITE_KEY } from "@/lib/constants";
+import { TURNSTILE_SITE_KEY } from "@/lib/constants";
 
 export default function CtaSection({ noContainer = false }: { noContainer?: boolean }) {
   const t = useTranslations('CTA');
@@ -140,7 +140,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
               className={`w-full py-5 rounded-full font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all ${loading ? 'bg-white/10 text-white/30 cursor-not-allowed' : 'bg-secondary text-black hover:bg-brand-light hover:text-white hover:scale-[1.02] active:scale-95 hover:-translate-y-1'
                 }`}
             >
-              {loading ? tn('buttonLoading') : 'PROBANDO...'} <Send className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              {loading ? tn('buttonLoading') : tn('buttonLabel')} <Send className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </button>
 
             {success && (
@@ -155,7 +155,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
             )}
 
             <p className="text-[8px] text-white/40 uppercase tracking-widest mt-2 leading-relaxed">
-              Protected by reCAPTCHA. <a href="https://policies.google.com/privacy" className="hover:text-white underline">Privacy</a> & <a href="https://policies.google.com/terms" className="hover:text-white underline">Terms</a>.
+              Protected by Cloudflare Turnstile. <a href="https://www.cloudflare.com/privacypolicy/" className="hover:text-white underline">Privacy</a> & <a href="https://www.cloudflare.com/website-terms/" className="hover:text-white underline">Terms</a>.
             </p>
           </form>
         </div>
