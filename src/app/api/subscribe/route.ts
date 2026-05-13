@@ -41,7 +41,15 @@ export async function POST(req: Request) {
 
     if (!recaptchaData.success || (recaptchaData.score !== undefined && recaptchaData.score < 0.5)) {
       console.warn('>>> [API SUBSCRIBE] Validación de seguridad fallida');
-      return NextResponse.json({ error: 'ERROR_API_V3_NUEVA' }, { status: 400 });
+      return NextResponse.json({ 
+        error: 'ERROR_API_V3_NUEVA',
+        debug: {
+          success: recaptchaData.success,
+          score: recaptchaData.score,
+          errors: recaptchaData['error-codes'],
+          secretPrefix: process.env.RECAPTCHA_SECRET_KEY?.substring(0, 7)
+        }
+      }, { status: 400 });
     }
 
     // 2. Enviar a Resend

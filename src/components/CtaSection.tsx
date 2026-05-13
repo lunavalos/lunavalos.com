@@ -87,6 +87,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
         setSuccess(true);
         setEmail('');
       } else {
+        console.error('>>> [CLIENT] Error en suscripción:', data);
         setError(data.error || tn('errorMessage'));
       }
     } catch (err) {
