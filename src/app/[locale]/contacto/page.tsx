@@ -80,6 +80,9 @@ export default function ContactPage() {
     }
 
     try {
+      // Resetear por si acaso
+      window.turnstile.reset(turnstileRef.current);
+
       // Turnstile execution con Referencia Directa
       const token = await window.turnstile.execute(turnstileRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
