@@ -49,6 +49,7 @@ export default function ContactPage() {
           window.turnstile.render(turnstileRef.current, {
             sitekey: TURNSTILE_SITE_KEY,
             size: 'invisible',
+            execution: 'execute',
           });
         }
       };
@@ -57,6 +58,7 @@ export default function ContactPage() {
       window.turnstile.render(turnstileRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
         size: 'invisible',
+        execution: 'execute',
       });
     }
 

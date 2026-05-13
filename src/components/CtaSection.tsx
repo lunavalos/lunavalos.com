@@ -42,6 +42,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
           window.turnstile.render(turnstileRef.current, {
             sitekey: TURNSTILE_SITE_KEY,
             size: 'invisible',
+            execution: 'execute', // <--- ESTO EVITA QUE SE EJECUTE SOLO
           });
         }
       };
@@ -51,6 +52,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
       window.turnstile.render(turnstileRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
         size: 'invisible',
+        execution: 'execute',
       });
     }
   }, []);
