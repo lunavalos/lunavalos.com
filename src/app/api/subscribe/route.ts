@@ -19,7 +19,8 @@ export async function POST(req: Request) {
 
     // 1. Verificar reCAPTCHA v3
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-    console.log(`>>> [API SUBSCRIBE] Verificando reCAPTCHA. SecretKey presente: ${!!secretKey} (empieza con: ${secretKey?.substring(0, 4)}...)`);
+    const maskedSecret = secretKey ? `${secretKey.substring(0, 4)}...${secretKey.substring(secretKey.length - 4)}` : 'MISSING';
+    console.log(`>>> [API SUBSCRIBE] Verificando reCAPTCHA. SecretKey: ${maskedSecret}`);
     
     const params = new URLSearchParams();
     params.append('secret', secretKey || '');
