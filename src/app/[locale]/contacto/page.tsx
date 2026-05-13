@@ -33,6 +33,7 @@ export default function ContactPage() {
   });
 
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const turnstileRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Cargar script de Turnstile
@@ -72,15 +73,15 @@ export default function ContactPage() {
     setSuccess(false);
     setError(false);
 
-    if (!window.turnstile) {
+    if (!window.turnstile || !turnstileRef.current) {
       setError(true);
       setLoading(false);
       return;
     }
 
     try {
-      // Turnstile execution con contenedor explícito
-      const token = await window.turnstile.execute('#turnstile-container', {
+      // Turnstile execution con Referencia Directa
+      const token = await window.turnstile.execute(turnstileRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
         action: 'contact_form',
       });
@@ -222,12 +223,12 @@ export default function ContactPage() {
                     </a>
                   </div>
 
-                  {/* reCAPTCHA Attribution */}
+                  {/* Turnstile Attribution */}
                   <div className="mt-12 text-[9px] text-white/30 leading-relaxed uppercase tracking-widest max-w-[200px]">
-                    This site is protected by reCAPTCHA and the Google 
-                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline mx-1">Privacy Policy</a> 
+                    This site is protected by Cloudflare Turnstile and the Cloudflare 
+                    <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline mx-1">Privacy Policy</a> 
                     and 
-                    <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline mx-1">Terms of Service</a> apply.
+                    <a href="https://www.cloudflare.com/website-terms/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline mx-1">Terms of Service</a> apply.
                   </div>
                 </div>
               </div>
@@ -242,7 +243,7 @@ export default function ContactPage() {
 
               <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Contenedor invisible para Turnstile */}
-                <div id="turnstile-container" style={{ display: 'none' }}></div>
+                <div ref={turnstileRef} style={{ display: 'none' }}></div>
 
                 {/* Nombre */}
                 <div className="flex flex-col gap-3 group">
@@ -345,10 +346,6 @@ export default function ContactPage() {
                     placeholder={t('fieldMessagePlaceholder')}
                     className="w-full bg-brand/5 border-b-2 border-brand/10 p-4 text-brand placeholder:text-brand/30 focus:outline-none focus:border-secondary transition-all  resize-none"
                   />
-                </div>
-
-                {/* reCAPTCHA - v3 is automatic, we just leave space if needed or remove the container */}
-                <div className="md:col-span-2">
                 </div>
 
                 {/* Botón Enviar */}

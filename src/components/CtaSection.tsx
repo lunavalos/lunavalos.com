@@ -12,6 +12,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
   const t = useTranslations('CTA');
   const tn = useTranslations('Newsletter');
   const sectionRef = useRef(null);
+  const turnstileRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -46,15 +47,15 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
     setSuccess(false);
     setError(null);
 
-    if (!window.turnstile) {
+    if (!window.turnstile || !turnstileRef.current) {
       setError(tn('errorMessage'));
       setLoading(false);
       return;
     }
 
     try {
-      // Turnstile execution con contenedor explícito
-      const token = await window.turnstile.execute('#turnstile-container', {
+      // Turnstile execution con Referencia Directa
+      const token = await window.turnstile.execute(turnstileRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
         action: 'newsletter_subscribe',
       });
@@ -71,7 +72,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
         body: JSON.stringify({ email, turnstileToken: token })
       });
 
-      const data = await res.json() as { success?: boolean; error?: string };
+      const data = await res.json();
 
       if (res.ok) {
         setSuccess(true);
@@ -126,7 +127,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
 
           <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
             {/* Contenedor invisible para Turnstile */}
-            <div id="turnstile-container" style={{ display: 'none' }}></div>
+            <div ref={turnstileRef} style={{ display: 'none' }}></div>
             
             <div className="relative">
               <input
