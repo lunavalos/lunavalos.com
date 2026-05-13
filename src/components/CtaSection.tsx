@@ -28,27 +28,15 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Asegurar que el script de reCAPTCHA esté disponible
-    const siteKey = RECAPTCHA_SITE_KEY;
-    let script = document.querySelector(`script[src*="recaptcha/api.js?render="]`) as HTMLScriptElement;
-    if (!script) {
-      script = document.createElement('script');
-      script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+    // Cargar script de Turnstile
+    const scriptId = 'turnstile-script';
+    if (!document.getElementById(scriptId)) {
+      const script = document.createElement('script');
+      script.id = scriptId;
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
       script.async = true;
       script.defer = true;
       document.body.appendChild(script);
-    }
-
-    // Estilo para ocultar el badge globalmente
-    const styleId = 'recaptcha-hide-style';
-    let style = document.getElementById(styleId);
-    if (!style) {
-      style = document.createElement('style');
-      style.id = styleId;
-      document.head.appendChild(style);
-    }
-    if (style) {
-      style.innerHTML = `.grecaptcha-badge { visibility: hidden !important; }`;
     }
   }, []);
 
@@ -58,27 +46,29 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
     setSuccess(false);
     setError(null);
 
-    if (!window.grecaptcha) {
+    if (!window.turnstile) {
       setError(tn('errorMessage'));
       setLoading(false);
       return;
     }
 
-    console.log('>>> [CLIENT] Iniciando ejecución de reCAPTCHA con Site Key:', RECAPTCHA_SITE_KEY);
     try {
-      const token = await new Promise<string>((resolve) => {
-        window.grecaptcha.ready(() => {
-          window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'newsletter_subscribe' }).then((t: string) => {
-            console.log('>>> [CLIENT] Token generado con éxito');
-            resolve(t);
-          });
-        });
+      // Turnstile invisible execution
+      const token = await window.turnstile.execute(null, {
+        sitekey: TURNSTILE_SITE_KEY,
+        action: 'newsletter_subscribe',
       });
+
+      if (!token) {
+        setError(tn('errorMessage'));
+        setLoading(false);
+        return;
+      }
 
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, recaptchaToken: token })
+        body: JSON.stringify({ email, turnstileToken: token })
       });
 
       const data = await res.json() as { success?: boolean; error?: string };
@@ -91,6 +81,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
         setError(data.error || tn('errorMessage'));
       }
     } catch (err) {
+      console.error('>>> [CLIENT] Error crítico:', err);
       setError(tn('errorMessage'));
     } finally {
       setLoading(false);

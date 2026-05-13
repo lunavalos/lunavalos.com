@@ -17,39 +17,28 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Faltan datos obligatorios (email o token)' }, { status: 400 });
     }
 
-    // 1. Verificar reCAPTCHA v3
-    const secretKey = process.env.RECAPTCHA_SECRET_KEY || '';
-    const hasSecret = secretKey.length > 0;
-    const secretStart = hasSecret ? secretKey.substring(0, 6) : 'VACIO';
+    // 1. Verificar Turnstile (Cloudflare)
+    const turnstileToken = body?.turnstileToken;
+    const secretKey = process.env.TURNSTILE_SECRET_KEY || '0x4AAAAAADOJRIH-JU0BOqpREGRen2WtevU';
     
-    console.log(`>>> [API SUBSCRIBE] Verificando reCAPTCHA. SecretKey presente: ${hasSecret}, Empieza con: ${secretStart}`);
+    console.log(`>>> [API SUBSCRIBE] Verificando Turnstile. SecretKey presente: ${!!process.env.TURNSTILE_SECRET_KEY}`);
 
     const params = new URLSearchParams();
     params.append('secret', secretKey);
-    params.append('response', recaptchaToken);
+    params.append('response', turnstileToken || '');
 
-    const recaptchaRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    const turnstileRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: params.toString(),
+      body: params,
     });
 
-    const recaptchaData = await recaptchaRes.json() as { 
-      success: boolean; 
-      score?: number; 
-      'error-codes'?: string[];
-    };
+    const turnstileData = await turnstileRes.json();
+    console.log('>>> [API SUBSCRIBE] Resultado Turnstile:', turnstileData);
 
-    if (!recaptchaData.success || (recaptchaData.score !== undefined && recaptchaData.score < 0.5)) {
+    if (!turnstileData.success) {
       return NextResponse.json({ 
-        error: 'ERROR_API_V3_NUEVA',
-        debug: {
-          success: recaptchaData.success,
-          score: recaptchaData.score,
-          errors: recaptchaData['error-codes'],
-          secretFound: hasSecret,
-          secretStart: secretStart
-        }
+        error: 'Error de validación de seguridad (Turnstile)',
+        debug: turnstileData
       }, { status: 400 });
     }
 

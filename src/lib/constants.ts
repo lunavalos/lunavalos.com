@@ -1,1 +1,1 @@
-export const RECAPTCHA_SITE_KEY = "6LeIBucsAAAAANgF7gPA2xz3yVvF3AhsP9bvT1ur";
+export const TURNSTILE_SITE_KEY = "0x4AAAAAADOJRHRQTKpJinsp";
