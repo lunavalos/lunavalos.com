@@ -28,6 +28,8 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const [token, setToken] = useState<string | null>(null);
+
   useEffect(() => {
     // Cargar script de Turnstile
     const scriptId = 'turnstile-script';
@@ -42,17 +44,22 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
           window.turnstile.render(turnstileRef.current, {
             sitekey: TURNSTILE_SITE_KEY,
             size: 'normal',
-            execution: 'execute', 
+            callback: (token: string) => {
+              console.log('>>> [CLIENT] Token recibido por callback');
+              setToken(token);
+            }
           });
         }
       };
       document.body.appendChild(script);
     } else if (window.turnstile && turnstileRef.current) {
-      // Si el script ya existe, renderizar directamente
       window.turnstile.render(turnstileRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
         size: 'normal',
-        execution: 'execute',
+        callback: (token: string) => {
+          console.log('>>> [CLIENT] Token recibido por callback');
+          setToken(token);
+        }
       });
     }
   }, []);
@@ -63,27 +70,19 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
     setSuccess(false);
     setError(null);
 
-    if (!window.turnstile || !turnstileRef.current) {
-      setError(tn('errorMessage'));
-      setLoading(false);
-      return;
-    }
-
     try {
-      // Intentar resetear (ahora sí habrá algo que resetear)
-      if (window.turnstile) {
-        try { window.turnstile.reset(turnstileRef.current); } catch (e) { /* ignore */ }
+      let turnstileToken = token;
+
+      // Si no tenemos el token del callback, intentamos obtenerlo manualmente
+      if (!turnstileToken && window.turnstile && turnstileRef.current) {
+        console.log('>>> [CLIENT] Ejecutando Turnstile manualmente...');
+        turnstileToken = await window.turnstile.execute(turnstileRef.current);
       }
 
-      // Turnstile execution
-      console.log('>>> [CLIENT] Ejecutando Turnstile...');
-      const token = await window.turnstile.execute(turnstileRef.current, {
-        action: 'newsletter_subscribe',
-      });
-      console.log('>>> [CLIENT] Token obtenido:', token ? 'SÍ (longitud: ' + token.length + ')' : 'NO (vacío)');
+      console.log('>>> [CLIENT] Enviando token:', turnstileToken ? 'SÍ' : 'NO');
 
-      if (!token) {
-        setError("Error de seguridad: No se pudo generar el token. Revisa tu conexión o bloqueadores.");
+      if (!turnstileToken) {
+        setError("Por favor, completa la verificación de seguridad (check verde).");
         setLoading(false);
         return;
       }
@@ -91,7 +90,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, turnstileToken: token })
+        body: JSON.stringify({ email, turnstileToken })
       });
 
       const data = await res.json();

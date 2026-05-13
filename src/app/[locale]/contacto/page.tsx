@@ -35,6 +35,8 @@ export default function ContactPage() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const turnstileRef = useRef<HTMLDivElement>(null);
 
+  const [token, setToken] = useState<string | null>(null);
+
   useEffect(() => {
     // Cargar script de Turnstile
     const scriptId = 'turnstile-script';
@@ -49,7 +51,9 @@ export default function ContactPage() {
           window.turnstile.render(turnstileRef.current, {
             sitekey: TURNSTILE_SITE_KEY,
             size: 'normal',
-            execution: 'execute',
+            callback: (token: string) => {
+              setToken(token);
+            }
           });
         }
       };
@@ -58,7 +62,9 @@ export default function ContactPage() {
       window.turnstile.render(turnstileRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
         size: 'normal',
-        execution: 'execute',
+        callback: (token: string) => {
+          setToken(token);
+        }
       });
     }
 
@@ -88,25 +94,18 @@ export default function ContactPage() {
     setSuccess(false);
     setError(false);
 
-    if (!window.turnstile || !turnstileRef.current) {
-      setError(true);
-      setLoading(false);
-      return;
-    }
-
     try {
-      // Intentar resetear
-      if (window.turnstile) {
-        try { window.turnstile.reset(turnstileRef.current); } catch (e) { /* ignore */ }
+      let turnstileToken = token;
+
+      // Si no tenemos el token del callback, intentamos obtenerlo manualmente
+      if (!turnstileToken && window.turnstile && turnstileRef.current) {
+        turnstileToken = await window.turnstile.execute(turnstileRef.current);
       }
 
-      // Turnstile execution
-      const token = await window.turnstile.execute(turnstileRef.current, {
-        action: 'contact_form',
-      });
-
-      if (!token) {
-        throw new Error('No turnstile token');
+      if (!turnstileToken) {
+        setError(true);
+        setLoading(false);
+        return;
       }
 
       const res = await fetch('/api/contact', {
@@ -115,7 +114,7 @@ export default function ContactPage() {
         body: JSON.stringify({
           ...formData,
           services: selectedServices,
-          turnstileToken: token
+          turnstileToken
         })
       });
 
@@ -123,6 +122,7 @@ export default function ContactPage() {
         setSuccess(true);
         setFormData({ name: '', company: '', email: '', phone: '', message: '' });
         setSelectedServices([]);
+        setToken(null); // Limpiar token tras éxito
       } else {
         setError(true);
       }
