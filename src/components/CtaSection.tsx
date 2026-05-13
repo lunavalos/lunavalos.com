@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { MapPin, Mail, Globe, Send, CheckCircle2, AlertCircle } from "lucide-react";
 import BorderGlow from "./BorderGlow";
 import { Link } from "@/navigation";
@@ -11,6 +11,15 @@ import { RECAPTCHA_SITE_KEY } from "@/lib/constants";
 export default function CtaSection({ noContainer = false }: { noContainer?: boolean }) {
   const t = useTranslations('CTA');
   const tn = useTranslations('Newsletter');
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const opacity = useTransform(scrollYProgress, [0.1, 0.2, 0.8, 0.9], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0.1, 0.2, 0.8, 0.9], [40, 0, 0, -40]);
 
   // Newsletter logic
   const [email, setEmail] = useState('');
@@ -178,14 +187,11 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
   );
 
   return (
-    <section className="relative w-full py-24 md:py-32 flex justify-center bg-transparent">
+    <section ref={sectionRef} className="relative w-full py-24 md:py-32 flex justify-center bg-transparent">
       <div className="max-w-7xl mx-auto px-6 w-full">
         {/* Container */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          style={{ opacity, y }}
           className="w-full"
         >
           {noContainer ? (
