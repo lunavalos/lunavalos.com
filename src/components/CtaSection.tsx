@@ -148,8 +148,7 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
               className={`w-full py-5 rounded-full font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all ${loading ? 'bg-white/10 text-white/30 cursor-not-allowed' : 'bg-secondary text-black hover:bg-brand-light hover:text-white hover:scale-[1.02] active:scale-95 hover:-translate-y-1'
                 }`}
             >
-              {loading ? tn('buttonLoading') : tn('buttonLabel')}
-              {!loading && <Send className="w-3 h-3" />}
+              {loading ? tn('loading') : 'PROBANDO...'} <Send className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </button>
 
             {success && (
