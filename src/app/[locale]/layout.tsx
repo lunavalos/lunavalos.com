@@ -70,6 +70,12 @@ export default async function RootLayout({
       lang={locale}
       className={`${rubik.variable} h-full antialiased dark`}
     >
+      <head>
+        <meta 
+          httpEquiv="Content-Security-Policy" 
+          content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com;"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-black text-white selection:bg-indigo-500/30">
         <Preloader />
         <SchemaOrg />
