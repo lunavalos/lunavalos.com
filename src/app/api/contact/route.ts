@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     const { name, company, email, phone, services, message, turnstileToken } = data;
 
     // 1. Verificar Turnstile (Cloudflare)
-    const secretKey = process.env.TURNSTILE_SECRET_KEY || '0x4AAAAAADOJRIH-JU0BOqpREGRen2WtevU';
+    const secretKey = process.env.TURNSTILE_SECRET_KEY || '0x4AAAAAADOlWslDlkaKKLwwfvjWVrgEcGg';
     
     if (!turnstileToken) {
       return NextResponse.json({ error: 'Falta el token de seguridad' }, { status: 400 });

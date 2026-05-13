@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     }
 
     // 1. Verificar Turnstile (Cloudflare)
-    const secretKey = process.env.TURNSTILE_SECRET_KEY || '0x4AAAAAADOJRIH-JU0BOqpREGRen2WtevU';
+    const secretKey = process.env.TURNSTILE_SECRET_KEY || '0x4AAAAAADOlWslDlkaKKLwwfvjWVrgEcGg';
     
     const params = new URLSearchParams();
     params.append('secret', secretKey);

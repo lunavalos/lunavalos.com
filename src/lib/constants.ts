@@ -1,1 +1,1 @@
-export const TURNSTILE_SITE_KEY = "0x4AAAAAADOJRHRQTKpJinsp";
+export const TURNSTILE_SITE_KEY = "0x4AAAAAADOlWo2TaC-u8aCH";
