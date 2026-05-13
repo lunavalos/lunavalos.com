@@ -10,22 +10,23 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Cuerpo de petición inválido' }, { status: 400 });
     }
 
-    const { email, recaptchaToken } = body;
-    console.log(`>>> [API SUBSCRIBE] Datos recibidos: email=${email}, hasToken=${!!recaptchaToken}`);
+    const { email, turnstileToken } = body;
+    
+    console.log(`>>> [API SUBSCRIBE] email: ${email}, hasToken: ${!!turnstileToken}`);
 
-    if (!email || !recaptchaToken) {
-      return NextResponse.json({ error: 'Faltan datos obligatorios (email o token)' }, { status: 400 });
+    if (!email || !turnstileToken) {
+      return NextResponse.json({ 
+        error: 'Faltan datos obligatorios',
+        debug: { hasEmail: !!email, hasToken: !!turnstileToken }
+      }, { status: 400 });
     }
 
     // 1. Verificar Turnstile (Cloudflare)
-    const turnstileToken = body?.turnstileToken;
     const secretKey = process.env.TURNSTILE_SECRET_KEY || '0x4AAAAAADOJRIH-JU0BOqpREGRen2WtevU';
     
-    console.log(`>>> [API SUBSCRIBE] Verificando Turnstile. SecretKey presente: ${!!process.env.TURNSTILE_SECRET_KEY}`);
-
     const params = new URLSearchParams();
     params.append('secret', secretKey);
-    params.append('response', turnstileToken || '');
+    params.append('response', turnstileToken);
 
     const turnstileRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
@@ -33,12 +34,12 @@ export async function POST(req: Request) {
     });
 
     const turnstileData = await turnstileRes.json();
-    console.log('>>> [API SUBSCRIBE] Resultado Turnstile:', turnstileData);
+    console.log('>>> [API SUBSCRIBE] Turnstile Response:', turnstileData);
 
     if (!turnstileData.success) {
       return NextResponse.json({ 
         error: 'Error de validación de seguridad (Turnstile)',
-        debug: turnstileData
+        details: turnstileData.error_codes || turnstileData
       }, { status: 400 });
     }
 
