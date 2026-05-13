@@ -18,12 +18,14 @@ export async function POST(req: Request) {
     }
 
     // 1. Verificar reCAPTCHA v3
-    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-    const maskedSecret = secretKey ? `${secretKey.substring(0, 4)}...${secretKey.substring(secretKey.length - 4)}` : 'MISSING';
-    console.log(`>>> [API SUBSCRIBE] Verificando reCAPTCHA. SecretKey: ${maskedSecret}`);
+    const secretKey = process.env.RECAPTCHA_SECRET_KEY || '';
+    const hasSecret = secretKey.length > 0;
+    const secretStart = hasSecret ? secretKey.substring(0, 6) : 'VACIO';
     
+    console.log(`>>> [API SUBSCRIBE] Verificando reCAPTCHA. SecretKey presente: ${hasSecret}, Empieza con: ${secretStart}`);
+
     const params = new URLSearchParams();
-    params.append('secret', secretKey || '');
+    params.append('secret', secretKey);
     params.append('response', recaptchaToken);
 
     const recaptchaRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
@@ -37,17 +39,16 @@ export async function POST(req: Request) {
       score?: number; 
       'error-codes'?: string[];
     };
-    console.log('>>> [API SUBSCRIBE] Resultado reCAPTCHA:', recaptchaData);
 
     if (!recaptchaData.success || (recaptchaData.score !== undefined && recaptchaData.score < 0.5)) {
-      console.warn('>>> [API SUBSCRIBE] Validación de seguridad fallida');
       return NextResponse.json({ 
         error: 'ERROR_API_V3_NUEVA',
         debug: {
           success: recaptchaData.success,
           score: recaptchaData.score,
           errors: recaptchaData['error-codes'],
-          secretPrefix: process.env.RECAPTCHA_SECRET_KEY?.substring(0, 7)
+          secretFound: hasSecret,
+          secretStart: secretStart
         }
       }, { status: 400 });
     }
