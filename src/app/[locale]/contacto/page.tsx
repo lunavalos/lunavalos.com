@@ -79,8 +79,8 @@ export default function ContactPage() {
     }
 
     try {
-      // Turnstile execution
-      const token = await window.turnstile.execute(null, {
+      // Turnstile execution con contenedor explícito
+      const token = await window.turnstile.execute('#turnstile-container', {
         sitekey: TURNSTILE_SITE_KEY,
         action: 'contact_form',
       });
@@ -241,6 +241,9 @@ export default function ContactPage() {
               </div>
 
               <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Contenedor invisible para Turnstile */}
+                <div id="turnstile-container" style={{ display: 'none' }}></div>
+
                 {/* Nombre */}
                 <div className="flex flex-col gap-3 group">
                   <label className="flex items-center gap-2 text-brand font-bold text-[10px] uppercase tracking-widest leading-none">

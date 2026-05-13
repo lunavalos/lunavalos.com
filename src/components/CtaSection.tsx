@@ -53,8 +53,8 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
     }
 
     try {
-      // Turnstile invisible execution
-      const token = await window.turnstile.execute(null, {
+      // Turnstile execution con contenedor explícito
+      const token = await window.turnstile.execute('#turnstile-container', {
         sitekey: TURNSTILE_SITE_KEY,
         action: 'newsletter_subscribe',
       });
@@ -125,6 +125,9 @@ export default function CtaSection({ noContainer = false }: { noContainer?: bool
           </div>
 
           <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
+            {/* Contenedor invisible para Turnstile */}
+            <div id="turnstile-container" style={{ display: 'none' }}></div>
+            
             <div className="relative">
               <input
                 required
