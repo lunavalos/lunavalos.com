@@ -24,6 +24,18 @@ export default function Footer() {
             <p className="text-white/50 text-md leading-relaxed mb-6 gap-2">
               {t('description')}
             </p>
+            <div className="flex items-center gap-3 mt-6 border-t border-white/10 pt-6">
+              <Image
+                src="/images/canacintra-badge.png"
+                alt="CANACINTRA Badge"
+                width={50}
+                height={50}
+                className="h-12 w-auto object-contain shrink-0"
+              />
+              <p className="text-white/40 text-[11px] leading-snug">
+                {t('canacintraText')}
+              </p>
+            </div>
           </div>
 
           {/* Services */}
