@@ -24,7 +24,12 @@ export default function Footer() {
             <p className="text-white/50 text-md leading-relaxed mb-6 gap-2">
               {t('description')}
             </p>
-            <div className="flex items-center gap-3 mt-6 border-t border-white/10 pt-6">
+            <a
+              href="https://canacintra-saltillo.org.mx/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 mt-6 border-t border-white/10 pt-6 hover:opacity-80 transition-opacity"
+            >
               <Image
                 src="/images/canacintra-badge.png"
                 alt="CANACINTRA Badge"
@@ -35,7 +40,7 @@ export default function Footer() {
               <p className="text-white/40 text-[11px] leading-snug">
                 {t('canacintraText')}
               </p>
-            </div>
+            </a>
           </div>
 
           {/* Services */}
