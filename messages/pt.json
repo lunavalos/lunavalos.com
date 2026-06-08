@@ -44,6 +44,8 @@
     "contact": "Contato",
     "address": "Endereço",
     "privacy": "Política de Privacidade",
+    "terms": "Termos e Condições",
+    "deleteData": "Exclusão de Dados",
     "sitemap": "Mapa do Site",
     "rights": "© {year} LunAvalos Digital House. Todos os direitos reservados.",
     "addressText": "Av. La Salle #437 Col. La Salle, Saltillo, Coahuila México CP 25286",
@@ -66,7 +68,9 @@
     "about": "Sobre nós",
     "blog": "Blog",
     "contact": "Contato",
-    "privacy": "Política de Privacidade"
+    "privacy": "Política de Privacidade",
+    "terms": "Termos e Condições",
+    "deleteData": "Exclusão de Dados"
   },
   "Sitemap": {
     "title": "Mapa do Site",

@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   const locales = ['es', 'en', 'pt', 'fr', 'zh'];
   const defaultLocale = 'es';
-  const routes = ['', '/servicios', '/nosotros', '/blog', '/contacto', '/aviso-de-privacidad', '/mapa-del-sitio'];
+  const routes = ['', '/servicios', '/nosotros', '/blog', '/contacto', '/aviso-de-privacidad', '/terminos', '/eliminar-datos', '/mapa-del-sitio'];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 

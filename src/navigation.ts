@@ -10,6 +10,20 @@ export const pathnames = {
     fr: '/politique-de-confidentialite',
     zh: '/yinsi-zhengce'
   },
+  '/terminos': {
+    es: '/terminos',
+    en: '/terms',
+    pt: '/termos',
+    fr: '/conditions',
+    zh: '/tiaokuan'
+  },
+  '/eliminar-datos': {
+    es: '/eliminar-datos',
+    en: '/delete-data',
+    pt: '/excluir-dados',
+    fr: '/supprimer-donnees',
+    zh: '/shanchu-shuju'
+  },
   '/contacto': {
     es: '/contacto',
     en: '/contact',

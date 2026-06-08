@@ -92,9 +92,15 @@ export default function Footer() {
           <p className="text-white/30 text-[10px] uppercase font-bold tracking-widest text-center md:text-left">
             {t('rights', { year: new Date().getFullYear() })}
           </p>
-          <div className="flex gap-6 text-white/50 text-[11px] uppercase font-bold tracking-widest">
+          <div className="flex gap-6 text-white/50 text-[11px] uppercase font-bold tracking-widest flex-wrap justify-center md:justify-start">
             <Link href="/aviso-de-privacidad" className="hover:text-white transition-colors">
               {t('privacy')}
+            </Link>
+            <Link href="/terminos" className="hover:text-white transition-colors">
+              {t('terms')}
+            </Link>
+            <Link href="/eliminar-datos" className="hover:text-white transition-colors">
+              {t('deleteData')}
             </Link>
           </div>
         </div>

@@ -16,6 +16,8 @@ export default function SitemapPage() {
     { name: t('about'), href: '/nosotros' as any },
     { name: t('contact'), href: '/contacto' as any },
     { name: t('privacy'), href: '/aviso-de-privacidad' as any },
+    { name: t('terms'), href: '/terminos' as any },
+    { name: t('deleteData'), href: '/eliminar-datos' as any },
   ];
 
   return (
