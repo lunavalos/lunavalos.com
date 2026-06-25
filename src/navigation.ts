@@ -24,6 +24,13 @@ export const pathnames = {
     fr: '/supprimer-donnees',
     zh: '/shanchu-shuju'
   },
+  '/privacy': {
+    es: '/privacy',
+    en: '/privacy',
+    pt: '/privacy',
+    fr: '/privacy',
+    zh: '/privacy'
+  },
   '/contacto': {
     es: '/contacto',
     en: '/contact',
