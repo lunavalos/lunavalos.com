@@ -26,10 +26,11 @@ export default function EnglishPrivacyPage() {
     { id: 'data-we-collect', title: '2. Data We Collect' },
     { id: 'how-we-use', title: '3. How We Use Your Data' },
     { id: 'third-party', title: '4. Third-Party Platforms' },
-    { id: 'data-retention', title: '5. Data Retention' },
-    { id: 'your-rights', title: '6. Your Rights' },
-    { id: 'changes', title: '7. Changes to This Policy' },
-    { id: 'contact', title: '8. Contact Information' },
+    { id: 'youtube-api', title: '5. YouTube API Services' },
+    { id: 'data-retention', title: '6. Data Retention' },
+    { id: 'your-rights', title: '7. Your Rights' },
+    { id: 'changes', title: '8. Changes to This Policy' },
+    { id: 'contact', title: '9. Contact Information' },
   ];
 
   return (
@@ -125,8 +126,8 @@ export default function EnglishPrivacyPage() {
                         <MapPin className="w-5 h-5" />
                       </div>
                       <div className="text-sm">
-                        <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">Headquarters</div>
-                        <div className="text-brand font-bold">Saltillo, Coahuila, Mexico</div>
+                        <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">Registered Office</div>
+                        <div className="text-brand font-bold text-xs">Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, Mexico</div>
                       </div>
                     </div>
                     <div className="flex-1 bg-brand/5 border border-brand/5 rounded-2xl p-4 flex items-center gap-4">
@@ -190,7 +191,9 @@ export default function EnglishPrivacyPage() {
                       <h3 className="text-md font-bold text-brand m-0">Access Credentials</h3>
                     </div>
                     <p className="text-brand/70 text-sm leading-relaxed m-0 pl-11">
-                      Social media and messaging access tokens for platforms including Facebook, Instagram, LinkedIn, TikTok, YouTube, and WhatsApp Business API (crypted at rest).
+                      Access tokens for the social media and messaging platforms our clients authorize us to manage: Facebook Pages, Instagram Business accounts, LinkedIn profiles and company pages, TikTok accounts, YouTube channels, and the WhatsApp Business API (encrypted at rest).
+                      <br /><br />
+                      These tokens grant us only the permissions required to deliver the contracted service: to list the pages, accounts and channels a client administers, to publish and schedule content on them, and to retrieve the resulting activity metrics. We do not use them to read private messages on social networks, to manage advertising, or to access data belonging to any account other than the ones the client explicitly connects.
                     </p>
                   </div>
 
@@ -323,9 +326,49 @@ export default function EnglishPrivacyPage() {
                     We only access these platforms with the explicit authorization of our clients and solely for the purpose of content management.
                   </p>
                 </div>
+
+                <div className="mt-8 prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
+                  <h3 className="text-md font-bold text-brand mb-2">Limited Use of Platform Data</h3>
+                  <p className="text-brand/80">
+                    Data obtained through these platform APIs is used only to deliver the contracted service to the client who authorized the connection. We do not sell it, we do not use it for advertising or audience building, we do not use it to train machine learning models, and we never combine or share the data of one client with that of another. Each client's connected accounts are isolated from every other client's.
+                  </p>
+                </div>
               </motion.div>
 
-              {/* 5. Data Retention */}
+              {/* 5. YouTube API Services */}
+              <motion.div
+                id="youtube-api"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="scroll-mt-28 bg-white border border-brand/5 p-8 md:p-10 rounded-3xl shadow-sm"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-brand/5 flex items-center justify-center text-brand shrink-0">
+                    <Share2 className="w-6 h-6" />
+                  </div>
+                  <h2 className="text-xl md:text-2xl font-display font-bold text-brand uppercase tracking-tight m-0">
+                    5. YouTube API Services
+                  </h2>
+                </div>
+                <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
+                  <p className="text-brand/80">
+                    Our YouTube publishing feature uses the YouTube API Services. By connecting a YouTube channel to our platform, you agree to be bound by the YouTube Terms of Service, available at <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer" className="text-brand font-bold underline">https://www.youtube.com/t/terms</a>.
+                  </p>
+                  <p className="mt-4 text-brand/80">
+                    Google's Privacy Policy, which governs Google's handling of the data accessed through these APIs, is available at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-brand font-bold underline">https://policies.google.com/privacy</a>.
+                  </p>
+                  <p className="mt-4 text-brand/80">
+                    We access your YouTube channel solely to upload and publish the video content you approve, and to retrieve public performance metrics for that content. We do not read, download, or store any other data from your channel, and we do not share YouTube data with third parties.
+                  </p>
+                  <p className="mt-4 text-brand/80">
+                    You can revoke our application's access to your Google account at any time from <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer" className="text-brand font-bold underline">https://myaccount.google.com/permissions</a>. Upon revocation, we delete the stored credentials for that channel; see our Data Deletion page for the full procedure.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* 6. Data Retention */}
               <motion.div
                 id="data-retention"
                 initial={{ opacity: 0, y: 20 }}
@@ -339,7 +382,7 @@ export default function EnglishPrivacyPage() {
                     <Calendar className="w-6 h-6" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-display font-bold text-brand uppercase tracking-tight m-0">
-                    5. Data Retention
+                    6. Data Retention
                   </h2>
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
@@ -352,7 +395,7 @@ export default function EnglishPrivacyPage() {
                 </div>
               </motion.div>
 
-              {/* 6. Your Rights */}
+              {/* 7. Your Rights */}
               <motion.div
                 id="your-rights"
                 initial={{ opacity: 0, y: 20 }}
@@ -366,7 +409,7 @@ export default function EnglishPrivacyPage() {
                     <Key className="w-6 h-6" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-display font-bold text-brand uppercase tracking-tight m-0">
-                    6. Your Rights
+                    7. Your Rights
                   </h2>
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
@@ -387,6 +430,19 @@ export default function EnglishPrivacyPage() {
                   <p className="mt-2 text-brand/80">
                     If you contacted one of our clients through WhatsApp and want to access or delete your data, please direct your request to that business, which is the controller of the conversation. If you contact us directly at <a href="mailto:contacto@lunavalos.com" className="text-brand font-bold hover:text-secondary transition-colors underline">contacto@lunavalos.com</a> we will forward your request to them and act on their instructions.
                   </p>
+
+                  <p className="mt-6 text-brand/80 font-bold">
+                    Revoking platform access directly
+                  </p>
+                  <p className="mt-2 text-brand/80">
+                    You can revoke our application's access from each platform's own settings at any time:
+                  </p>
+                  <ul className="list-disc list-outside pl-6 text-sm text-brand/70 space-y-1.5 mt-2">
+                    <li>Meta (Facebook, Instagram, WhatsApp) — <a href="https://facebook.com/settings?tab=applications" target="_blank" rel="noopener noreferrer" className="text-brand font-semibold underline hover:text-secondary">facebook.com/settings?tab=applications</a></li>
+                    <li>LinkedIn — <a href="https://linkedin.com/psettings/permitted-services" target="_blank" rel="noopener noreferrer" className="text-brand font-semibold underline hover:text-secondary">linkedin.com/psettings/permitted-services</a></li>
+                    <li>TikTok — Settings and privacy &gt; Security and permissions &gt; Manage app permissions</li>
+                    <li>Google (YouTube) — <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer" className="text-brand font-semibold underline hover:text-secondary">myaccount.google.com/permissions</a></li>
+                  </ul>
 
                   {/* Immediate data removal CTA */}
                   <div className="mt-8 p-6 md:p-8 bg-gradient-to-r from-orange-500/5 to-secondary/10 border border-secondary/15 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -411,7 +467,7 @@ export default function EnglishPrivacyPage() {
                 </div>
               </motion.div>
 
-              {/* 7. Changes to This Policy */}
+              {/* 8. Changes to This Policy */}
               <motion.div
                 id="changes"
                 initial={{ opacity: 0, y: 20 }}
@@ -425,7 +481,7 @@ export default function EnglishPrivacyPage() {
                     <RefreshCw className="w-6 h-6" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-display font-bold text-brand uppercase tracking-tight m-0">
-                    7. Changes to This Policy
+                    8. Changes to This Policy
                   </h2>
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
@@ -435,7 +491,7 @@ export default function EnglishPrivacyPage() {
                 </div>
               </motion.div>
 
-              {/* 8. Contact Information */}
+              {/* 9. Contact Information */}
               <motion.div
                 id="contact"
                 initial={{ opacity: 0, y: 20 }}
@@ -449,7 +505,7 @@ export default function EnglishPrivacyPage() {
                     <Building className="w-6 h-6" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-display font-bold text-brand uppercase tracking-tight m-0">
-                    8. Contact Information
+                    9. Contact Information
                   </h2>
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">

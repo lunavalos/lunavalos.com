@@ -73,7 +73,7 @@ export default function DeleteDataPage() {
                 
                 <div className="mt-8 pt-6 border-t border-brand/5 text-[11px] text-brand/50 font-medium leading-relaxed">
                   {isEn ? "Last updated:" : "Última actualización:"}<br />
-                  <span className="text-brand font-bold text-xs">{isEn ? "June 2026" : "Junio 2026"}</span>
+                  <span className="text-brand font-bold text-xs">{isEn ? "August 2026" : "Agosto 2026"}</span>
                 </div>
               </div>
             </aside>

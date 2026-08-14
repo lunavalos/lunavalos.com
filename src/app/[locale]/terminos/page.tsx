@@ -216,7 +216,10 @@ export default function TermsPage() {
                     'Strictly comply with WhatsApp Commercial and Business Policies set by Meta.',
                     'Timely notify LunAvalos of any changes to credentials or access rights.',
                     'Obtain the consent (opt-in) of their end-customers before starting WhatsApp conversations, and retain evidence of it.',
-                    'Acknowledge that they are the controller of the personal data of their end-customers, and that LunAvalos acts as a processor on their behalf.'
+                    'Acknowledge that they are the controller of the personal data of their end-customers, and that LunAvalos acts as a processor on their behalf.',
+                    'Guarantee that they are the owner or authorized administrator of the pages, accounts, and channels they link (Facebook, Instagram, LinkedIn, TikTok, and YouTube), and have the authority to grant access to LunAvalos.',
+                    'Guarantee that they own the usage rights of the content they approve for publishing, including images, video, and music, and answer for any third-party claims arising from such content.',
+                    'Comply with the terms of service and content policies of each platform where they request to publish.'
                   ] : [
                     'Proporcionar contenido e información veraz y que no infrinja derechos de propiedad intelectual de terceros.',
                     'Garantizar la propiedad de su cuenta de WhatsApp Business (WABA) y sus números telefónicos asociados.',
@@ -225,7 +228,10 @@ export default function TermsPage() {
                     'Cumplir cabalmente con los términos de uso, políticas de comercio y políticas de negocios de WhatsApp de Meta.',
                     'Notificar a LunAvalos cualquier cambio en sus credenciales o accesos de manera oportuna.',
                     'Obtener el consentimiento (opt-in) de sus clientes finales antes de iniciar conversaciones por WhatsApp, y conservar evidencia del mismo.',
-                    'Reconocer que es el responsable del tratamiento de los datos personales de sus clientes finales, y que LunAvalos actúa como encargado por cuenta suya.'
+                    'Reconocer que es el responsable del tratamiento de los datos personales de sus clientes finales, y que LunAvalos actúa como encargado por cuenta suya.',
+                    'Garantizar que es titular o administrador autorizado de las páginas, cuentas y canales que vincula (Facebook, Instagram, LinkedIn, TikTok y YouTube), y contar con la facultad de otorgar acceso a LunAvalos.',
+                    'Garantizar que posee los derechos de uso del contenido que aprueba para publicación, incluyendo imágenes, video y música, y responder por cualquier reclamación de terceros derivada de dicho contenido.',
+                    'Cumplir con los términos de servicio y las políticas de contenido de cada plataforma en la que solicita publicar.'
                   ]).map((text, i) => (
                     <div key={i} className="flex gap-4 items-start p-4 rounded-xl hover:bg-[#f8f9fc] transition-colors border border-transparent hover:border-brand/5">
                       <div className="w-6 h-6 rounded-full bg-orange-50 text-secondary flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">

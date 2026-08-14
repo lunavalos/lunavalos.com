@@ -125,6 +125,12 @@
         "description": "Conectamos la cuenta de WhatsApp Business de tu empresa a nuestra plataforma de gestión. Cada mensaje que te envían tus clientes se convierte en un ticket con seguimiento, tu equipo responde desde un solo panel y la respuesta llega al chat del cliente. Incluye historial completo de conversaciones, asignación por responsable y reportes de atención.",
         "details": "Conectamos la cuenta de WhatsApp Business de tu empresa a nuestra plataforma de gestión. Cada mensaje que te envían tus clientes se convierte en un ticket con seguimiento, tu equipo responde desde un solo panel y la respuesta llega al chat del cliente. Incluye historial completo de conversaciones, asignación por responsable y reportes de atención.",
         "tech": ["WhatsApp Business Platform", "Tickets", "Historial de conversaciones", "Reportes"]
+      },
+      "socialMedia": {
+        "title": "Gestión y publicación en redes sociales",
+        "description": "Administramos las cuentas de redes sociales de tu empresa desde un solo panel. Tu equipo aprueba el contenido, nosotros lo programamos y lo publicamos en tus páginas de Facebook, cuentas de Instagram Business, LinkedIn, TikTok y YouTube en las fechas acordadas. La conexión se hace con la autorización expresa del titular de cada cuenta y puede revocarse en cualquier momento.",
+        "details": "Administramos las cuentas de redes sociales de tu empresa desde un solo panel. Tu equipo aprueba el contenido, nosotros lo programamos y lo publicamos en tus páginas de Facebook, cuentas de Instagram Business, LinkedIn, TikTok y YouTube en las fechas acordadas. La conexión se hace con la autorización expresa del titular de cada cuenta y puede revocarse en cualquier momento.",
+        "tech": ["Facebook", "Instagram", "LinkedIn", "TikTok", "YouTube", "Calendario de publicación"]
       }
     },
     "buttons": {

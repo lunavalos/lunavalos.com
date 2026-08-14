@@ -18,7 +18,8 @@ import {
   Cpu,
   ArrowUpRight,
   X,
-  MessageSquare
+  MessageSquare,
+  Share2
 } from 'lucide-react';
 
 const servicesList = [
@@ -28,7 +29,8 @@ const servicesList = [
   { id: 'ai', icon: Bot },
   { id: 'marketing', icon: Mail },
   { id: 'digitalization', icon: Cpu },
-  { id: 'whatsapp', icon: MessageSquare }
+  { id: 'whatsapp', icon: MessageSquare },
+  { id: 'socialMedia', icon: Share2 }
 ];
 
 function SearchParamsHandler({ onOpen }: { onOpen: (id: string) => void }) {

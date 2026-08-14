@@ -164,6 +164,12 @@
         "description": "我们将您公司的 WhatsApp Business 账户连接到我们的管理平台。客户发送的每条消息都将成为一个可跟踪的工单，您的团队从一个面板进行回复，回复将直接发送至客户的聊天界面。包括完整的对话历史记录、指派责任人以及服务报告。",
         "details": "我们将您公司的 WhatsApp Business 账户连接到我们的管理平台。客户发送的每条消息都将成为一个可跟踪的工单，您的团队从一个面板进行回复，回复将直接发送至客户的聊天界面。包括完整的对话历史记录、指派责任人以及服务报告。",
         "tech": ["WhatsApp Business Platform", "工单系统", "对话历史", "报告"]
+      },
+      "socialMedia": {
+        "title": "社交媒体管理与发布",
+        "description": "我们从单一面板管理您公司的社交媒体账户。您的团队审核内容，我们按照约定的日期规划并发布到您的 Facebook 页面、Instagram 专业账户、LinkedIn 档案、TikTok 账户及 YouTube 频道。该连接需获得各账户所有者的明确授权，且可随时撤销。",
+        "details": "我们从单一面板管理您公司的社交媒体账户。您的团队审核内容，我们按照约定的日期规划并发布到您的 Facebook 页面、Instagram 专业账户、LinkedIn 档案、TikTok 账户及 YouTube 频道。该连接需获得各账户所有者的明确授权，且可随时撤销。",
+        "tech": ["Facebook", "Instagram", "LinkedIn", "TikTok", "YouTube", "发布日历"]
       }
     },
     "buttons": {

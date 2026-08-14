@@ -125,6 +125,12 @@
         "description": "We connect your company's WhatsApp Business account to our management platform. Every message sent by your customers becomes a tracked ticket, your team responds from a single panel, and the response goes directly to the customer's chat. Includes full conversation history, assignment by owner, and service reports.",
         "details": "We connect your company's WhatsApp Business account to our management platform. Every message sent by your customers becomes a tracked ticket, your team responds from a single panel, and the response goes directly to the customer's chat. Includes full conversation history, assignment by owner, and service reports.",
         "tech": ["WhatsApp Business Platform", "Tickets", "Conversation History", "Reports"]
+      },
+      "socialMedia": {
+        "title": "Social Media Management & Publishing",
+        "description": "We manage your company's social media accounts from a single panel. Your team approves the content, we schedule and publish it on your Facebook Pages, Instagram Business accounts, LinkedIn profiles, TikTok accounts, and YouTube channels on the agreed dates. Connection is made with the explicit authorization of the account owner and can be revoked at any time.",
+        "details": "We manage your company's social media accounts from a single panel. Your team approves the content, we schedule and publish it on your Facebook Pages, Instagram Business accounts, LinkedIn profiles, TikTok accounts, and YouTube channels on the agreed dates. Connection is made with the explicit authorization of the account owner and can be revoked at any time.",
+        "tech": ["Facebook", "Instagram", "LinkedIn", "TikTok", "YouTube", "Publishing Calendar"]
       }
     },
     "buttons": {
