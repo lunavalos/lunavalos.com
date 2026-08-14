@@ -80,7 +80,7 @@ export default function TermsPage() {
                 
                 <div className="mt-8 pt-6 border-t border-brand/5 text-[11px] text-brand/50 font-medium leading-relaxed">
                   {isEn ? "Last updated:" : "Última actualización:"}<br />
-                  <span className="text-brand font-bold text-xs">{isEn ? "June 2026" : "Junio 2026"}</span>
+                  <span className="text-brand font-bold text-xs">{isEn ? "August 2026" : "Agosto 2026"}</span>
                 </div>
               </div>
             </aside>
@@ -104,7 +104,7 @@ export default function TermsPage() {
                   LunAvalos Digital House, S.A.S.
                 </h2>
                 <div className="inline-block px-3 py-1 bg-white border border-brand/10 rounded-full text-xs text-brand/70 font-semibold shadow-sm">
-                  {isEn ? "Last updated: June 2026" : "Última actualización: Junio 2026"}
+                  {isEn ? "Last updated: August 2026" : "Última actualización: Agosto 2026"}
                 </div>
               </motion.div>
 
@@ -214,14 +214,18 @@ export default function TermsPage() {
                     'Expressly authorize LunAvalos to access their WABA via Meta\'s Embedded Signup flow.',
                     'Independently complete the Business Verification processes required by Meta.',
                     'Strictly comply with WhatsApp Commercial and Business Policies set by Meta.',
-                    'Timely notify LunAvalos of any changes to credentials or access rights.'
+                    'Timely notify LunAvalos of any changes to credentials or access rights.',
+                    'Obtain the consent (opt-in) of their end-customers before starting WhatsApp conversations, and retain evidence of it.',
+                    'Acknowledge that they are the controller of the personal data of their end-customers, and that LunAvalos acts as a processor on their behalf.'
                   ] : [
                     'Proporcionar contenido e información veraz y que no infrinja derechos de propiedad intelectual de terceros.',
                     'Garantizar la propiedad de su cuenta de WhatsApp Business (WABA) y sus números telefónicos asociados.',
                     'Autorizar expresamente a LunAvalos para acceder a su WABA a través del flujo de Embedded Signup de Meta.',
                     'Completar de forma independiente los procesos de verificación de negocio (Business Verification) exigidos por Meta.',
                     'Cumplir cabalmente con los términos de uso, políticas de comercio y políticas de negocios de WhatsApp de Meta.',
-                    'Notificar a LunAvalos cualquier cambio en sus credenciales o accesos de manera oportuna.'
+                    'Notificar a LunAvalos cualquier cambio en sus credenciales o accesos de manera oportuna.',
+                    'Obtener el consentimiento (opt-in) de sus clientes finales antes de iniciar conversaciones por WhatsApp, y conservar evidencia del mismo.',
+                    'Reconocer que es el responsable del tratamiento de los datos personales de sus clientes finales, y que LunAvalos actúa como encargado por cuenta suya.'
                   ]).map((text, i) => (
                     <div key={i} className="flex gap-4 items-start p-4 rounded-xl hover:bg-[#f8f9fc] transition-colors border border-transparent hover:border-brand/5">
                       <div className="w-6 h-6 rounded-full bg-orange-50 text-secondary flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
@@ -292,13 +296,15 @@ export default function TermsPage() {
                     { title: 'Account Restrictions', desc: 'Suspension, blocking, or restriction of accounts and WABAs executed directly by Meta or other platforms.' },
                     { title: 'Specific Results', desc: 'Specific results and metrics of organic reach, interactions, message delivery, or conversion rates.' },
                     { title: 'Access Revocation', desc: 'Disconnection of tokens and API keys by the client from their Business Manager or silently by the platforms.' },
-                    { title: 'Third-Party Failures', desc: 'Service interruptions caused by general infrastructure failures, downtime of Meta/WhatsApp servers, or hosting providers.' }
+                    { title: 'Third-Party Failures', desc: 'Service interruptions caused by general infrastructure failures, downtime of Meta/WhatsApp servers, or hosting providers.' },
+                    { title: 'Message Delivery', desc: 'WhatsApp message delivery depends on Meta\'s rules, including the 24-hour window and prior template approval. LunAvalos is not responsible for undelivered messages.' }
                   ] : [
                     { title: 'Cambios de Algoritmo', desc: 'Cambios en las políticas, algoritmos o configuraciones de las plataformas de redes sociales y APIs de mensajería.' },
                     { title: 'Restricciones de Cuenta', desc: 'Suspensión, bloqueo o restricción de cuentas y WABAs ejecutadas directamente por Meta u otras plataformas.' },
                     { title: 'Resultados Específicos', desc: 'Resultados y métricas específicas de alcance orgánico, interacciones, entrega de mensajes o tasa de conversiones.' },
                     { title: 'Revocación de Acceso', desc: 'Desconexión de tokens y API keys efectuada por el cliente desde su Business Manager o de forma silenciosa por las plataformas.' },
-                    { title: 'Fallas de Terceros', desc: 'Interrupciones en el servicio causadas por fallas generales de infraestructura, caídas de servidores de Meta/WhatsApp o proveedores de hosting.' }
+                    { title: 'Fallas de Terceros', desc: 'Interrupciones en el servicio causadas por fallas generales de infraestructura, caídas de servidores de Meta/WhatsApp o proveedores de hosting.' },
+                    { title: 'Entrega de Mensajes', desc: 'La entrega de los mensajes de WhatsApp depende de las reglas de la plataforma de Meta, incluida la ventana de 24 horas para mensajes de texto libre y la aprobación previa de plantillas para mensajes fuera de dicha ventana. LunAvalos no será responsable por mensajes no entregados por causas atribuibles a estas reglas, a la calificación de calidad del número del cliente o a límites de mensajería impuestos por Meta.' }
                   ]).map((item, i) => (
                     <div key={i} className="bg-[#f8f9fc] border border-brand/5 p-5 rounded-2xl hover:border-brand/10 transition-colors">
                       <h4 className="text-brand font-bold text-sm m-0 mb-1">{item.title}</h4>
@@ -359,13 +365,8 @@ export default function TermsPage() {
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
                   <p className="text-brand/80">
                     {isEn 
-                      ? "This agreement is governed in its entirety by the applicable laws in force in the United Mexican States."
-                      : "Este acuerdo se rige en su totalidad por las leyes aplicables y vigentes en los Estados Unidos Mexicanos."}
-                  </p>
-                  <p className="mt-4 text-brand/80">
-                    {isEn 
-                      ? <>Any controversy or dispute arising from the interpretation or execution of this agreement shall be submitted exclusively to the competent courts of the city of <strong className="text-brand font-semibold">Saltillo, Coahuila, Mexico</strong>, expressly waiving any other jurisdiction that might correspond to them by reason of their present or future domiciles.</>
-                      : <>Cualquier controversia o disputa derivada de la interpretación o ejecución del presente acuerdo será sometida exclusivamente ante los tribunales competentes de la ciudad de <strong className="text-brand font-semibold">Saltillo, Coahuila, México</strong>, renunciando expresamente a cualquier otro fuero que pudiera corresponderles por sus domicilios presentes o futuros.</>}
+                      ? "These Terms and Conditions are governed by the laws applicable in Saltillo, Coahuila, Mexico. For any conflict, the parties submit to the jurisdiction of the competent courts of Saltillo, Coahuila, waiving any other jurisdiction."
+                      : "Los presentes Términos y Condiciones se rigen por las leyes aplicables en Saltillo, Coahuila, México. Para cualquier conflicto, las partes se someten a la jurisdicción de los tribunales competentes de Saltillo, Coahuila, renunciando a cualquier otro fuero."}
                   </p>
                 </div>
               </motion.div>
@@ -399,10 +400,16 @@ export default function TermsPage() {
                       <div className="w-10 h-10 rounded-lg bg-brand-light/10 text-brand-light flex items-center justify-center shrink-0">
                         <MapPin className="w-5 h-5" />
                       </div>
-                      <div className="text-sm">
-                        <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">{isEn ? "Corporate Address" : "Dirección Corporativa"}</div>
-                        <div className="text-brand font-bold">LunAvalos Digital House, S.A.S.</div>
-                        <div className="text-brand/70 text-xs mt-1">{isEn ? "Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, Mexico" : "Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, México"}</div>
+                      <div className="text-sm space-y-3">
+                        <div>
+                          <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">{isEn ? "Registered Office (legal address)" : "Domicilio fiscal"}</div>
+                          <div className="text-brand font-bold">LunAvalos Digital House, S.A.S.</div>
+                          <div className="text-brand/70 text-xs mt-1">{isEn ? "Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, Mexico" : "Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, México"}</div>
+                        </div>
+                        <div className="pt-2 border-t border-brand/5">
+                          <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">{isEn ? "Business Office" : "Oficinas comerciales"}</div>
+                          <div className="text-brand/70 text-xs mt-1">{isEn ? "Av. La Salle #437, Col. La Salle, Saltillo, Coahuila, C.P. 25286, Mexico" : "Av. La Salle #437, Col. La Salle, Saltillo, Coahuila, C.P. 25286, México"}</div>
+                        </div>
                       </div>
                     </div>
                     

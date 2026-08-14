@@ -1,344 +1,310 @@
-# Plan de migración: WhatsApp multi-WABA (Tech Provider)
+# Cambios al sitio lunavalos.com — WhatsApp (v2, ronda 2)
 
-> Estado del documento: **propuesta**, no implementado.
-> Escrito el 2026-08-13 tras auditar el código, la instancia de n8n y el panel de Meta.
-> Sustituye al modelo descrito en `docs/n8n/README.md`, que quedó obsoleto.
+> **Para el agente que trabaja en el repo del sitio web** (no en `lunavalos-admin`).
+> Autocontenido: no necesitas contexto previo.
+> **v2 — 2026-08-13.** La ronda 1 ya se aplicó parcialmente. Este documento marca
+> qué quedó hecho (no lo repitas) y qué falta.
 
-## 1. Qué cambia y por qué
+## Contexto
 
-La decisión de producto es que **cada cliente sea dueño de su propia WABA** y nos
-conceda acceso, en vez de dar de alta sus números bajo la WABA de LunAvalos.
+LunAvalos Digital House va a operar **atención a clientes por WhatsApp** para sus
+clientes, con la WhatsApp Business Platform de Meta. Meta está revisando dos
+trámites (*Access Verification / Tech Provider* y después *App Review*) y en
+ambos abre el sitio público para verificar dos cosas: que **el servicio esté
+descrito** y que **el tratamiento de datos esté declarado**.
 
-Eso nos mueve del modelo "un negocio, un número" al modelo **Tech Provider**, y
-tiene una consecuencia que invalida el diseño actual:
+## Estado verificado hoy en producción
 
-> El diseño de hoy asume **un token de Meta, estático, guardado en n8n**.
-> Con multi-WABA hay **un token por cliente**, que llega dinámicamente en el
-> onboarding y que el cliente puede revocar cuando quiera.
+Ya aplicado en la ronda 1 — **no lo rehagas**:
 
-Una credencial Header Auth fija en n8n no puede sostener eso.
+- `/privacy` §2: tokens de WhatsApp Business API *(crypted at rest)*, WABA IDs,
+  phone number IDs, historial de mensajes.
+- `/privacy` §3: puntos 2 y 3 sobre mensajería con end-users.
+- `/privacy` §4: WhatsApp (Meta Platforms, Inc.) agregado a la lista de APIs.
+- `/terms` §1: mensajería y WhatsApp en la descripción del servicio.
+- `/terms` §2: cifrado en reposo de tokens, desvinculación de suscripciones.
+- `/terms` §3: propiedad de la WABA, Embedded Signup, Business Verification
+  propia del cliente, cumplimiento de políticas de Meta.
+- `/terms` §5: desconexión de tokens y caídas de Meta/WhatsApp.
+- `/aviso-de-privacidad` §3 y §4: finalidad de mensajería y WhatsApp en APIs.
 
-## 2. Estado real al 2026-08-13 (auditoría)
+Las cuatro rutas (`/`, `/servicios`, `/privacy`, `/terms`,
+`/aviso-de-privacidad`) responden 200.
 
-Vale la pena dejarlo escrito, porque el repo documenta una arquitectura que
-**nunca se desplegó**.
+## Reglas para aplicar
 
-### Código (Laravel) — correcto pero para el modelo equivocado
+- Respeta la estructura, componentes y diseño existentes de cada página.
+- Respeta el idioma: `/privacy` en inglés; `/terms`, `/aviso-de-privacidad` y
+  `/servicios` en español.
+- Actualiza los índices de contenido si agregas secciones.
+- Actualiza las fechas de "Last updated / Última actualización".
+- No inventes certificaciones, cifras ni plazos que no estén aquí.
 
-| Pieza | Estado |
+---
+
+# PARTE A — Bloqueante (hacer primero)
+
+Sin esto no se puede enviar el formulario a Meta.
+
+## A.1 — `/servicios`: agregar la tarjeta del servicio
+
+La página tiene hoy 6 tarjetas (Tailormade Web Apps, Sitios web profesionales,
+E-commerce & Headless Commerce, Inteligencia artificial aplicada, Email marketing
+& automatización, Digitalización de negocios). **Ninguna describe el servicio de
+WhatsApp.** Lo único que dice "WhatsApp" en esa página es el CTA "WhatsApp
+directo" y el botón flotante de contacto — eso no cuenta para Meta.
+
+Agregar una séptima tarjeta con el mismo componente y formato que las demás.
+
+**Título:**
+
+```
+Atención a clientes por WhatsApp
+```
+
+**Descripción:**
+
+```
+Conectamos la cuenta de WhatsApp Business de tu empresa a nuestra plataforma de
+gestión. Cada mensaje que te envían tus clientes se convierte en un ticket con
+seguimiento, tu equipo responde desde un solo panel y la respuesta llega al chat
+del cliente. Incluye historial completo de conversaciones, asignación por
+responsable y reportes de atención.
+```
+
+**Etiquetas / chips** (mismo estilo que las otras tarjetas):
+
+```
+WhatsApp Business Platform · Tickets · Historial de conversaciones · Reportes
+```
+
+**Sobre el enlace "Saber más":** las tarjetas actuales lo llevan. Si apunta a una
+página de detalle por servicio, crea la correspondiente reutilizando la plantilla
+existente y usando el texto de arriba como contenido. Si no quieres crear página
+nueva, apunta el enlace a `/contacto`. Lo que **no** debe pasar es que quede un
+enlace roto.
+
+> Es un servicio para clientes con contrato, no de autoservicio. No agregues
+> formulario de alta ni precios.
+
+## A.2 — Unificar domicilios (etiquetarlos, no elegir uno)
+
+Hoy las tres páginas legales muestran **dos direcciones sin etiqueta**, lo que
+parece una contradicción. En realidad son dos domicilios distintos y ambos son
+correctos:
+
+| Rol | Dirección |
 |---|---|
-| `app/Services/WhatsApp/WhatsAppService.php` | Funciona. Un único webhook global, sin noción de número. |
-| `app/Http/Controllers/WhatsAppWebhookController.php` | Idempotente por `wa_message_id`. **Ignora `metadata.phone_number_id`.** |
-| `app/Http/Middleware/VerifyN8nSecret.php` | Correcto (`hash_equals`, cierra si falta config). Pero espera a n8n, no a Meta. |
-| Excepción CSRF (`bootstrap/app.php`) | Correcta. |
-| Migración `2026_06_07_000000` | `whatsapp_wa_id`, `direction`, `wa_message_id` (unique). |
-| `tests/Feature/WhatsAppWebhookSecurityTest.php` | Cubre el rechazo por secreto. |
+| **Domicilio fiscal / legal** | Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, México |
+| **Oficinas comerciales** | Av. La Salle #437, Col. La Salle, Saltillo, Coahuila, C.P. 25286, México |
 
-### n8n — no participa
+La solución es **etiquetar cada uno según su rol** en todos los lugares donde
+aparezcan. Meta coteja el domicilio del sitio contra los documentos de Business
+Verification, que usan el **fiscal (Gallo)**; por eso el fiscal debe estar
+presente y claramente identificado en las páginas legales.
 
-- Un solo workflow: `Actualizar Precios Gas`. **Ninguno** de los dos de `docs/n8n/`
-  está importado. Los paths `/webhook/meta-whatsapp` y
-  `/webhook/lunavalos-admin-whatsapp` devuelven `404 not registered`.
-- Existe una credencial `WhatsApp account` de tipo **WhatsApp API** (nodo nativo),
-  incompatible con los workflows del repo, que piden **Header Auth**.
-- Variables (`$vars`) es función de pago y está bloqueada. No importa: los
-  workflows usan `$env`, que es lo correcto para esta edición.
+### `/privacy` — sección 8 "Contact Information"
 
-### Meta — app `LunAvalos Social` (`1531774538464754`)
-
-| Punto | Estado |
-|---|---|
-| Business verification (`LunAvalos Manager`, `2424498274460318`) | ✅ Verified |
-| Production setup (webhooks, número, pago, envío) | ✅ 4/4 |
-| Campo `messages` suscrito | ✅ (`calls` también) |
-| App Publish Status | ❌ **Unpublished** |
-| Access Verification (Tech Provider) | ❌ **Sin iniciar**, fecha límite **10/12/2026** |
-| App Review | ❌ Sin enviar |
-| `whatsapp_business_messaging` | ⚠️ Standard Access ("Ready for testing", 46 llamadas) |
-| `whatsapp_business_management` | ⚠️ Standard Access ("Ready for testing", 60 llamadas) |
-
-### El bug que hay que arreglar sí o sí
-
-El **Callback URL configurado en Meta apunta directo a Laravel**, no a n8n:
+Reemplazar el bloque de dirección por:
 
 ```
-https://admin.lunavalos.com/whatsapp/webhook
+Registered Office (legal address)
+LunAvalos Digital House, S.A.S.
+Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, Mexico
+
+Business Office
+Av. La Salle #437, Col. La Salle, Saltillo, Coahuila, C.P. 25286, Mexico
 ```
 
-Y con esa configuración está roto en las dos direcciones (verificado con curl):
+### `/aviso-de-privacidad` — sección 1 "Responsable del Tratamiento"
+
+Reemplazar el párrafo y el bloque de domicilio por:
 
 ```
-GET  /whatsapp/webhook?hub.challenge=12345   → 405 Method Not Allowed
-POST /whatsapp/webhook (con X-Hub-Signature) → 401 Unauthorized
+LunAvalos Digital House, S.A.S., con domicilio fiscal en Calle Gallo 118,
+Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, México, es el responsable
+del uso y protección de sus datos personales.
+
+Domicilio fiscal
+Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, México
+
+Oficinas comerciales
+Av. La Salle #437, Col. La Salle, Saltillo, Coahuila, C.P. 25286, México
+
+Contacto
+contacto@lunavalos.com
 ```
 
-1. El handshake de Meta es **GET**; `routes/web.php` solo registra **POST**.
-2. `VerifyN8nSecret` exige `X-N8n-Secret`; Meta manda `X-Hub-Signature-256`.
+### `/terms` — sección 8 "Contacto"
 
-Es decir: aunque se publicara la app hoy, **no entraría ni un mensaje**.
+Mismo tratamiento: etiquetar como **Domicilio fiscal** el de Gallo y como
+**Oficinas comerciales** el de La Salle.
 
-## 3. Arquitectura destino
+### Footer (componente global de todas las páginas)
+
+Hoy el bloque dice solo "Dirección". Cambiar ese encabezado por:
 
 ```
-Onboarding:
-  Cliente ──Embedded Signup (FB JS SDK)──► Laravel
-  Laravel ──code→token, /subscribed_apps──► Graph API
-  Laravel guarda WhatsAppAccount{waba_id, phone_number_id, token cifrado}
-
-Entrada (un solo endpoint para TODOS los clientes):
-  Meta ──X-Hub-Signature-256──► Laravel /whatsapp/webhook
-  Laravel enruta por entry[].id (WABA ID) → WhatsAppAccount → Client
-
-Salida:
-  Laravel ──token del cliente──► Graph API /{phone_number_id}/messages
-
-Automatizaciones (opcional, desacoplado):
-  Laravel ──evento──► n8n ──► lo que el cliente necesite
+Oficinas
+Av. La Salle #437
+Col. La Salle, Saltillo, Coahuila
+México CP 25286
 ```
 
-### Decisión: n8n sale del camino transaccional
+Con la etiqueta "Oficinas" el footer deja de contradecir a las legales.
 
-La justificación original de n8n era la custodia del token. Con multi-WABA
-**Laravel tiene que custodiar los tokens de todos modos**, porque Laravel es
-quien corre el onboarding. Mantener n8n en medio agregaría latencia y un modo
-de falla sin ganar nada en seguridad.
+## A.3 — Unificar el correo
 
-**n8n se queda**, pero para lo que sí hace bien: automatizaciones por cliente
-que se arman sin desplegar código (auto-respuestas, ruteo, sincronización con
-CRM, reportes). Laravel le manda eventos; n8n no toca tokens de Meta.
+**El correo oficial es `contacto@lunavalos.com`.**
 
-Esto además elimina el plan de "duplicar el workflow por cliente" del README
-viejo, que no aplica: con multi-WABA **todos** los eventos llegan al mismo
-Callback URL y se distinguen por `entry[].id`.
+Sustituir **todas** las apariciones de `hola@lunavalos.com` por
+`contacto@lunavalos.com` en todo el sitio.
 
-## 4. Esquema de base de datos
+> Ojo: la cadena `hola@lunavalos.com` no está solo en componentes. Aparece
+> también en el archivo de traducciones / i18n (se ve en el payload de Next bajo
+> la clave `"email"` del bloque de contacto). Haz un
+> `grep -r "hola@lunavalos.com"` en todo el repo, incluyendo archivos de
+> mensajes/JSON, y reemplaza en todos.
 
-Precedente a seguir: `SocialAccount`, que ya es per-`client_id` con token y
-expiración. Dos diferencias: aquí **sí** ciframos el token, y agregamos el
-número como entidad de primera clase.
+---
 
-```php
-// create_whatsapp_accounts_table
-Schema::create('whatsapp_accounts', function (Blueprint $table) {
-    $table->id();
-    $table->foreignId('client_id')->constrained()->cascadeOnDelete();
+# PARTE B — Para App Review (en paralelo, no bloquea)
 
-    $table->string('waba_id')->unique();          // enruta el webhook entrante
-    $table->string('business_id')->nullable();    // portfolio del cliente
+Falta declarar la categoría de datos de **clientes finales** — las personas que
+escriben por WhatsApp a nuestros clientes. Hoy no está en ninguna página.
 
-    // Token del cliente obtenido vía Embedded Signup. Cifrado en reposo:
-    // es credencial de un tercero, no nuestra.
-    $table->text('access_token');
-    $table->timestamp('token_expires_at')->nullable();
+Es lo más importante que quedó pendiente: guardamos su teléfono, su nombre de
+perfil de WhatsApp y el contenido de sus mensajes, y ninguna política lo declara.
 
-    $table->string('status')->default('pending'); // pending|active|revoked|error
-    $table->timestamp('last_error_at')->nullable();
-    $table->text('last_error')->nullable();
+## B.1 — `/privacy` §2: bloque nuevo de datos de clientes finales
 
-    $table->foreignId('connected_by')->nullable()->constrained('users');
-    $table->timestamps();
-});
+Agregar al final de la sección 2, con el mismo formato de tarjeta que los
+bloques existentes:
 
-// create_whatsapp_numbers_table — una WABA puede tener varios números
-Schema::create('whatsapp_numbers', function (Blueprint $table) {
-    $table->id();
-    $table->foreignId('whatsapp_account_id')->constrained()->cascadeOnDelete();
+```
+End-Customer Data (Processed on Behalf of Clients)
 
-    $table->string('phone_number_id')->unique();  // el que va en la URL de Graph
-    $table->string('display_phone_number');
-    $table->string('verified_name')->nullable();
-    $table->string('quality_rating')->nullable(); // GREEN|YELLOW|RED
-    $table->boolean('is_default')->default(false);
-    $table->timestamps();
-});
+When a client uses our WhatsApp support service, we receive and store the phone
+number, WhatsApp profile name, and message content of the people who contact
+that client. We process this data solely as a service provider, acting on the
+client's instructions and for the sole purpose of delivering the support
+service. The client remains the data controller for this information. We do not
+use it for advertising, we do not sell it, and we never share it between
+clients.
 ```
 
-En el modelo, cifrado por cast:
+## B.2 — `/privacy` §5 "Data Retention": agregar al final
 
-```php
-protected function casts(): array
-{
-    return [
-        'access_token'     => 'encrypted',
-        'token_expires_at' => 'datetime',
-    ];
-}
+```
+WhatsApp conversation records, including message content and end-customer
+contact details, are retained for the duration of the contractual relationship
+and deleted within 90 days of its termination. A client may request earlier
+deletion of their conversation records at any time.
 ```
 
-> Nota aparte: `SocialAccount::$access_token` hoy es `$hidden` pero **no** está
-> cifrado. Vale la pena migrarlo al mismo cast en un cambio separado.
+## B.3 — `/privacy` §6 "Your Rights": agregar antes del bloque "Delete Digital Data"
 
-Y en `tickets`, para saber por qué número entró la conversación:
-
-```php
-$table->foreignId('whatsapp_number_id')->nullable()->constrained();
+```
+If you contacted one of our clients through WhatsApp and want to access or
+delete your data, please direct your request to that business, which is the
+controller of the conversation. If you contact us directly at
+contacto@lunavalos.com we will forward your request to them and act on their
+instructions.
 ```
 
-## 5. Onboarding: Embedded Signup
+## B.4 — `/aviso-de-privacidad` §2: apartado D nuevo
 
-Meta **no permite** que el cliente nos pegue un token a mano. Tiene que pasar
-por Embedded Signup. El flujo:
+Agregar después del apartado C ("Datos Financieros y Patrimoniales"), con el
+mismo formato:
 
-1. Página en el admin (`/clients/{client}/whatsapp/connect`) que carga el
-   Facebook JS SDK y lanza `FB.login()` con el `config_id` del Embedded Signup.
-2. El cliente entra con su cuenta de Facebook, elige o crea su WABA y su número,
-   y nos concede acceso.
-3. El SDK nos devuelve un `code` de corta vida.
-4. Laravel lo canjea por el token del negocio:
-   `GET /v2X.0/oauth/access_token?client_id=…&client_secret=…&code=…`
-5. Con ese token, Laravel consulta la WABA y sus números y crea
-   `WhatsAppAccount` + `WhatsAppNumber`.
-6. **Paso que hoy no existe en ningún lado y sin el cual no llega nada:**
-   suscribir nuestra app al webhook de esa WABA:
-   `POST /v2X.0/{waba_id}/subscribed_apps`
+```
+D. Datos de Terceros (Clientes Finales de Nuestros Clientes)
 
-Cada paso de 4 a 6 debe ser idempotente: el cliente va a repetir el flujo.
+Número telefónico, nombre de perfil de WhatsApp y contenido de los mensajes
+enviados por las personas que contactan a nuestros clientes a través de sus
+cuentas de WhatsApp Business.
 
-> ⚠️ Los nombres exactos de parámetros y la versión de Graph cambian entre
-> versiones. Verificar contra la doc vigente de Embedded Signup al implementar;
-> lo de aquí es la forma del flujo, no una firma de API literal.
-
-## 6. Webhook de entrada (reescritura)
-
-Un solo endpoint para todos los clientes. Reemplaza a `VerifyN8nSecret`.
-
-```php
-// routes/web.php
-Route::get('whatsapp/webhook',  [WhatsAppWebhookController::class, 'verify']);
-Route::post('whatsapp/webhook', [WhatsAppWebhookController::class, 'receive'])
-    ->middleware(VerifyMetaSignature::class);
+Estos datos se tratan exclusivamente por cuenta y bajo instrucción del cliente
+titular de la cuenta, quien conserva el carácter de responsable del tratamiento.
+LunAvalos actúa únicamente como encargado. No se utilizan con fines
+publicitarios, no se comercializan y no se comparten entre distintos clientes.
 ```
 
-**`verify()`** — handshake. Compara `hub.verify_token` contra
-`config('services.whatsapp.verify_token')` y devuelve `hub.challenge` **tal
-cual, como texto plano**. Si devuelves JSON, Meta rechaza la suscripción.
+## B.5 — `/aviso-de-privacidad` §5 "Retención y Conservación": agregar al final
 
-**`VerifyMetaSignature`** — HMAC-SHA256 del **cuerpo crudo** con el App Secret,
-comparado contra `X-Hub-Signature-256` con `hash_equals`.
-
-```php
-$esperada = 'sha256=' . hash_hmac('sha256', $request->getContent(), config('services.whatsapp.app_secret'));
+```
+Los registros de conversaciones de WhatsApp, incluyendo el contenido de los
+mensajes y los datos de contacto de los clientes finales, se conservan durante
+la vigencia de la relación contractual y se eliminan dentro de los 90 días
+posteriores a su terminación. El cliente titular de la cuenta puede solicitar su
+eliminación anticipada en cualquier momento.
 ```
 
-Sobre el cuerpo crudo, no sobre el JSON reserializado: cualquier diferencia de
-orden o de escapes rompe la firma.
+## B.6 — `/aviso-de-privacidad` §6 "Derechos ARCO": agregar al final
 
-**`receive()`** — el cambio de fondo es enrutar por WABA:
+```
+Titulares que no son clientes de LunAvalos
 
-```php
-foreach ($request->input('entry', []) as $entry) {
-    $account = WhatsAppAccount::where('waba_id', $entry['id'] ?? '')->first();
-    if (!$account) { continue; }   // WABA que ya no administramos
-    // ...resolver el número por metadata.phone_number_id y crear/actualizar
-    //    el ticket dentro del scope de $account->client_id
-}
+Si usted contactó a una empresa a través de WhatsApp y desea ejercer sus
+derechos de Acceso, Rectificación, Cancelación u Oposición respecto de esa
+conversación, deberá dirigir su solicitud a dicha empresa, que es la responsable
+del tratamiento. Si nos contacta directamente en contacto@lunavalos.com,
+canalizaremos su solicitud con la empresa correspondiente y actuaremos conforme
+a sus instrucciones, en nuestro carácter de encargado.
 ```
 
-Todo lo bueno que ya existe se conserva: idempotencia por `wa_message_id`,
-respuesta 200 rápida, y el emparejamiento de cliente por teléfono — pero ahora
-acotado a `$account->client_id`, no global.
+## B.7 — `/terms` §3: agregar el opt-in
 
-## 7. Salida
+La palabra "opt-in" no aparece hoy en ninguna página del sitio, y Meta la busca
+explícitamente. Agregar a la lista de responsabilidades del cliente, con el mismo
+formato (➔):
 
-`WhatsAppService` deja de ser un cliente de n8n y pasa a hablar con Graph,
-recibiendo siempre el número desde el que se envía:
+```
+➔ Obtener el consentimiento (opt-in) de sus clientes finales antes de iniciar
+  conversaciones por WhatsApp, y conservar evidencia del mismo.
 
-```php
-public function sendText(WhatsAppNumber $number, string $to, string $message): ?string
+➔ Reconocer que es el responsable del tratamiento de los datos personales de sus
+  clientes finales, y que LunAvalos actúa como encargado por cuenta suya.
 ```
 
-El token sale de `$number->account->access_token`. La URL es
-`https://graph.facebook.com/v2X.0/{$number->phone_number_id}/messages`.
+## B.8 — `/terms` §5: agregar tarjeta de limitación
 
-Se mantiene el criterio actual, que es correcto: **un fallo de envío nunca debe
-tumbar la petición que lo originó**.
+Con el mismo formato que las tarjetas existentes de esa sección:
 
-## 8. La ventana de 24 horas
+```
+Entrega de Mensajes
 
-Hoy `TicketController::addMessage()` manda texto libre siempre. Fuera de la
-ventana de 24h desde el último mensaje del cliente, Meta responde error
-**131047** y exige plantilla aprobada.
-
-Como `WhatsAppService` traga el error y devuelve `null`, el resultado actual es:
-el staff escribe, el mensaje se guarda en el ticket, y **el cliente nunca lo
-recibe sin que nadie se entere**. Multi-tenant esto se agrava — son N quality
-ratings que se pueden quemar en silencio.
-
-Mínimo a implementar:
-
-1. `tickets.last_inbound_at`, para saber si la ventana está abierta.
-2. Si está cerrada, la UI ofrece plantilla en vez de texto libre.
-3. `ticket_messages.delivery_status` (`pending|sent|delivered|read|failed`) y
-   `delivery_error`, alimentados por el webhook de `statuses`.
-4. **Mostrar el fallo en la UI del ticket.** Es lo que falta hoy.
-
-Suscribirse al campo `message_template_status_update` para enterarse cuando
-Meta aprueba o rechaza una plantilla.
-
-## 9. Fases
-
-Las fases 1 y 2 son independientes y van en paralelo: el trámite con Meta es lo
-que tiene reloj, y no depende de una línea de código.
-
-**Fase 0 — Trámites (empieza hoy, bloquea todo lo demás)**
-- Access Verification / Tech Provider. Fecha límite **10/12/2026**.
-- App Review con **Advanced Access** en los dos permisos de WhatsApp.
-- Publicar la app.
-
-**Fase 1 — Arreglar el webhook (se puede hacer ya, sin esperar a Meta)**
-- Ruta GET + handshake.
-- `VerifyMetaSignature` en lugar de `VerifyN8nSecret`.
-- Tests: handshake OK/KO, firma válida/inválida/ausente.
-- Esto por sí solo arregla la integración de un número, hoy rota.
-
-**Fase 2 — Esquema multi-tenant**
-- Migraciones y modelos `WhatsAppAccount` / `WhatsAppNumber`.
-- Backfill del número actual (`waba_id 2436841820155807`,
-  `phone_number_id 1230737580126123`) como primer registro.
-- Enrutado por `entry[].id` en el webhook.
-
-**Fase 3 — Embedded Signup**
-- Página de conexión, canje de code, `subscribed_apps`, reconexión y revocación.
-
-**Fase 4 — Salida multi-número**
-- `WhatsAppService` contra Graph, token por cliente.
-- Retiro de `N8N_WHATSAPP_WEBHOOK_URL` y `N8N_SHARED_SECRET`.
-
-**Fase 5 — Ventana de 24h y plantillas**
-- Estados de entrega, `last_inbound_at`, plantillas y señal de fallo en la UI.
-
-**Fase 6 — n8n como capa de automatización**
-- Definir el contrato de eventos Laravel → n8n. Sin tokens de Meta de por medio.
-
-## 10. Config
-
-```env
-# Reemplazan a N8N_WHATSAPP_WEBHOOK_URL / N8N_SHARED_SECRET
-WHATSAPP_APP_ID=1531774538464754
-WHATSAPP_APP_SECRET=
-WHATSAPP_VERIFY_TOKEN=
-WHATSAPP_EMBEDDED_SIGNUP_CONFIG_ID=
-WHATSAPP_GRAPH_VERSION=v26.0
+La entrega de los mensajes de WhatsApp depende de las reglas de la plataforma de
+Meta, incluida la ventana de 24 horas para mensajes de texto libre y la
+aprobación previa de plantillas para mensajes fuera de dicha ventana. LunAvalos
+no será responsable por mensajes no entregados por causas atribuibles a estas
+reglas, a la calificación de calidad del número del cliente o a límites de
+mensajería impuestos por Meta.
 ```
 
-> Meta ya va en `v26.0`; los workflows del repo piden `v23.0`.
+---
 
-## 11. Riesgos
+# Criterios de aceptación
 
-- **Fecha límite del 10/12/2026.** Si Access Verification no se completa, Meta
-  restringe la app. Es el riesgo con reloj.
-- **Business Verification de cada cliente.** Su WABA no envía a escala sin
-  verificar. Es la fricción real del onboarding, y no depende de nosotros.
-- **Revocación silenciosa.** El cliente puede quitar el acceso desde su
-  Business Manager. Hace falta detectar el token muerto y avisar, no fallar en
-  silencio.
-- **Rechazo de App Review.** Causas comunes: screencast poco claro del flujo,
-  política de privacidad que no menciona el tratamiento de datos de WhatsApp,
-  o instrucciones de prueba que el revisor no puede reproducir.
+**Parte A (bloqueante):**
 
-## 12. Pendientes de decisión
+- [ ] `/servicios` tiene una tarjeta que describe la atención por WhatsApp, y su
+      enlace "Saber más" no queda roto.
+- [ ] `/privacy`, `/terms` y `/aviso-de-privacidad` muestran ambos domicilios
+      **etiquetados** como fiscal y comercial.
+- [ ] El footer etiqueta su dirección como "Oficinas".
+- [ ] `grep -r "hola@lunavalos.com"` no devuelve resultados en todo el repo.
 
-- ¿Administramos el business portfolio de algún cliente, o cada quien el suyo?
-  (Lo pregunta el formulario de Access Verification.)
-- ¿El número actual `+52 1 844 341 0326` se queda como el de LunAvalos, o migra?
-- ¿Los clientes ven su conversación en el portal, o solo el staff?
+**Parte B (App Review):**
+
+- [ ] `/privacy` declara los datos de clientes finales como categoría propia, con
+      el encuadre responsable/encargado.
+- [ ] `/privacy` §5 y §6 cubren retención y borrado de conversaciones.
+- [ ] `/aviso-de-privacidad` tiene el apartado D y la vía ARCO para terceros.
+- [ ] `/terms` §3 incluye el opt-in; §5 incluye la limitación por entrega.
+
+**Ambas:**
+
+- [ ] Índices de contenido actualizados con las secciones nuevas.
+- [ ] Fechas de última actualización al día.
+- [ ] Las cinco rutas siguen respondiendo 200.

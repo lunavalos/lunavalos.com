@@ -17,7 +17,8 @@ import {
   Mail,
   Cpu,
   ArrowUpRight,
-  X
+  X,
+  MessageSquare
 } from 'lucide-react';
 
 const servicesList = [
@@ -26,7 +27,8 @@ const servicesList = [
   { id: 'ecommerce', icon: ShoppingBag },
   { id: 'ai', icon: Bot },
   { id: 'marketing', icon: Mail },
-  { id: 'digitalization', icon: Cpu }
+  { id: 'digitalization', icon: Cpu },
+  { id: 'whatsapp', icon: MessageSquare }
 ];
 
 function SearchParamsHandler({ onOpen }: { onOpen: (id: string) => void }) {

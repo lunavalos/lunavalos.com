@@ -68,7 +68,7 @@ export default function PrivacyPage() {
                 
                 <div className="mt-8 pt-6 border-t border-brand/5 text-[11px] text-brand/50 font-medium leading-relaxed">
                   Última actualización:<br />
-                  <span className="text-brand font-bold text-xs">Junio 2026</span>
+                  <span className="text-brand font-bold text-xs">Agosto 2026</span>
                 </div>
               </div>
             </aside>
@@ -92,7 +92,7 @@ export default function PrivacyPage() {
                   LunAvalos Digital House, S.A.S.
                 </h2>
                 <div className="inline-block px-3 py-1 bg-white border border-brand/10 rounded-full text-xs text-brand/70 font-semibold shadow-sm">
-                  Última actualización: Junio 2026
+                  Última actualización: Agosto 2026
                 </div>
               </motion.div>
 
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
                   <p className="text-brand/80">
-                    <strong>LunAvalos Digital House, S.A.S.</strong>, con domicilio en{' '}
+                    <strong>LunAvalos Digital House, S.A.S.</strong>, con domicilio fiscal en{' '}
                     <span className="text-brand font-medium">
                       Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, México
                     </span>
@@ -127,9 +127,15 @@ export default function PrivacyPage() {
                       <div className="w-10 h-10 rounded-lg bg-brand-light/10 text-brand-light flex items-center justify-center shrink-0">
                         <MapPin className="w-5 h-5" />
                       </div>
-                      <div className="text-sm">
-                        <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">Domicilio Oficial</div>
-                        <div className="text-brand font-bold">Saltillo, Coahuila, México</div>
+                      <div className="text-sm space-y-3">
+                        <div>
+                          <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">Domicilio fiscal</div>
+                          <div className="text-brand font-bold">Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, México</div>
+                        </div>
+                        <div className="pt-2 border-t border-brand/5">
+                          <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">Oficinas comerciales</div>
+                          <div className="text-brand font-bold">Av. La Salle #437, Col. La Salle, Saltillo, Coahuila, C.P. 25286, México</div>
+                        </div>
                       </div>
                     </div>
                     <div className="flex-1 bg-brand/5 border border-brand/5 rounded-2xl p-4 flex items-center gap-4">
@@ -137,7 +143,7 @@ export default function PrivacyPage() {
                         <Mail className="w-5 h-5" />
                       </div>
                       <div className="text-sm">
-                        <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">Contacto Electrónico</div>
+                        <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">Contacto</div>
                         <a href="mailto:contacto@lunavalos.com" className="text-brand font-bold hover:text-secondary transition-colors underline">
                           contacto@lunavalos.com
                         </a>
@@ -213,6 +219,20 @@ export default function PrivacyPage() {
                     <ul className="space-y-2 text-brand/70 text-sm leading-relaxed m-0 pl-11 list-disc list-outside">
                       <li>Ingresos, estados de cuenta, bienes materiales, inmuebles y datos relacionados.</li>
                       <li>Información de cónyuge, estado civil, nacionalidad, educación, hijos y referencias familiares/no familiares (nombre, dirección, teléfono y relación).</li>
+                    </ul>
+                  </div>
+
+                  {/* Category D */}
+                  <div className="bg-[#f8f9fc] border border-brand/5 rounded-2xl p-6 relative overflow-hidden group hover:border-brand/10 transition-colors">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-8 h-8 rounded-lg bg-brand/5 flex items-center justify-center text-brand shrink-0">
+                        <User className="w-4 h-4" />
+                      </div>
+                      <h3 className="text-md font-bold text-brand m-0">D. Datos de Terceros (Clientes Finales de Nuestros Clientes)</h3>
+                    </div>
+                    <ul className="space-y-2 text-brand/70 text-sm leading-relaxed m-0 pl-11 list-disc list-outside">
+                      <li>Número telefónico, nombre de perfil de WhatsApp y contenido de los mensajes enviados por las personas que contactan a nuestros clientes a través de sus cuentas de WhatsApp Business.</li>
+                      <li className="list-none pt-2 text-xs font-semibold text-brand/60">Estos datos se tratan exclusivamente por cuenta y bajo instrucción del cliente titular de la cuenta, quien conserva el carácter de responsable del tratamiento. LunAvalos actúa únicamente como encargado. No se utilizan con fines publicitarios, no se comercializan y no se comparten entre distintos clientes.</li>
                     </ul>
                   </div>
                 </div>
@@ -330,6 +350,9 @@ export default function PrivacyPage() {
                   <p className="text-brand/80">
                     Los datos relacionados con las integraciones digitales y tokens se conservarán durante la vigencia de la relación contractual y hasta un periodo máximo de <span className="text-brand font-bold">90 días</span> posteriores a su terminación (procediendo a su desvinculación o borrado seguro), salvo obligación legal o fiscal que exija una conservación más prolongada de la información financiera/patrimonial.
                   </p>
+                  <p className="mt-4 text-brand/80">
+                    Los registros de conversaciones de WhatsApp, incluyendo el contenido de los mensajes y los datos de contacto de los clientes finales, se conservan durante la vigencia de la relación contractual y se eliminan dentro de los 90 días posteriores a su terminación. El cliente titular de la cuenta puede solicitar su eliminación anticipada en cualquier momento.
+                  </p>
                 </div>
               </motion.div>
 
@@ -360,6 +383,13 @@ export default function PrivacyPage() {
                       contacto@lunavalos.com
                     </a>
                     , detallando su nombre y el motivo de su solicitud.
+                  </p>
+
+                  <p className="mt-6 text-brand/80 font-bold">
+                    Titulares que no son clientes de LunAvalos
+                  </p>
+                  <p className="mt-2 text-brand/80">
+                    Si usted contactó a una empresa a través de WhatsApp y desea ejercer sus derechos de Acceso, Rectificación, Cancelación u Oposición respecto de esa conversación, deberá dirigir su solicitud a dicha empresa, que es la responsable del tratamiento. Si nos contacta directamente en <a href="mailto:contacto@lunavalos.com" className="text-brand font-bold hover:text-secondary transition-colors underline">contacto@lunavalos.com</a>, canalizaremos su solicitud con la empresa correspondiente y actuaremos conforme a sus instrucciones, en nuestro carácter de encargado.
                   </p>
 
                   {/* Immediate data removal CTA */}

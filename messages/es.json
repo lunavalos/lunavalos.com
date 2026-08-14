@@ -30,7 +30,7 @@
     "description": "Nuestra misión es apoyar a los negocios a crear un impacto en su comunidad.",
     "services": "Servicios",
     "contact": "Contacto",
-    "address": "Dirección",
+    "address": "Oficinas",
     "privacy": "Aviso de Privacidad",
     "terms": "Términos y Condiciones",
     "deleteData": "Eliminación de Datos",
@@ -46,7 +46,7 @@
     "ctaQuote": "Cotizar mi proyecto",
     "ctaWhatsapp": "WhatsApp directo",
     "location": "Saltillo, Coahuila, México",
-    "email": "hola@lunavalos.com",
+    "email": "contacto@lunavalos.com",
     "global": "Servicios globales"
   },
   "Navigation": {
@@ -119,6 +119,12 @@
         "description": "Llevamos tu negocio al mundo digital con menús digitales, catálogos de productos, tarjetas de presentación interactivas, gestión de redes sociales y analítica web avanzada con Google Analytics.",
         "details": "Convertimos lo analógico en digital para ganar agilidad. Menús QR para el sector hospitality, tarjetas con tecnología NFC para networking corporativo, y digitalización de archivos físicos mediante escaneo inteligente. Te ayudamos a eliminar cuellos de botella burocráticos mediante la adopción de herramientas digitales modernas.",
         "tech": ["Menú Digital", "Catálogo digital", "QR & NFC", "Google Analytics", "SEO local"]
+      },
+      "whatsapp": {
+        "title": "Atención a clientes por WhatsApp",
+        "description": "Conectamos la cuenta de WhatsApp Business de tu empresa a nuestra plataforma de gestión. Cada mensaje que te envían tus clientes se convierte en un ticket con seguimiento, tu equipo responde desde un solo panel y la respuesta llega al chat del cliente. Incluye historial completo de conversaciones, asignación por responsable y reportes de atención.",
+        "details": "Conectamos la cuenta de WhatsApp Business de tu empresa a nuestra plataforma de gestión. Cada mensaje que te envían tus clientes se convierte en un ticket con seguimiento, tu equipo responde desde un solo panel y la respuesta llega al chat del cliente. Incluye historial completo de conversaciones, asignación por responsable y reportes de atención.",
+        "tech": ["WhatsApp Business Platform", "Tickets", "Historial de conversaciones", "Reportes"]
       }
     },
     "buttons": {

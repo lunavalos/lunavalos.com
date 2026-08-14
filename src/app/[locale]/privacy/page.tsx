@@ -69,7 +69,7 @@ export default function EnglishPrivacyPage() {
                 
                 <div className="mt-8 pt-6 border-t border-brand/5 text-[11px] text-brand/50 font-medium leading-relaxed">
                   Last updated:<br />
-                  <span className="text-brand font-bold text-xs">June 2026</span>
+                  <span className="text-brand font-bold text-xs">August 2026</span>
                 </div>
               </div>
             </aside>
@@ -93,7 +93,7 @@ export default function EnglishPrivacyPage() {
                   LunAvalos Digital House, S.A.S.
                 </h2>
                 <div className="inline-block px-3 py-1 bg-white border border-brand/10 rounded-full text-xs text-brand/70 font-semibold shadow-sm">
-                  Last updated: June 2026
+                  Last updated: August 2026
                 </div>
               </motion.div>
 
@@ -219,6 +219,19 @@ export default function EnglishPrivacyPage() {
                       Content creation metadata, publishing history, and client message exchange history processed through authorized channels.
                     </p>
                   </div>
+                  
+                  {/* Category 5 */}
+                  <div className="bg-[#f8f9fc] border border-brand/5 rounded-2xl p-6 relative overflow-hidden group hover:border-brand/10 transition-colors col-span-1 md:col-span-2">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-8 h-8 rounded-lg bg-brand/5 flex items-center justify-center text-brand shrink-0">
+                        <User className="w-4 h-4" />
+                      </div>
+                      <h3 className="text-md font-bold text-brand m-0">End-Customer Data (Processed on Behalf of Clients)</h3>
+                    </div>
+                    <p className="text-brand/70 text-sm leading-relaxed m-0 pl-11">
+                      When a client uses our WhatsApp support service, we receive and store the phone number, WhatsApp profile name, and message content of the people who contact that client. We process this data solely as a service provider, acting on the client's instructions and for the sole purpose of delivering the support service. The client remains the data controller for this information. We do not use it for advertising, we do not sell it, and we never share it between clients.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
 
@@ -333,6 +346,9 @@ export default function EnglishPrivacyPage() {
                   <p className="text-brand/80">
                     We retain data for the duration of the contractual relationship and for up to <span className="text-brand font-bold">90 days</span> after termination, unless otherwise required by law.
                   </p>
+                  <p className="mt-4 text-brand/80">
+                    WhatsApp conversation records, including message content and end-customer contact details, are retained for the duration of the contractual relationship and deleted within 90 days of its termination. A client may request earlier deletion of their conversation records at any time.
+                  </p>
                 </div>
               </motion.div>
 
@@ -355,32 +371,42 @@ export default function EnglishPrivacyPage() {
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
                   <p className="text-brand/80">
-                    You have the right to access, correct, or request deletion of your personal data at any time.
+                    You have the right to access, rectify, cancel, or object to the processing of your personal data.
                   </p>
                   <p className="mt-4 text-brand/80">
-                    To request data deletion, you can contact us at:{' '}
+                    To exercise any of these rights, please email us at:{' '}
                     <a href="mailto:contacto@lunavalos.com" className="text-brand font-bold hover:text-secondary transition-colors underline">
                       contacto@lunavalos.com
                     </a>
+                    .
+                  </p>
+
+                  <p className="mt-6 text-brand/80 font-bold">
+                    End-Customers of Our Clients
+                  </p>
+                  <p className="mt-2 text-brand/80">
+                    If you contacted one of our clients through WhatsApp and want to access or delete your data, please direct your request to that business, which is the controller of the conversation. If you contact us directly at <a href="mailto:contacto@lunavalos.com" className="text-brand font-bold hover:text-secondary transition-colors underline">contacto@lunavalos.com</a> we will forward your request to them and act on their instructions.
                   </p>
 
                   {/* Immediate data removal CTA */}
                   <div className="mt-8 p-6 md:p-8 bg-gradient-to-r from-orange-500/5 to-secondary/10 border border-secondary/15 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                     <div className="flex-1">
                       <h4 className="text-brand font-bold text-md m-0 mb-1">
-                        Need immediate access revocation?
+                        Do you want to revoke access immediately?
                       </h4>
                       <p className="text-brand/60 text-xs md:text-sm m-0 leading-relaxed">
-                        You can manage automated data deletion and unlink digital accounts using our specialized tool.
+                        You can manage the automated deletion of social media data and disconnect your accounts on our dedicated portal.
                       </p>
                     </div>
-                    <Link
-                      href="/eliminar-datos"
+                    <a
+                      href="https://lunavalos.com/eliminar-datos"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-5 py-3 bg-secondary hover:opacity-90 text-white rounded-xl text-sm font-bold shadow-sm transition-all whitespace-nowrap shrink-0 group"
                     >
                       <span>Delete Digital Data</span>
                       <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </motion.div>
@@ -436,10 +462,16 @@ export default function EnglishPrivacyPage() {
                       <div className="w-10 h-10 rounded-lg bg-brand-light/10 text-brand-light flex items-center justify-center shrink-0">
                         <MapPin className="w-5 h-5" />
                       </div>
-                      <div className="text-sm">
-                        <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">Headquarters</div>
-                        <div className="text-brand font-bold">LunAvalos Digital House, S.A.S.</div>
-                        <div className="text-brand/70 text-xs mt-1">Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, Mexico</div>
+                      <div className="text-sm space-y-3">
+                        <div>
+                          <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">Registered Office (legal address)</div>
+                          <div className="text-brand font-bold">LunAvalos Digital House, S.A.S.</div>
+                          <div className="text-brand/70 text-xs mt-1">Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, Mexico</div>
+                        </div>
+                        <div className="pt-2 border-t border-brand/5">
+                          <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">Business Office</div>
+                          <div className="text-brand/70 text-xs mt-1">Av. La Salle #437, Col. La Salle, Saltillo, Coahuila, C.P. 25286, Mexico</div>
+                        </div>
                       </div>
                     </div>
                     

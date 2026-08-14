@@ -42,7 +42,7 @@
     "description": "我们的使命是帮助企业在其社区中创造影响力。",
     "services": "服务",
     "contact": "联系我们",
-    "address": "地址",
+    "address": "办公室",
     "privacy": "隐私政策",
     "terms": "条款与条件",
     "deleteData": "数据删除",
@@ -58,7 +58,7 @@
     "ctaQuote": "获取项目报价",
     "ctaWhatsapp": "WhatsApp 直联",
     "location": "墨西哥科阿韦拉州萨尔蒂略",
-    "email": "hola@lunavalos.com",
+    "email": "contacto@lunavalos.com",
     "global": "全球服务"
   },
   "Navigation": {
@@ -149,8 +149,8 @@
       },
       "digitalization": {
         "title": "企业数字化转型",
-        "description": "我们通过数字菜单、产品目录、互动名片、社交媒体管理及 Google Analytics 高级网站分析，助力您的业务迈入数字世界。",
-        "details": "我们将线下转化为线上，以获取更强的敏捷性。餐饮行业 QR 码菜单、企业人脉拓展 NFC 名片，以及通过智能扫描实现的纸质文档数字化。我们通过推动现代数字工具的采用，帮助您消除繁琐的业务瓶颈。",
+        "description": "We accompany your total transition to the digital ecosystem. We digitize physical processes through interactive menus, smart cards, strategic online presence management, and advanced analytics so that every decision in your company is backed by precise data.",
+        "details": "We convert the analog into digital to gain agility. QR menus for the hospitality sector, NFC-enabled cards for corporate networking, and physical archive digitalization via intelligent scanning. We help you eliminate bureaucratic bottlenecks by adopting modern digital tools.",
         "tech": [
           "数字菜单",
           "数字目录",
@@ -158,6 +158,12 @@
           "Google Analytics",
           "本地SEO"
         ]
+      },
+      "whatsapp": {
+        "title": "通过 WhatsApp 提供客户服务",
+        "description": "我们将您公司的 WhatsApp Business 账户连接到我们的管理平台。客户发送的每条消息都将成为一个可跟踪的工单，您的团队从一个面板进行回复，回复将直接发送至客户的聊天界面。包括完整的对话历史记录、指派责任人以及服务报告。",
+        "details": "我们将您公司的 WhatsApp Business 账户连接到我们的管理平台。客户发送的每条消息都将成为一个可跟踪的工单，您的团队从一个面板进行回复，回复将直接发送至客户的聊天界面。包括完整的对话历史记录、指派责任人以及服务报告。",
+        "tech": ["WhatsApp Business Platform", "工单系统", "对话历史", "报告"]
       }
     },
     "buttons": {

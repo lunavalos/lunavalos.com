@@ -42,7 +42,7 @@
     "description": "Nossa missão é apoiar os negócios a criar impacto em sua comunidade.",
     "services": "Serviços",
     "contact": "Contato",
-    "address": "Endereço",
+    "address": "Escritórios",
     "privacy": "Política de Privacidade",
     "terms": "Termos e Condições",
     "deleteData": "Exclusão de Dados",
@@ -58,7 +58,7 @@
     "ctaQuote": "Solicitar orçamento",
     "ctaWhatsapp": "WhatsApp direto",
     "location": "Saltillo, Coahuila, México",
-    "email": "hola@lunavalos.com",
+    "email": "contacto@lunavalos.com",
     "global": "Serviços globais"
   },
   "Navigation": {
@@ -150,7 +150,7 @@
       "digitalization": {
         "title": "Digitalização de negócios",
         "description": "Levamos o seu negócio ao mundo digital com cardápios digitais, catálogos de produtos, cartões de visita interativos, gestão de redes sociais e analytics web avançado com Google Analytics.",
-        "details": "Convertemos o analógico em digital para ganhar agilidade. Cardápios QR para o setor de hospitalidade, cartões com tecnologia NFC para networking corporativo, e digitalização de arquivos físicos por meio de digitalização inteligente. Ajudamos a eliminar gargalos burocráticos por meio da adoção de ferramentas digitais modernas.",
+        "details": "Convertemos o analógico em digital para ganhar agilidade. Cardápios QR para o sector de hospitalidade, cartões com tecnologia NFC para networking corporativo, e digitalização de arquivos físicos por meio de digitalização inteligente. Ajudamos a eliminar gargalos burocráticos por meio da adoção de ferramentas digitais modernas.",
         "tech": [
           "Cardápio Digital",
           "Catálogo digital",
@@ -158,6 +158,12 @@
           "Google Analytics",
           "SEO local"
         ]
+      },
+      "whatsapp": {
+        "title": "Atendimento ao Cliente via WhatsApp",
+        "description": "Conectamos a conta do WhatsApp Business da sua empresa à nossa plataforma de gestão. Cada mensagem enviada pelos seus clientes torna-se um ticket rastreado, a sua equipe responde a partir de um painel único e a resposta chega ao chat do cliente. Inclui histórico completo de conversas, atribuição por proprietário e relatórios de atendimento.",
+        "details": "Conectamos a conta do WhatsApp Business da sua empresa à nossa plataforma de gestão. Cada mensagem enviada pelos seus clientes torna-se um ticket rastreado, a sua equipe responde a partir de um painel único e a resposta chega ao chat del cliente. Inclui histórico completo de conversas, atribuição por proprietário e relatórios de atendimento.",
+        "tech": ["WhatsApp Business Platform", "Tickets", "Histórico de Conversas", "Relatórios"]
       }
     },
     "buttons": {

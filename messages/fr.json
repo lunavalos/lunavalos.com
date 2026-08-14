@@ -42,7 +42,7 @@
     "description": "Notre mission est d'aider les entreprises à créer un impact dans leur communauté.",
     "services": "Services",
     "contact": "Contact",
-    "address": "Adresse",
+    "address": "Bureaux",
     "privacy": "Politique de Confidentialité",
     "terms": "Conditions d'Utilisation",
     "deleteData": "Suppression des Données",
@@ -58,7 +58,7 @@
     "ctaQuote": "Demander un devis",
     "ctaWhatsapp": "WhatsApp direct",
     "location": "Saltillo, Coahuila, Mexique",
-    "email": "hola@lunavalos.com",
+    "email": "contacto@lunavalos.com",
     "global": "Services mondiaux"
   },
   "Navigation": {
@@ -158,6 +158,12 @@
           "Google Analytics",
           "SEO local"
         ]
+      },
+      "whatsapp": {
+        "title": "Service Client via WhatsApp",
+        "description": "Nous connectons le compte WhatsApp Business de votre entreprise à notre plateforme de gestion. Chaque message envoyé par vos clients devient un ticket suivi, votre équipe répond depuis un panneau unique et la réponse arrive directement sur le chat du client. Comprend l'historique complet des conversations, l'attribution par responsable et les rapports de service.",
+        "details": "Nous connectons le compte WhatsApp Business de votre entreprise à notre plateforme de gestion. Chaque message envoyé par vos clients devient un ticket suivi, votre équipe répond depuis un panneau unique et la réponse arrive directement sur le chat du client. Comprend l'historique complet des conversations, l'attribution par responsable et les rapports de service.",
+        "tech": ["WhatsApp Business Platform", "Tickets", "Historique des Conversations", "Rapports"]
       }
     },
     "buttons": {

@@ -30,7 +30,7 @@
     "description": "Our mission is to support businesses in creating an impact in their community.",
     "services": "Services",
     "contact": "Contact",
-    "address": "Address",
+    "address": "Offices",
     "privacy": "Privacy Policy",
     "terms": "Terms and Conditions",
     "deleteData": "Data Deletion",
@@ -46,7 +46,7 @@
     "ctaQuote": "Quote my project",
     "ctaWhatsapp": "Direct WhatsApp",
     "location": "Saltillo, Coahuila, Mexico",
-    "email": "hola@lunavalos.com",
+    "email": "contacto@lunavalos.com",
     "global": "Global services"
   },
   "Navigation": {
@@ -119,6 +119,12 @@
         "description": "We accompany your total transition to the digital ecosystem. We digitize physical processes through interactive menus, smart cards, strategic online presence management, and advanced analytics so that every decision in your company is backed by precise data.",
         "details": "We convert the analog into digital to gain agility. QR menus for the hospitality sector, NFC-enabled cards for corporate networking, and physical archive digitalization via intelligent scanning. We help you eliminate bureaucratic bottlenecks by adopting modern digital tools.",
         "tech": ["Digital Menu", "Digital Catalog", "QR & NFC", "Google Analytics", "Local SEO"]
+      },
+      "whatsapp": {
+        "title": "Customer Service via WhatsApp",
+        "description": "We connect your company's WhatsApp Business account to our management platform. Every message sent by your customers becomes a tracked ticket, your team responds from a single panel, and the response goes directly to the customer's chat. Includes full conversation history, assignment by owner, and service reports.",
+        "details": "We connect your company's WhatsApp Business account to our management platform. Every message sent by your customers becomes a tracked ticket, your team responds from a single panel, and the response goes directly to the customer's chat. Includes full conversation history, assignment by owner, and service reports.",
+        "tech": ["WhatsApp Business Platform", "Tickets", "Conversation History", "Reports"]
       }
     },
     "buttons": {
