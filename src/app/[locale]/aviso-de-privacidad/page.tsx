@@ -245,6 +245,7 @@ export default function PrivacyPage() {
                   {[
                     'Información, cotización y prestación de los servicios contratados (desarrollo web, e-commerce, automatización y consultoría).',
                     'Gestión, programación y publicación automatizada de contenido en redes sociales en nombre de nuestros clientes.',
+                    'Gestión de canales de mensajería de WhatsApp Business y comunicación con clientes finales.',
                     'Generar reportes de métricas y actividad para el análisis de rendimiento.',
                     'Actualización de nuestras bases de datos internas y cumplimiento de obligaciones contractuales.',
                     'Cualquier finalidad análoga o compatible con las anteriores.',
@@ -285,9 +286,10 @@ export default function PrivacyPage() {
                 </div>
 
                 {/* Platforms Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
                   {[
                     { name: 'Meta Platforms, Inc.', detail: 'Facebook & Instagram' },
+                    { name: 'WhatsApp (Meta Platforms, Inc.)', detail: 'WhatsApp Business API' },
                     { name: 'LinkedIn Corporation', detail: 'Professional Network' },
                     { name: 'TikTok Inc.', detail: 'Short Video Platform' },
                     { name: 'Google LLC', detail: 'YouTube Integration' }

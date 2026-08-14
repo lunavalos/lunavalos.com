@@ -190,7 +190,7 @@ export default function EnglishPrivacyPage() {
                       <h3 className="text-md font-bold text-brand m-0">Access Credentials</h3>
                     </div>
                     <p className="text-brand/70 text-sm leading-relaxed m-0 pl-11">
-                      Social media access tokens for platforms including Facebook, Instagram, LinkedIn, TikTok, and YouTube.
+                      Social media and messaging access tokens for platforms including Facebook, Instagram, LinkedIn, TikTok, YouTube, and WhatsApp Business API (crypted at rest).
                     </p>
                   </div>
 
@@ -203,7 +203,7 @@ export default function EnglishPrivacyPage() {
                       <h3 className="text-md font-bold text-brand m-0">Profiles & Pages</h3>
                     </div>
                     <p className="text-brand/70 text-sm leading-relaxed m-0 pl-11">
-                      Social media profile and page information associated with managed accounts.
+                      Social media profile, WhatsApp Business Account (WABA) IDs, phone number IDs, and page information associated with managed accounts.
                     </p>
                   </div>
 
@@ -216,7 +216,7 @@ export default function EnglishPrivacyPage() {
                       <h3 className="text-md font-bold text-brand m-0">Activity History</h3>
                     </div>
                     <p className="text-brand/70 text-sm leading-relaxed m-0 pl-11">
-                      Content creation metadata and publishing history.
+                      Content creation metadata, publishing history, and client message exchange history processed through authorized channels.
                     </p>
                   </div>
                 </div>
@@ -248,7 +248,8 @@ export default function EnglishPrivacyPage() {
                 <div className="space-y-4">
                   {[
                     'Publish and schedule content on social media platforms on behalf of our clients',
-                    'Manage connected social media accounts as authorized',
+                    'Manage connected social media and WhatsApp messaging accounts as authorized',
+                    'Fulfill message exchange and communication with end-users via WhatsApp Business API',
                     'Generate activity reports for our clients',
                     'Fulfill our contractual obligations'
                   ].map((text, i) => (
@@ -288,9 +289,10 @@ export default function EnglishPrivacyPage() {
                 </div>
 
                 {/* Platforms Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
                   {[
                     { name: 'Meta Platforms, Inc.', detail: 'Facebook & Instagram' },
+                    { name: 'WhatsApp (Meta Platforms, Inc.)', detail: 'WhatsApp Business API' },
                     { name: 'LinkedIn Corporation', detail: 'Professional Network' },
                     { name: 'TikTok Inc.', detail: 'Short Video Platform' },
                     { name: 'Google LLC', detail: 'YouTube Integration' }

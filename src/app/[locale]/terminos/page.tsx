@@ -3,6 +3,7 @@
 import Navbar from '@/components/Navbar';
 import PageHero from '@/components/PageHero';
 import { motion } from 'framer-motion';
+import { useLocale } from 'next-intl';
 import { 
   Building, 
   MapPin, 
@@ -19,7 +20,19 @@ import {
 } from 'lucide-react';
 
 export default function TermsPage() {
-  const sections = [
+  const locale = useLocale();
+  const isEn = locale === 'en';
+
+  const sections = isEn ? [
+    { id: 'descripcion', title: '1. Service Description' },
+    { id: 'responsabilidades-lunavalos', title: '2. LunAvalos Responsibilities' },
+    { id: 'responsabilidades-cliente', title: '3. Client Responsibilities' },
+    { id: 'propiedad-intelectual', title: '4. Intellectual Property' },
+    { id: 'limitacion-responsabilidad', title: '5. Limitation of Liability' },
+    { id: 'terminacion', title: '6. Termination' },
+    { id: 'jurisdiccion', title: '7. Jurisdiction' },
+    { id: 'contacto', title: '8. Contact Information' },
+  ] : [
     { id: 'descripcion', title: '1. Descripción del Servicio' },
     { id: 'responsabilidades-lunavalos', title: '2. Responsabilidades de LunAvalos' },
     { id: 'responsabilidades-cliente', title: '3. Responsabilidades del Cliente' },
@@ -35,9 +48,9 @@ export default function TermsPage() {
       <Navbar />
 
       <PageHero
-        title="Términos y Condiciones"
-        subtitle="Condiciones de servicio y marco de colaboración con nuestros clientes."
-        badge="Legal & Condiciones"
+        title={isEn ? "Terms and Conditions" : "Términos y Condiciones"}
+        subtitle={isEn ? "Service conditions and collaboration framework with our clients." : "Condiciones de servicio y marco de colaboración con nuestros clientes."}
+        badge={isEn ? "Legal & Terms" : "Legal & Condiciones"}
         dividerColor="bg-[#f8f9fc]"
       />
 
@@ -50,7 +63,7 @@ export default function TermsPage() {
             <aside className="hidden lg:block lg:col-span-3">
               <div className="sticky top-28 bg-white border border-brand/5 p-6 rounded-2xl shadow-sm">
                 <div className="text-xs font-bold uppercase tracking-wider text-brand/40 mb-4">
-                  Contenido
+                  {isEn ? "Contents" : "Contenido"}
                 </div>
                 <nav className="space-y-1">
                   {sections.map((section) => (
@@ -66,8 +79,8 @@ export default function TermsPage() {
                 </nav>
                 
                 <div className="mt-8 pt-6 border-t border-brand/5 text-[11px] text-brand/50 font-medium leading-relaxed">
-                  Última actualización:<br />
-                  <span className="text-brand font-bold text-xs">Junio 2026</span>
+                  {isEn ? "Last updated:" : "Última actualización:"}<br />
+                  <span className="text-brand font-bold text-xs">{isEn ? "June 2026" : "Junio 2026"}</span>
                 </div>
               </div>
             </aside>
@@ -85,13 +98,13 @@ export default function TermsPage() {
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-2xl pointer-events-none" />
                 <p className="m-0 text-brand font-bold uppercase tracking-widest text-xs md:text-sm">
-                  Términos y Condiciones de Servicio
+                  {isEn ? "Terms and Conditions of Service" : "Términos y Condiciones de Servicio"}
                 </p>
                 <h2 className="text-xl md:text-2xl font-display font-extrabold text-brand uppercase tracking-tight mt-2 mb-4">
                   LunAvalos Digital House, S.A.S.
                 </h2>
                 <div className="inline-block px-3 py-1 bg-white border border-brand/10 rounded-full text-xs text-brand/70 font-semibold shadow-sm">
-                  Última actualización: Junio 2026
+                  {isEn ? "Last updated: June 2026" : "Última actualización: Junio 2026"}
                 </div>
               </motion.div>
 
@@ -109,15 +122,17 @@ export default function TermsPage() {
                     <Sparkles className="w-6 h-6" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-display font-bold text-brand uppercase tracking-tight m-0">
-                    1. Descripción del Servicio
+                    {isEn ? "1. Service Description" : "1. Descripción del Servicio"}
                   </h2>
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
                   <p className="text-brand/80">
-                    <strong>LunAvalos Digital House, S.A.S.</strong> (&quot;LunAvalos&quot;) es una agencia de marketing digital que presta servicios de gestión, programación y publicación de contenido en redes sociales en nombre de sus clientes.
+                    <strong>LunAvalos Digital House, S.A.S.</strong> (&quot;LunAvalos&quot;) {isEn ? "is a digital marketing agency that provides social media content management, programming, and publishing services, as well as messaging solutions in name of its clients." : "es una agencia de marketing digital que presta servicios de gestión, programación y publicación de contenido en redes sociales y soluciones de mensajería en nombre de sus clientes."}
                   </p>
                   <p className="mt-4 text-brand/80">
-                    El cliente contrata a LunAvalos para administrar sus cuentas de redes sociales (Facebook, Instagram, LinkedIn, TikTok, YouTube) y publicar contenido de acuerdo a una estrategia acordada previamente.
+                    {isEn 
+                      ? "The client hires LunAvalos to manage their social media accounts and digital messaging platforms (including WhatsApp) in accordance with a previously agreed strategy." 
+                      : "El cliente contrata a LunAvalos para administrar sus cuentas de redes sociales y plataformas de mensajería digital (incluyendo WhatsApp) de acuerdo a una estrategia acordada previamente."}
                   </p>
                 </div>
               </motion.div>
@@ -136,22 +151,27 @@ export default function TermsPage() {
                     <ShieldCheck className="w-6 h-6" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-display font-bold text-brand uppercase tracking-tight m-0">
-                    2. Responsabilidades de LunAvalos
+                    {isEn ? "2. LunAvalos Responsibilities" : "2. Responsabilidades de LunAvalos"}
                   </h2>
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg mb-6">
                   <p className="text-brand/80">
-                    LunAvalos se compromete formalmente a:
+                    {isEn ? "LunAvalos formally commits to:" : "LunAvalos se compromete formalmente a:"}
                   </p>
                 </div>
                 
                 <div className="space-y-4">
-                  {[
+                  {(isEn ? [
+                    'Publish content approved by the client in the agreed timeframe.',
+                    'Maintain absolute confidentiality and encryption at rest of the provided credentials and access tokens (including WhatsApp tokens).',
+                    'Use access to platforms, networks, and messaging APIs solely for the purposes defined in the hired service.',
+                    'Securely revoke and unbind all access privileges at the termination of the contract (including WhatsApp application subscriptions).'
+                  ] : [
                     'Publicar el contenido aprobado por el cliente en los tiempos acordados.',
-                    'Mantener la absoluta confidencialidad de las credenciales y tokens de acceso otorgados.',
-                    'Utilizar los accesos a plataformas y redes únicamente para los fines previstos en el servicio contratado.',
-                    'Revocar y desvincular de forma segura todos los accesos al término de la relación contractual.'
-                  ].map((text, i) => (
+                    'Mantener la absoluta confidencialidad y el cifrado en reposo de las credenciales y tokens de acceso otorgados (incluyendo tokens de WhatsApp).',
+                    'Utilizar los accesos a plataformas, redes y APIs de mensajería únicamente para los fines previstos en el servicio contratado.',
+                    'Revocar y desvincular de forma segura todos los accesos al término de la relación contractual (incluyendo la desvinculación de suscripciones de aplicaciones en WhatsApp).'
+                  ]).map((text, i) => (
                     <div key={i} className="flex gap-4 items-start p-4 rounded-xl hover:bg-[#f8f9fc] transition-colors border border-transparent hover:border-brand/5">
                       <div className="w-6 h-6 rounded-full bg-brand-soft text-brand-light flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
                         ✓
@@ -178,22 +198,31 @@ export default function TermsPage() {
                     <UserCheck className="w-6 h-6" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-display font-bold text-brand uppercase tracking-tight m-0">
-                    3. Responsabilidades del Cliente
+                    {isEn ? "3. Client Responsibilities" : "3. Responsabilidades del Cliente"}
                   </h2>
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg mb-6">
                   <p className="text-brand/80">
-                    El cliente asume la responsabilidad y compromiso de:
+                    {isEn ? "The client assumes the responsibility and commitment to:" : "El cliente asume la responsabilidad y compromiso de:"}
                   </p>
                 </div>
                 
                 <div className="space-y-4">
-                  {[
+                  {(isEn ? [
+                    'Provide true and accurate content that does not infringe on third-party intellectual property rights.',
+                    'Guarantee ownership of their WhatsApp Business Account (WABA) and associated phone numbers.',
+                    'Expressly authorize LunAvalos to access their WABA via Meta\'s Embedded Signup flow.',
+                    'Independently complete the Business Verification processes required by Meta.',
+                    'Strictly comply with WhatsApp Commercial and Business Policies set by Meta.',
+                    'Timely notify LunAvalos of any changes to credentials or access rights.'
+                  ] : [
                     'Proporcionar contenido e información veraz y que no infrinja derechos de propiedad intelectual de terceros.',
-                    'Autorizar expresamente a LunAvalos para acceder y publicar en sus cuentas de redes sociales.',
-                    'Notificar a LunAvalos cualquier cambio en sus credenciales o accesos de manera oportuna.',
-                    'Cumplir cabalmente con los términos de uso y políticas vigentes de cada plataforma de redes sociales vinculada.'
-                  ].map((text, i) => (
+                    'Garantizar la propiedad de su cuenta de WhatsApp Business (WABA) y sus números telefónicos asociados.',
+                    'Autorizar expresamente a LunAvalos para acceder a su WABA a través del flujo de Embedded Signup de Meta.',
+                    'Completar de forma independiente los procesos de verificación de negocio (Business Verification) exigidos por Meta.',
+                    'Cumplir cabalmente con los términos de uso, políticas de comercio y políticas de negocios de WhatsApp de Meta.',
+                    'Notificar a LunAvalos cualquier cambio en sus credenciales o accesos de manera oportuna.'
+                  ]).map((text, i) => (
                     <div key={i} className="flex gap-4 items-start p-4 rounded-xl hover:bg-[#f8f9fc] transition-colors border border-transparent hover:border-brand/5">
                       <div className="w-6 h-6 rounded-full bg-orange-50 text-secondary flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
                         ➔
@@ -220,12 +249,14 @@ export default function TermsPage() {
                     <Award className="w-6 h-6" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-display font-bold text-brand uppercase tracking-tight m-0">
-                    4. Propiedad Intelectual
+                    {isEn ? "4. Intellectual Property" : "4. Propiedad Intelectual"}
                   </h2>
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
                   <p className="text-brand/80">
-                    El contenido creado por LunAvalos para el cliente (incluyendo textos, diseños gráficos y estrategias de contenido) es propiedad exclusiva del cliente una vez liquidado el pago total del servicio correspondiente.
+                    {isEn 
+                      ? "Content created by LunAvalos for the client (including text, graphics, and content strategies) is the exclusive property of the client once full payment for the corresponding service has been cleared."
+                      : "El contenido creado por LunAvalos para el cliente (incluyendo textos, diseños gráficos y estrategias de contenido) es propiedad exclusiva del cliente una vez liquidado el pago total del servicio correspondiente."}
                   </p>
                 </div>
               </motion.div>
@@ -244,22 +275,31 @@ export default function TermsPage() {
                     <AlertTriangle className="w-6 h-6" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-display font-bold text-brand uppercase tracking-tight m-0">
-                    5. Limitación de Responsabilidad
+                    {isEn ? "5. Limitation of Liability" : "5. Limitación de Responsabilidad"}
                   </h2>
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg mb-6">
                   <p className="text-brand/80">
-                    LunAvalos realiza sus mejores esfuerzos profesionales para garantizar la continuidad y el éxito del servicio, sin embargo, no será responsable por:
+                    {isEn 
+                      ? "LunAvalos makes its best professional efforts to guarantee service continuity and success, however, it shall not be liable for:"
+                      : "LunAvalos realiza sus mejores esfuerzos profesionales para garantizar la continuidad y el éxito del servicio, sin embargo, no será responsable por:"}
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {[
-                    { title: 'Cambios de Algoritmo', desc: 'Cambios en las políticas, algoritmos o configuraciones de las plataformas de redes sociales.' },
-                    { title: 'Restricciones de Cuenta', desc: 'Suspensión, bloqueo o restricción de cuentas ejecutadas directamente por las plataformas.' },
-                    { title: 'Resultados Específicos', desc: 'Resultados y métricas específicas de alcance orgánico, interacciones o tasa de conversiones.' },
-                    { title: 'Fallas de Terceros', desc: 'Interrupciones en el servicio causadas por fallas generales de infraestructura o caídas de terceros.' }
-                  ].map((item, i) => (
+                  {(isEn ? [
+                    { title: 'Algorithm Changes', desc: 'Changes in policies, algorithms, or configurations of social media platforms and messaging APIs.' },
+                    { title: 'Account Restrictions', desc: 'Suspension, blocking, or restriction of accounts and WABAs executed directly by Meta or other platforms.' },
+                    { title: 'Specific Results', desc: 'Specific results and metrics of organic reach, interactions, message delivery, or conversion rates.' },
+                    { title: 'Access Revocation', desc: 'Disconnection of tokens and API keys by the client from their Business Manager or silently by the platforms.' },
+                    { title: 'Third-Party Failures', desc: 'Service interruptions caused by general infrastructure failures, downtime of Meta/WhatsApp servers, or hosting providers.' }
+                  ] : [
+                    { title: 'Cambios de Algoritmo', desc: 'Cambios en las políticas, algoritmos o configuraciones de las plataformas de redes sociales y APIs de mensajería.' },
+                    { title: 'Restricciones de Cuenta', desc: 'Suspensión, bloqueo o restricción de cuentas y WABAs ejecutadas directamente por Meta u otras plataformas.' },
+                    { title: 'Resultados Específicos', desc: 'Resultados y métricas específicas de alcance orgánico, interacciones, entrega de mensajes o tasa de conversiones.' },
+                    { title: 'Revocación de Acceso', desc: 'Desconexión de tokens y API keys efectuada por el cliente desde su Business Manager o de forma silenciosa por las plataformas.' },
+                    { title: 'Fallas de Terceros', desc: 'Interrupciones en el servicio causadas por fallas generales de infraestructura, caídas de servidores de Meta/WhatsApp o proveedores de hosting.' }
+                  ]).map((item, i) => (
                     <div key={i} className="bg-[#f8f9fc] border border-brand/5 p-5 rounded-2xl hover:border-brand/10 transition-colors">
                       <h4 className="text-brand font-bold text-sm m-0 mb-1">{item.title}</h4>
                       <p className="text-brand/60 text-xs m-0 leading-relaxed">{item.desc}</p>
@@ -282,15 +322,19 @@ export default function TermsPage() {
                     <LogOut className="w-6 h-6" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-display font-bold text-brand uppercase tracking-tight m-0">
-                    6. Terminación
+                    {isEn ? "6. Termination" : "6. Terminación"}
                   </h2>
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
                   <p className="text-brand/80">
-                    Cualquiera de las partes puede dar por terminada la relación contractual en cualquier momento notificando con un periodo mínimo de <span className="text-brand font-bold">15 días de aviso previo</span> por escrito.
+                    {isEn 
+                      ? <>Either party may terminate the contract at any time by giving a minimum of <span className="text-brand font-bold">15 days prior written notice</span>.</>
+                      : <>Cualquiera de las partes puede dar por terminada la relación contractual en cualquier momento notificando con un periodo mínimo de <span className="text-brand font-bold">15 días de aviso previo</span> por escrito.</>}
                   </p>
                   <p className="mt-4 text-brand/80">
-                    Al momento de la terminación efectiva, LunAvalos se compromete a revocar todos los accesos digitales asociados y a entregar al cliente la confirmación de la entrega y desvinculación segura.
+                    {isEn 
+                      ? "Upon effective termination, LunAvalos commits to revoke all associated digital accesses and deliver confirmation of secure unbinding to the client."
+                      : "Al momento de la terminación efectiva, LunAvalos se compromete a revocar todos los accesos digitales asociados y a entregar al cliente la confirmación de la entrega y desvinculación segura."}
                   </p>
                 </div>
               </motion.div>
@@ -309,16 +353,19 @@ export default function TermsPage() {
                     <Scale className="w-6 h-6" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-display font-bold text-brand uppercase tracking-tight m-0">
-                    7. Jurisdicción
+                    {isEn ? "7. Jurisdiction" : "7. Jurisdicción"}
                   </h2>
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
                   <p className="text-brand/80">
-                    Este acuerdo se rige en su totalidad por las leyes aplicables y vigentes en los Estados Unidos Mexicanos.
+                    {isEn 
+                      ? "This agreement is governed in its entirety by the applicable laws in force in the United Mexican States."
+                      : "Este acuerdo se rige en su totalidad por las leyes aplicables y vigentes en los Estados Unidos Mexicanos."}
                   </p>
                   <p className="mt-4 text-brand/80">
-                    Cualquier controversia o disputa derivada de la interpretación o ejecución del presente acuerdo será sometida exclusivamente ante los tribunales competentes de la ciudad de{' '}
-                    <strong className="text-brand font-semibold">Saltillo, Coahuila, México</strong>, renunciando expresamente a cualquier otro fuero que pudiera corresponderles por sus domicilios presentes o futuros.
+                    {isEn 
+                      ? <>Any controversy or dispute arising from the interpretation or execution of this agreement shall be submitted exclusively to the competent courts of the city of <strong className="text-brand font-semibold">Saltillo, Coahuila, Mexico</strong>, expressly waiving any other jurisdiction that might correspond to them by reason of their present or future domiciles.</>
+                      : <>Cualquier controversia o disputa derivada de la interpretación o ejecución del presente acuerdo será sometida exclusivamente ante los tribunales competentes de la ciudad de <strong className="text-brand font-semibold">Saltillo, Coahuila, México</strong>, renunciando expresamente a cualquier otro fuero que pudiera corresponderles por sus domicilios presentes o futuros.</>}
                   </p>
                 </div>
               </motion.div>
@@ -337,12 +384,14 @@ export default function TermsPage() {
                     <Building className="w-6 h-6" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-display font-bold text-brand uppercase tracking-tight m-0">
-                    8. Información de Contacto
+                    {isEn ? "8. Contact Information" : "8. Información de Contacto"}
                   </h2>
                 </div>
                 <div className="prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
                   <p className="text-brand/80">
-                    Para cualquier aclaración, duda o asunto relacionado con los presentes Términos y Condiciones, puede comunicarse directamente con nosotros:
+                    {isEn 
+                      ? "For any clarification, questions, or issues related to these Terms and Conditions, you can communicate directly with us:"
+                      : "Para cualquier aclaración, duda o asunto relacionado con los presentes Términos y Condiciones, puede comunicarse directamente con nosotros:"}
                   </p>
                   
                   <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -351,9 +400,9 @@ export default function TermsPage() {
                         <MapPin className="w-5 h-5" />
                       </div>
                       <div className="text-sm">
-                        <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">Dirección Corporativa</div>
+                        <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">{isEn ? "Corporate Address" : "Dirección Corporativa"}</div>
                         <div className="text-brand font-bold">LunAvalos Digital House, S.A.S.</div>
-                        <div className="text-brand/70 text-xs mt-1">Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, México</div>
+                        <div className="text-brand/70 text-xs mt-1">{isEn ? "Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, Mexico" : "Calle Gallo 118, Col. Las Maravillas, Saltillo, Coahuila, C.P. 25019, México"}</div>
                       </div>
                     </div>
                     
@@ -363,8 +412,8 @@ export default function TermsPage() {
                           <Mail className="w-5 h-5" />
                         </div>
                         <div className="text-sm">
-                          <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">Contacto Electrónico</div>
-                          <div className="text-brand font-bold">Asesoría y Soporte</div>
+                          <div className="text-brand/40 uppercase font-bold tracking-wider text-[10px]">{isEn ? "Electronic Contact" : "Contacto Electrónico"}</div>
+                          <div className="text-brand font-bold">{isEn ? "Advice and Support" : "Asesoría y Soporte"}</div>
                           <a href="mailto:contacto@lunavalos.com" className="text-secondary font-bold hover:underline block mt-1 text-xs">
                             contacto@lunavalos.com
                           </a>
