@@ -193,7 +193,7 @@ export default function EnglishPrivacyPage() {
                     <p className="text-brand/70 text-sm leading-relaxed m-0 pl-11">
                       Access tokens for the social media and messaging platforms our clients authorize us to manage: Facebook Pages, Instagram Business accounts, LinkedIn profiles and company pages, TikTok accounts, YouTube channels, and the WhatsApp Business API (encrypted at rest).
                       <br /><br />
-                      These tokens grant us only the permissions required to deliver the contracted service: to list the pages, accounts and channels a client administers, to publish and schedule content on them, and to retrieve the resulting activity metrics. We do not use them to read private messages on social networks, to manage advertising, or to access data belonging to any account other than the ones the client explicitly connects.
+                      These tokens grant us only the permissions required to deliver the contracted service: to list the pages, accounts and channels a client administers, and to publish and schedule content on them. We do not use them to read private messages on social networks, to manage advertising, or to access data belonging to any account other than the ones the client explicitly connects.
                     </p>
                   </div>
 
@@ -267,7 +267,7 @@ export default function EnglishPrivacyPage() {
                     'Manage connected social media and WhatsApp messaging accounts as authorized',
                     'Fulfill message exchange and communication with end-users via WhatsApp Business API',
                     'Draft replies to WhatsApp messages through an automated assistant, when the client has enabled it for their own conversations. The assistant identifies itself as automated in its first message of every conversation, and a human agent can take over at any point.',
-                    'Generate activity reports for our clients',
+                    'Generate publishing reports for our clients',
                     'Fulfill our contractual obligations'
                   ].map((text, i) => (
                     <div key={i} className="flex gap-4 items-start p-4 rounded-xl hover:bg-[#f8f9fc] transition-colors border border-transparent hover:border-brand/5">
@@ -392,7 +392,7 @@ export default function EnglishPrivacyPage() {
                     Google's Privacy Policy, which governs Google's handling of the data accessed through these APIs, is available at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-brand font-bold underline">https://policies.google.com/privacy</a>.
                   </p>
                   <p className="mt-4 text-brand/80">
-                    We access your YouTube channel solely to upload and publish the video content you approve, and to retrieve public performance metrics for that content. We do not read, download, or store any other data from your channel, and we do not share YouTube data with third parties.
+                    We access your YouTube channel solely to upload and publish the video content you approve. We do not read, download, or store any other data from your channel, and we do not share YouTube data with third parties.
                   </p>
                   <p className="mt-4 text-brand/80">
                     You can revoke our application's access to your Google account at any time from <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer" className="text-brand font-bold underline">https://myaccount.google.com/permissions</a>. Upon revocation, we delete the stored credentials for that channel; see our Data Deletion page for the full procedure.

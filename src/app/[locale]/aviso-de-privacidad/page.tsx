@@ -275,7 +275,7 @@ export default function PrivacyPage() {
                     'Gestión, programación y publicación automatizada de contenido en redes sociales en nombre de nuestros clientes.',
                     'Gestión de canales de mensajería de WhatsApp Business y comunicación con clientes finales.',
                     'Redactar borradores de respuestas a mensajes de WhatsApp a través de un asistente automatizado, cuando el cliente lo haya activado para sus propias conversaciones. El asistente se identifica como automatizado en su primer mensaje de cada conversación, y un agente humano puede tomar el control en cualquier momento.',
-                    'Generar reportes de métricas y actividad para el análisis de rendimiento.',
+                    'Generar reportes de publicación para nuestros clientes.',
                     'Actualización de nuestras bases de datos internas y cumplimiento de obligaciones contractuales.',
                     'Cualquier finalidad análoga o compatible con las anteriores.',
                   ].map((text, i) => (
@@ -401,7 +401,7 @@ export default function PrivacyPage() {
                     El Aviso de Privacidad de Google, que rige el tratamiento que Google hace de los datos accesibles a través de estas APIs, está disponible en <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-brand font-bold underline">https://policies.google.com/privacy</a>.
                   </p>
                   <p className="mt-4 text-brand/80">
-                    Accedemos a su canal únicamente para subir y publicar el contenido de video que usted aprueba y para consultar las métricas públicas de desempeño de dicho contenido. No leemos, descargamos ni almacenamos ningún otro dato del canal, ni compartimos datos de YouTube con terceros.
+                    Accedemos a su canal únicamente para subir y publicar el contenido de video que usted aprueba. No leemos, descargamos ni almacenamos ningún otro dato del canal, ni compartimos datos de YouTube con terceros.
                   </p>
                   <p className="mt-4 text-brand/80">
                     Puede revocar el acceso de nuestra aplicación a su cuenta de Google en cualquier momento desde <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer" className="text-brand font-bold underline">https://myaccount.google.com/permissions</a>.
