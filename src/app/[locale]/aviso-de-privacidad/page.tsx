@@ -19,8 +19,15 @@ import {
   RefreshCw,
   FileText
 } from 'lucide-react';
+import { useLocale } from 'next-intl';
+import EnglishPrivacyPage from '../privacy/page';
 
 export default function PrivacyPage() {
+  const locale = useLocale();
+  if (locale !== 'es') {
+    return <EnglishPrivacyPage />;
+  }
+
   const sections = [
     { id: 'responsable', title: '1. Responsable del Tratamiento' },
     { id: 'datos', title: '2. Datos Personales Recopilados' },
