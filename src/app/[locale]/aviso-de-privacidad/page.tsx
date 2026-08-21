@@ -69,7 +69,7 @@ export default function PrivacyPage() {
                 
                 <div className="mt-8 pt-6 border-t border-brand/5 text-[11px] text-brand/50 font-medium leading-relaxed">
                   Última actualización:<br />
-                  <span className="text-brand font-bold text-xs">Agosto 2026</span>
+                  <span className="text-brand font-bold text-xs">21 de agosto de 2026</span>
                 </div>
               </div>
             </aside>
@@ -93,7 +93,7 @@ export default function PrivacyPage() {
                   LunAvalos Digital House, S.A.S.
                 </h2>
                 <div className="inline-block px-3 py-1 bg-white border border-brand/10 rounded-full text-xs text-brand/70 font-semibold shadow-sm">
-                  Última actualización: Agosto 2026
+                  Última actualización: 21 de agosto de 2026
                 </div>
               </motion.div>
 
@@ -267,6 +267,7 @@ export default function PrivacyPage() {
                     'Información, cotización y prestación de los servicios contratados (desarrollo web, e-commerce, automatización y consultoría).',
                     'Gestión, programación y publicación automatizada de contenido en redes sociales en nombre de nuestros clientes.',
                     'Gestión de canales de mensajería de WhatsApp Business y comunicación con clientes finales.',
+                    'Redactar borradores de respuestas a mensajes de WhatsApp mediante un asistente automatizado, cuando el cliente lo haya activado para sus propias conversaciones. El asistente se identifica como automatizado en su primer mensaje de cada conversación, y un agente humano puede tomar el control en cualquier momento.',
                     'Generar reportes de métricas y actividad para el análisis de rendimiento.',
                     'Actualización de nuestras bases de datos internas y cumplimiento de obligaciones contractuales.',
                     'Cualquier finalidad análoga o compatible con las anteriores.',
@@ -333,6 +334,37 @@ export default function PrivacyPage() {
                   <h3 className="text-md font-bold text-brand mb-2">Uso limitado de los datos de plataforma</h3>
                   <p className="text-brand/80">
                     Los datos obtenidos a través de estas APIs se utilizan exclusivamente para prestar el servicio contratado al cliente que autorizó la vinculación. No se comercializan, no se utilizan con fines publicitarios ni de construcción de audiencias, no se emplean para entrenar modelos de aprendizaje automático y no se combinan ni comparten entre distintos clientes. Las cuentas vinculadas de cada cliente permanecen aisladas de las de cualquier otro.
+                  </p>
+                </div>
+
+                <div className="mt-8 prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
+                  <h3 className="text-md font-bold text-brand mb-2">Proveedores de Servicios</h3>
+                  <p className="text-brand/80">
+                    Además de las plataformas anteriores, nos apoyamos en los siguientes proveedores para operar el servicio. Ellos procesan los datos bajo nuestras instrucciones y únicamente para los fines aquí descritos:
+                  </p>
+                  <div className="mt-4 pl-4 border-l-2 border-brand/10 space-y-4">
+                    <div>
+                      <p className="text-brand font-bold m-0 text-sm">Anthropic PBC — Estados Unidos</p>
+                      <p className="text-brand/80 m-0 text-sm mt-1">
+                        Proporciona el modelo de lenguaje que redacta los borradores de respuestas en nuestra bandeja de entrada de WhatsApp. Cuando un cliente ha activado el asistente automatizado, los mensajes recientes de esa conversación se envían a la API de Anthropic únicamente para generar la sugerencia de respuesta. Anthropic no utiliza estos datos para entrenar sus modelos, y los datos no se conservan para ningún otro propósito.
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-brand font-bold m-0 text-sm">Hostinger International Ltd. — Chipre, con servidores en los Estados Unidos</p>
+                      <p className="text-brand/80 m-0 text-sm mt-1">
+                        Proporciona los servidores y la base de datos donde se aloja nuestra aplicación, incluyendo los registros de conversaciones y los tokens de acceso encriptados.
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-brand/80">
+                    No autorizamos a ningún proveedor a utilizar estos datos para sus propios fines, y no los compartimos con nadie más.
+                  </p>
+                </div>
+
+                <div className="mt-8 prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
+                  <h3 className="text-md font-bold text-brand mb-2">Transferencias Internacionales de Datos</h3>
+                  <p className="text-brand/80">
+                    LunAvalos Digital House, S.A.S. está establecida en México, y los proveedores enumerados anteriormente procesan datos fuera del territorio mexicano, principalmente en los Estados Unidos. Al contratar nuestros servicios, o al ponerse en contacto con uno de nuestros clientes a través de un canal que gestionamos en su nombre, usted reconoce esta transferencia, la cual se realiza únicamente para prestar el servicio descrito en esta política y bajo las obligaciones de confidencialidad establecidas en nuestros acuerdos con cada proveedor.
                   </p>
                 </div>
               </motion.div>

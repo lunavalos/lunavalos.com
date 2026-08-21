@@ -70,7 +70,7 @@ export default function EnglishPrivacyPage() {
                 
                 <div className="mt-8 pt-6 border-t border-brand/5 text-[11px] text-brand/50 font-medium leading-relaxed">
                   Last updated:<br />
-                  <span className="text-brand font-bold text-xs">August 2026</span>
+                  <span className="text-brand font-bold text-xs">August 21, 2026</span>
                 </div>
               </div>
             </aside>
@@ -94,7 +94,7 @@ export default function EnglishPrivacyPage() {
                   LunAvalos Digital House, S.A.S.
                 </h2>
                 <div className="inline-block px-3 py-1 bg-white border border-brand/10 rounded-full text-xs text-brand/70 font-semibold shadow-sm">
-                  Last updated: August 2026
+                  Last updated: August 21, 2026
                 </div>
               </motion.div>
 
@@ -266,6 +266,7 @@ export default function EnglishPrivacyPage() {
                     'Publish and schedule content on social media platforms on behalf of our clients',
                     'Manage connected social media and WhatsApp messaging accounts as authorized',
                     'Fulfill message exchange and communication with end-users via WhatsApp Business API',
+                    'Draft replies to WhatsApp messages through an automated assistant, when the client has enabled it for their own conversations. The assistant identifies itself as automated in its first message of every conversation, and a human agent can take over at any point.',
                     'Generate activity reports for our clients',
                     'Fulfill our contractual obligations'
                   ].map((text, i) => (
@@ -331,6 +332,37 @@ export default function EnglishPrivacyPage() {
                   <h3 className="text-md font-bold text-brand mb-2">Limited Use of Platform Data</h3>
                   <p className="text-brand/80">
                     Data obtained through these platform APIs is used only to deliver the contracted service to the client who authorized the connection. We do not sell it, we do not use it for advertising or audience building, we do not use it to train machine learning models, and we never combine or share the data of one client with that of another. Each client's connected accounts are isolated from every other client's.
+                  </p>
+                </div>
+
+                <div className="mt-8 prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
+                  <h3 className="text-md font-bold text-brand mb-2">Service Providers</h3>
+                  <p className="text-brand/80">
+                    In addition to the platforms above, we rely on the following providers to operate the service. They process data on our instructions and only for the purposes described here:
+                  </p>
+                  <div className="mt-4 pl-4 border-l-2 border-brand/10 space-y-4">
+                    <div>
+                      <p className="text-brand font-bold m-0 text-sm">Anthropic PBC — United States</p>
+                      <p className="text-brand/80 m-0 text-sm mt-1">
+                        Provides the language model that drafts replies in our WhatsApp inbox. When a client has enabled the automated assistant, the recent messages of that conversation are sent to Anthropic's API solely to generate the suggested reply. Anthropic does not use this data to train its models, and the data is not retained for any other purpose.
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-brand font-bold m-0 text-sm">Hostinger International Ltd. — Cyprus, with servers in the United States</p>
+                      <p className="text-brand/80 m-0 text-sm mt-1">
+                        Provides the servers and database where our application, including conversation records and encrypted access tokens, is hosted.
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-brand/80">
+                    We do not authorize any provider to use this data for its own purposes, and we do not share it with anyone else.
+                  </p>
+                </div>
+
+                <div className="mt-8 prose prose-brand text-brand/70 leading-relaxed max-w-none text-base md:text-lg">
+                  <h3 className="text-md font-bold text-brand mb-2">International Data Transfers</h3>
+                  <p className="text-brand/80">
+                    LunAvalos Digital House, S.A.S. is established in Mexico, and the providers listed above process data outside Mexican territory, principally in the United States. By contracting our services, or by contacting one of our clients through a channel we manage on their behalf, you acknowledge this transfer, which takes place solely to deliver the service described in this policy and under the confidentiality obligations set out in our agreements with each provider.
                   </p>
                 </div>
               </motion.div>
