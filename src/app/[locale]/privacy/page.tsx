@@ -340,16 +340,16 @@ export default function EnglishPrivacyPage() {
                   <p className="text-brand/80">
                     In addition to the platforms above, we rely on the following providers to operate the service. They process data on our instructions and only for the purposes described here:
                   </p>
-                  <div className="mt-4 pl-4 border-l-2 border-brand/10 space-y-4">
+                  <div className="mt-4 space-y-4">
                     <div>
-                      <p className="text-brand font-bold m-0 text-sm">Anthropic PBC — United States</p>
-                      <p className="text-brand/80 m-0 text-sm mt-1">
+                      <h4 className="text-sm font-bold text-brand mb-1">Anthropic PBC — United States</h4>
+                      <p className="text-brand/80 text-sm">
                         Provides the language model that drafts replies in our WhatsApp inbox. When a client has enabled the automated assistant, the recent messages of that conversation are sent to Anthropic's API solely to generate the suggested reply. Anthropic does not use this data to train its models, and the data is not retained for any other purpose.
                       </p>
                     </div>
                     <div>
-                      <p className="text-brand font-bold m-0 text-sm">Hostinger International Ltd. — Cyprus, with servers in the United States</p>
-                      <p className="text-brand/80 m-0 text-sm mt-1">
+                      <h4 className="text-sm font-bold text-brand mb-1">Hostinger International Ltd. — Cyprus, with servers in the United States</h4>
+                      <p className="text-brand/80 text-sm">
                         Provides the servers and database where our application, including conversation records and encrypted access tokens, is hosted.
                       </p>
                     </div>

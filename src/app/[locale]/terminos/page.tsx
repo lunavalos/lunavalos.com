@@ -80,7 +80,7 @@ export default function TermsPage() {
                 
                 <div className="mt-8 pt-6 border-t border-brand/5 text-[11px] text-brand/50 font-medium leading-relaxed">
                   {isEn ? "Last updated:" : "Última actualización:"}<br />
-                  <span className="text-brand font-bold text-xs">{isEn ? "August 21, 2026" : "21 de agosto de 2026"}</span>
+                  <span className="text-brand font-bold text-xs">{isEn ? "August 2026" : "Agosto 2026"}</span>
                 </div>
               </div>
             </aside>
@@ -104,7 +104,7 @@ export default function TermsPage() {
                   LunAvalos Digital House, S.A.S.
                 </h2>
                 <div className="inline-block px-3 py-1 bg-white border border-brand/10 rounded-full text-xs text-brand/70 font-semibold shadow-sm">
-                  {isEn ? "Last updated: August 21, 2026" : "Última actualización: 21 de agosto de 2026"}
+                  {isEn ? "Last updated: August 2026" : "Última actualización: Agosto 2026"}
                 </div>
               </motion.div>
 
