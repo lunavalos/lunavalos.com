@@ -5,21 +5,18 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 const clientLogos = [
+  'syacsa.webp',
   'absolutegroup.webp',
   'afcargasydescargas.webp',
-  'ammd.webp',
+  'querendona.webp',
   'avintech.webp',
-  'bonelessyasi.webp',
-  'dolcebisquet.webp',
   'elccogroup.webp',
   'exlgp.webp',
   'garciadelcastillo.webp',
   'greenvci.webp',
   'grupoloscompadres.webp',
-  'hisacv.webp',
   'kespacio.webp',
   'kronoslogistics.webp',
-  'lage.webp',
   'lavandapasteleria.webp',
   'lpap.webp',
   'macadam.webp',
@@ -27,7 +24,6 @@ const clientLogos = [
   'panelessolaressaltillo.webp',
   'rdnseguros.webp',
   'sportecs.webp',
-  'syacsa.webp',
   'tierramar.webp'
 ];
 
@@ -61,7 +57,7 @@ export default function ClientGrid() {
               whileInView={{ opacity: 1 }}
               transition={{ delay: (index % 5) * 0.05 }}
               viewport={{ once: true }}
-              className="bg-white flex items-center justify-center p-12 md:p-10 transition-all duration-500 group border border-brand/5 aspect-[3/2]"
+              className="bg-white flex items-center justify-center p-6 md:p-8 transition-all duration-500 group border border-brand/5 aspect-[3/2]"
             >
               <Image
                 src={`/images/clients/${logo}`}
