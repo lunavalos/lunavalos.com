@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, ChevronDown } from 'lucide-react';
 import { useRef } from 'react';
 import Beams from './Beams';
 
@@ -171,6 +171,34 @@ export default function Hero() {
           </motion.div>
         </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+      >
+        <button 
+          onClick={() => {
+            const nextSection = document.getElementById('services');
+            if (nextSection) {
+              nextSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+              window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            }
+          }}
+          className="text-white/50 hover:text-secondary transition-colors p-2 flex flex-col items-center gap-2 group"
+          aria-label="Scroll down"
+        >
+          <span className="text-[10px] uppercase tracking-[0.2em] font-bold group-hover:text-white transition-colors">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          >
+            <ChevronDown className="w-5 h-5 group-hover:text-white transition-colors" />
+          </motion.div>
+        </button>
+      </motion.div>
     </section>
   );
 }
